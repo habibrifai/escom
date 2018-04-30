@@ -61,14 +61,14 @@
 				</div>
 
 				<!-- Search -->
-				<div class="navbar-search">
+				<!-- <div class="navbar-search">
 					<button class="search-btn"><i class="fa fa-search"></i></button>
 					<div class="search-form">
 						<form>
 							<input class="input" type="text" name="search" placeholder="Search">
 						</form>
 					</div>
-				</div>
+				</div> -->
 				<!-- Search -->
 
 				<!-- Nav menu -->

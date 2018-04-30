@@ -12,3 +12,4 @@ class Single_cause extends CI_Controller {
 		$this->load->view('single-cause');
 	}
 }
+?>

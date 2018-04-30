@@ -12,3 +12,4 @@ class Single_event extends CI_Controller {
 		$this->load->view('single-event');
 	}
 }
+?>

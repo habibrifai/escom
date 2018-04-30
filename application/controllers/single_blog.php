@@ -12,3 +12,4 @@ class Single_blog extends CI_Controller {
 		$this->load->view('single-blog');
 	}
 }
+?>
