@@ -6,10 +6,14 @@ class Register extends CI_Controller {
 	function __construct(){
         parent::__construct();
     }
-	
+
 	public function index()
 	{
-		echo "halaman register";
+		$this->load->view('register');
+	}
+
+	function do_regist(){
+		echo "mau regis";
 	}
 }
 ?>
