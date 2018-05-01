@@ -23,18 +23,35 @@ class Login extends CI_Controller {
 		$role = $this->m_login->cek_role("user",$where);
 		if($cek > 0){
 
-			$data_session = array(
-				'nama' => $username,
-				'status' => "login"
-			);
-
-			$this->session->set_userdata($data_session);
-
 			if ($role[0]["role"] == "admin") {
-				echo "halaman admin";
+
+				$data_session = array(
+					'nama' => $username,
+					'status' => "login admin"
+				);
+
+				$this->session->set_userdata($data_session);
+
+				redirect(base_url('admin/dashboard'));
 			} elseif ($role[0]["role"] == "perusahaan") {
+
+				$data_session = array(
+					'nama' => $username,
+					'status' => "login perusahaan"
+				);
+
+				$this->session->set_userdata($data_session);
+
 				echo "halaman perusahaan";
 			} elseif ($role[0]["role"] == "organisasi") {
+
+				$data_session = array(
+					'nama' => $username,
+					'status' => "login organisasi"
+				);
+
+				$this->session->set_userdata($data_session);
+
 				echo "halaman organisasi";
 			}
 

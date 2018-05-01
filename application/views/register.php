@@ -4,28 +4,28 @@
 	<title>REGISTER</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="<?php echo base_url();?>assets/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/animate/animate.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/main.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 </head>
 <body>
 
@@ -38,20 +38,80 @@
 						Register
 					</span>
 
-            <?php
-              echo "<div class='error_msg p-b-12'>";
-              if (isset($error_regist)) {
-                  echo $error_regist;
-                  }
-              echo validation_errors();
-              echo "</div>";
-            ?>
+					<?php
+					echo "<div class='error_msg p-b-12'>";
+					if (isset($error_regist)) {
+						echo $error_regist;
+					}
+					echo validation_errors();
+					echo "</div>";
+					?>
 
-          <span class="txt1 p-b-11">
+					<span class="txt1 p-b-11">
+						Nama Organisasi / Perusahaan
+					</span>
+					<div class="wrap-input100 validate-input m-b-36" data-validate = "Nama organisasi / perusahaan is required">
+						<input class="input100" type="text" name="nama" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<span class="txt1 p-b-11">
+						Tahun Berdiri
+					</span>
+					<div class="wrap-input100 validate-input m-b-36" data-validate = "Tahun berdiri is required">
+						<input class="input100" type="text" name="tahun" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<span class="txt1 p-b-11">
+						Deskripsi Perusahaan / Organisasi
+					</span>
+					<div class="wrap-input100 validate-input m-b-36" data-validate = "Deskripsi organisasi / perusahaan is required">
+						<textarea class="input100" type="text" name="deskripsi" ></textarea>
+						<span class="focus-input100"></span>
+					</div>
+
+					<span class="txt1 p-b-11">
+						Foto Kegiatan
+					</span>
+					<div class="wrap-input100 validate-input m-b-36" data-validate = "Foto kegiatan is required">
+						<input class="input100" type="file" name="foto" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<span class="txt1 p-b-11">
+						Alamat Kantor
+					</span>
+					<div class="wrap-input100 validate-input m-b-36" data-validate = "Alamat is required">
+						<textarea class="input100" type="text" name="alamat" ></textarea>
+						<span class="focus-input100"></span>
+					</div>
+
+					<span class="txt1 p-b-11">
+						No Telepon
+					</span>
+					<div class="wrap-input100 validate-input m-b-36" data-validate = "No telepon is required">
+						<input class="input100" type="text" name="notelp" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<!-- <span class="txt1 p-b-11">
+						Kategori
+					</span>
+					<div class="wrap-input100 validate-input m-b-12">
+						<select name="kategori" class="input100" required="">
+							<option>Pendidikan</option>
+							<option>Sosial</option>
+							<option>Ekonomi</option>
+							<option>Kebudayaan</option>
+						</select>
+					</div> -->
+
+					<span class="txt1 p-b-11">
 						Email
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate = "Email is required">
-						<input class="input100" type="text" name="email" >
+						<input class="input100" type="email" name="email" >
 						<span class="focus-input100"></span>
 					</div>
 
@@ -74,47 +134,47 @@
 						<span class="focus-input100"></span>
 					</div>
 
-          <div class="validate-input m-b-12" data-validate = "Role is required">
-            <span class="txt1 p-b-11 ">
-              <p class="m-b-12">Saya Mendaftar Sebagai : </P>
-              <input type="radio" name="role" value="perusahaan">Perusahaan &nbsp;
-              <input type="radio" name="role" value="organisasi">Organisasi
-            </span>
-          </div>
+					<div class="validate-input m-b-12" data-validate = "Role is required">
+						<span class="txt1 p-b-11 ">
+							<p class="m-b-12">Saya Mendaftar Sebagai : </P>
+								<input type="radio" name="role" value="perusahaan"> Perusahaan &nbsp;
+								<input type="radio" name="role" value="organisasi"> Organisasi
+							</span>
+						</div>
 
-					<div class="container-login100-form-btn">
-						<input type="submit" value="Register" class="login100-form-btn">
-						<!-- <button style="float: right;" type="button" class="login100-form-btn">Register</button> -->
-					</div>
+						<div class="container-login100-form-btn">
+							<input type="submit" value="Register" class="login100-form-btn">
+							<!-- <button style="float: right;" type="button" class="login100-form-btn">Register</button> -->
+						</div>
 
-					<span class="txt1 p-b-11"><br>
-						<a href="<?php echo site_url('login')?>">Have an Account? Login !</a>
-					</span>
+						<span class="txt1 p-b-11"><br>
+							<a href="<?php echo site_url('login')?>">Have an Account? Login !</a>
+						</span>
 
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<div id="dropDownSelect1"></div>
+		<div id="dropDownSelect1"></div>
 
-<!--===============================================================================================-->
-	<script src="<?php echo base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url();?>assets/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url();?>assets/vendor/daterangepicker/moment.min.js"></script>
-	<script src="<?php echo base_url();?>assets/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url();?>assets/vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url();?>assets/js/main_login.js"></script>
+		<!--===============================================================================================-->
+		<script src="<?php echo base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="<?php echo base_url();?>assets/vendor/animsition/js/animsition.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="<?php echo base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
+		<script src="<?php echo base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="<?php echo base_url();?>assets/vendor/select2/select2.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="<?php echo base_url();?>assets/vendor/daterangepicker/moment.min.js"></script>
+		<script src="<?php echo base_url();?>assets/vendor/daterangepicker/daterangepicker.js"></script>
+		<!--===============================================================================================-->
+		<script src="<?php echo base_url();?>assets/vendor/countdowntime/countdowntime.js"></script>
+		<!--===============================================================================================-->
+		<script src="<?php echo base_url();?>assets/js/main_login.js"></script>
 
-</body>
-</html>
+	</body>
+	</html>

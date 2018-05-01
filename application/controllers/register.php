@@ -30,6 +30,7 @@ class Register extends CI_Controller {
 						'username' => $this->input->post('username'),
 						'password' => $this->input->post('password'),
 						'role' => $this->input->post('role'),
+						'status' => "belum terverifikasi",
 				);
 				$cek = $this->m_register->cek_regist($data);
 					if($cek == false){

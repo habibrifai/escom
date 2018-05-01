@@ -1,6 +1,7 @@
 <?php
 
 class m_register extends CI_Model{
+	
 	function registration($data){
 		$this->db->insert('user', $data);
 			if ($this->db->affected_rows() > 0)
