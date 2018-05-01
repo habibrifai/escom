@@ -6,6 +6,7 @@ class Verif_akun extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_perusahaan');
+		$this->load->model('m_organisasi');
 	}
 	
 	public function verif_akun_perusahaan(){
@@ -23,8 +24,18 @@ class Verif_akun extends CI_Controller {
 
 	}
 
-	public function lol(){
-		redirect(base_url(''));
+	public function verif_akun_organisasi(){
+
+		$data['qry'] = $this->m_organisasi->get_data("organisasi");
+
+		$this->load->view('admin/verif_akun_organisasi', $data);
+	}
+
+	public function do_verif_organisasi(){
+		$id_user = $this->input->post('id_user');
+		$this->m_organisasi->do_verif("user",$id_user);
+
+		redirect(base_url('admin/verif_akun/verif_akun_organisasi'));
 
 	}
 

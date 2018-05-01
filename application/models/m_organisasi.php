@@ -1,11 +1,11 @@
 <?php 
  
-class M_perusahaan extends CI_Model{	
+class M_organisasi extends CI_Model{	
 
 	function get_data($table){	
-		$this->db->select("foto,nama_perusahaan,deskripsi,tahun_berdiri,alamat_perusahaan,user.email,user.status,no_tlp,user.id_user,perusahaan.id_perusahaan");
+		$this->db->select("foto,nama_organisasi,deskripsi,tahun_berdiri,alamat_organisasi,user.email,user.status,no_tlp,user.id_user,organisasi.id_organisasi");
 		$this->db->from($table);
-		$this->db->join('user', 'user.id_user = perusahaan.id_user');	
+		$this->db->join('user', 'user.id_user = organisasi.id_user');	
 		return $this->db->get()->result_array();
 	}	
 
@@ -15,8 +15,9 @@ class M_perusahaan extends CI_Model{
 	}
 
 	function jumlah_data($table){
-		$this->db->where(array('status' => 'terverifikasi', 'role' => 'perusahaan'));
+		$this->db->where(array('status' => 'terverifikasi', 'role' => 'organisasi'));
 		return $this->db->get($table)->num_rows();
 	}
+
 }
 

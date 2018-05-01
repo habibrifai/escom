@@ -15,7 +15,7 @@ if ($this->session->userdata('status') != 'login admin') {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin - Verifikasi Akun</title>
+	<title>Admin - List SPj</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" />
@@ -128,22 +128,22 @@ if ($this->session->userdata('status') != 'login admin') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li><a href="<?php echo base_url('admin/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li class="parent active"><a data-toggle="collapse" href="#sub-item-1">
+				<li class="active"><a href="<?php echo base_url('admin/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 					<em class="fa fa-users">&nbsp;</em> Verifikasi Akun <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
-					<ul class="children collapse" id="sub-item-1">
-						<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
-							<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
-						</a></li>
-						<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
-							<span class="fa fa-arrow-right">&nbsp;</span> Organisasi
-						</a></li>
-					</ul>
-				</li>
-				<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
-			</ul>
-		</div>
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
+						<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
+					</a></li>
+					<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
+						<span class="fa fa-arrow-right">&nbsp;</span> Organisasi
+					</a></li>
+				</ul>
+			</li>
+			<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+		</ul>
+	</div>
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -151,87 +151,74 @@ if ($this->session->userdata('status') != 'login admin') {
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Verifiksi Akun</li>
+				<li class="active">List SPJ</li>
 			</ol>
 		</div><!--/.row-->
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Verifikasi Akun Perusahaan</h1>
+				<h1 class="page-header">List SPJ</h1>
 			</div>
 		</div><!--/.row-->
 
-		<div class="row">
-			<div class="col-lg-12">
-				<table class="table-read" border="2">
-					<tr>
-						<th>Foto</th>
-						<th>Nama Perusahaan</th>
-						<th>Deskripsi</th>
-						<th>Alamat Perusahaan</th>
-						<th>Tahun Berdiri</th>
-						<th>E-mail</th>
-						<th>No Telepon</th>
-						<th>Opsi</th>
-					</tr>
-
-					<?php
-					foreach ($qry as $data) { ?>					
-
-					<tr>
-						<td class="td-read"></td>
-						<td class="td-read"><?php echo $data["nama_perusahaan"]; ?></td>
-						<td class="td-read"><?php echo $data["deskripsi"]; ?></td>
-						<td class="td-read"><?php echo $data["alamat_perusahaan"]; ?></td>
-						<td class="td-read"><?php echo $data["tahun_berdiri"]; ?></td>
-						<td class="td-read"><?php echo $data["email"]; ?></td>
-						<td class="td-read"><?php echo $data["no_tlp"]; ?></td>
-						<td>
-
-							<?php
-							if ($data["status"] == "terverifikasi") { ?>
-							<a href=""><button style="margin: 7px;" class="btn btn-sm btn-success">Verified</button></a>
-							<?php } elseif ($data["status"] == "belum terverifikasi") { ?>
-							<form method="POST" action="do_verif_perusahaan">
-								<input type="hidden" name="id_user" value="<?php echo $data['id_user']; ?>">
-								<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_perusahaan']; ?>">
-								<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Verifikasi</button></a>
-							</form>
-							<form method="POST" action="lol">
-								<input type="hidden" name="id_user" value="<?php echo $data['id_user']; ?>">
-								<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_perusahaan']; ?>">
-								<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-danger">Hapus</button></a>
-							</form>		
-							<?php } ?>				
-						</td>
-					</tr>
-					<?php } ?>
-				</table>
+		<div class="panel panel-container">
+			<div class="row">
+				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
+							<div class="large">120</div>
+							<div class="text-muted">SPJ</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+							<div class="large">24</div>
+							<div class="text-muted">Akun Perusahaan</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+							<div class="large">24</div>
+							<div class="text-muted">Akun Organisasi</div>
+						</div>
+					</div>
+				</div>
+		<!-- 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+						<div class="panel panel-red panel-widget ">
+							<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
+								<div class="large">25.2k</div>
+								<div class="text-muted">Page Views</div>
+							</div>
+						</div>
+					</div> -->
+				</div><!--/.row-->
 			</div>
-		</div>
+		</div><!--/.row-->
+	</div>	<!--/.main-->
 
-	</div><!--/.row-->
-</div>	<!--/.main-->
-
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
-<script>
-	window.onload = function () {
-		var chart1 = document.getElementById("line-chart").getContext("2d");
-		window.myLine = new Chart(chart1).Line(lineChartData, {
-			responsive: true,
-			scaleLineColor: "rgba(0,0,0,.2)",
-			scaleGridLineColor: "rgba(0,0,0,.05)",
-			scaleFontColor: "#c5c7cc"
-		});
-	};
-</script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
+	<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
+	<script>
+		window.onload = function () {
+			var chart1 = document.getElementById("line-chart").getContext("2d");
+			window.myLine = new Chart(chart1).Line(lineChartData, {
+				responsive: true,
+				scaleLineColor: "rgba(0,0,0,.2)",
+				scaleGridLineColor: "rgba(0,0,0,.05)",
+				scaleFontColor: "#c5c7cc"
+			});
+		};
+	</script>
 
 </body>
 </html>

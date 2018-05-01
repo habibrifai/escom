@@ -157,7 +157,7 @@ if ($this->session->userdata('status') != 'login admin') {
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Verifikasi Akun Perusahaan</h1>
+				<h1 class="page-header">Verifikasi Akun Organisasi</h1>
 			</div>
 		</div><!--/.row-->
 
@@ -166,9 +166,9 @@ if ($this->session->userdata('status') != 'login admin') {
 				<table class="table-read" border="2">
 					<tr>
 						<th>Foto</th>
-						<th>Nama Perusahaan</th>
+						<th>Nama Organisasi</th>
 						<th>Deskripsi</th>
-						<th>Alamat Perusahaan</th>
+						<th>Alamat organisasi</th>
 						<th>Tahun Berdiri</th>
 						<th>E-mail</th>
 						<th>No Telepon</th>
@@ -180,9 +180,9 @@ if ($this->session->userdata('status') != 'login admin') {
 
 					<tr>
 						<td class="td-read"></td>
-						<td class="td-read"><?php echo $data["nama_perusahaan"]; ?></td>
+						<td class="td-read"><?php echo $data["nama_organisasi"]; ?></td>
 						<td class="td-read"><?php echo $data["deskripsi"]; ?></td>
-						<td class="td-read"><?php echo $data["alamat_perusahaan"]; ?></td>
+						<td class="td-read"><?php echo $data["alamat_organisasi"]; ?></td>
 						<td class="td-read"><?php echo $data["tahun_berdiri"]; ?></td>
 						<td class="td-read"><?php echo $data["email"]; ?></td>
 						<td class="td-read"><?php echo $data["no_tlp"]; ?></td>
@@ -192,14 +192,14 @@ if ($this->session->userdata('status') != 'login admin') {
 							if ($data["status"] == "terverifikasi") { ?>
 							<a href=""><button style="margin: 7px;" class="btn btn-sm btn-success">Verified</button></a>
 							<?php } elseif ($data["status"] == "belum terverifikasi") { ?>
-							<form method="POST" action="do_verif_perusahaan">
+							<form method="POST" action="do_verif_organisasi">
 								<input type="hidden" name="id_user" value="<?php echo $data['id_user']; ?>">
-								<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_perusahaan']; ?>">
+								<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_organisasi']; ?>">
 								<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Verifikasi</button></a>
 							</form>
 							<form method="POST" action="lol">
 								<input type="hidden" name="id_user" value="<?php echo $data['id_user']; ?>">
-								<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_perusahaan']; ?>">
+								<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_organisasi']; ?>">
 								<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-danger">Hapus</button></a>
 							</form>		
 							<?php } ?>				
