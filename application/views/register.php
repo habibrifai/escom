@@ -32,7 +32,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-				<form class="login100-form validate-form flex-sb flex-w" action="<?php echo site_url('register/do_regist')?>" method="POST">
+				<form class="login100-form validate-form flex-sb flex-w" enctype="multipart/form-data" action="<?php echo site_url('register/do_regist')?>" method="POST">
 
 					<span class="login100-form-title p-b-12">
 						Register
@@ -71,13 +71,10 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					<!-- <span class="txt1 p-b-11">
+					<span class="txt1 p-b-11">
 						Foto Kegiatan
 					</span>
-					<div class="wrap-input100 validate-input m-b-36" data-validate = "Foto kegiatan is required">
-						<input class="input100" type="file" name="foto" >
-						<span class="focus-input100"></span>
-					</div> -->
+						<input class="p-b-12" type="file" name="foto">
 
 					<span class="txt1 p-b-11">
 						Alamat Kantor
