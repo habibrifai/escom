@@ -4,23 +4,21 @@ class m_register extends CI_Model{
 
 	function registration($datauser, $dataclient){
 		$this->db->insert('user', $datauser);
-		$this->db->select('id_user');
-		$this->db->from('user');
-		$this->db->where('username', $datauser['username']);
-		$id_user = $this->db->get();
 
 			//buat register ke tabel perusahaan
 			if($datauser['role']=='organisasi'){
-				$this->db->set('id_user', $id_user->result_array())
-								 ->insert('organisasi',$dataclient);
-				// $query = "INSERT INTO organisasi (id_organisasi, id_user, nama_organisasi) VALUES (NULL, (Select id_user FROM user WHERE username = ". "'" .$datauser['username']. "'" . "), 'anjay')";
-				// $this->db->query($query);
+				$query = "INSERT INTO organisasi (id_organisasi, id_user, nama_organisasi, tahun_berdiri, alamat_organisasi, deskripsi, no_tlp)
+									VALUES (NULL, (Select id_user FROM user WHERE username = ". "'" .$datauser['username']. "'" . "), '"
+									.$dataclient['nama_organisasi']. "', '" .$dataclient['tahun_berdiri']. "', '" .$dataclient['alamat_organisasi']. "', '"
+									.$dataclient['deskripsi']. "', '" .$dataclient['no_tlp']. "')";
+				$this->db->query($query);
 			}
 			else if($datauser['role']=='perusahaan'){
-				$this->db->set('id_user', $id_user)
-								 ->insert('perusahaan',$dataclient);
-				// $query = "INSERT INTO perusahaan (id_perusahaan, id_user, nama_perusahaan) VALUES (NULL, (Select id_user FROM user WHERE username = ". "'" .$datauser['username']. "'" . "), 'anjay')";
-				// $this->db->query($query);
+				$query = "INSERT INTO perusahaan (id_perusahaan, id_user, nama_perusahaan, tahun_berdiri, alamat_perusahaan, deskripsi, no_tlp)
+									VALUES (NULL, (Select id_user FROM user WHERE username = ". "'" .$datauser['username']. "'" . "), '"
+									.$dataclient['nama_perusahaan']. "', '" .$dataclient['tahun_berdiri']. "', '" .$dataclient['alamat_perusahaan']. "', '"
+									.$dataclient['deskripsi']. "', '" .$dataclient['no_tlp']. "')";
+				$this->db->query($query);
 			}
 		}
 
