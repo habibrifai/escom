@@ -3,7 +3,18 @@
 if ($this->session->userdata('status') != 'login perusahaan') {
 	redirect(base_url('login'));
 } else {
-
+	$id = $produk->id;
+  if($this->input->post('is_submitted')){
+      $nama = set_value('nama');
+      $jenis = set_value('jenis');
+      $deskripsi = set_value('deskripsi');
+      $harga = set_value('biaya');
+  } else{
+      $nama = $produk->nama_produk;
+      $jenis = $produk->jenis;
+      $deskripsi = $produk->deskripsi;
+      $harga = $produk->biaya;
+    }
 }
 
 
@@ -150,32 +161,61 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 			</div>
 		</div><!--/.row-->
 
-		<div class="panel panel-container">
-			<div class="row">
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">-</div>
-							<div class="text-muted">Proposal dikirim</div>
+		<?= form_open() ?>
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputEmail3" name="nama" value="<?=$nama ?>" placeholder="Nama Perusahaan">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Tahun Berdiri</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword3" name="harga" value="<?=$harga ?>" placeholder="Tahun Berdiri">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Alamat Perusahaan</label>
+          <div class="col-sm-10">
+          <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea>
+          </div>
+        </div>
+				<div class="form-group row">
+          <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Deskripsi</label>
+          <div class="col-sm-10">
+          <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea>
+          </div>
+        </div>
+				<div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Nomor Telepon</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword3" name="harga" value="<?=$harga ?>" placeholder="Tahun Berdiri">
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Kategori Perusahaan</label>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <select class="form-check-input" name="jenis" value="<?=$jenis ?>" selected="<?=$jenis ?>">
+                  <option value="Wedding">Gatau</option>
+                  <option value="Birthday">Isinya</option>
+									<option value="Birthday">Apaan</option>
+									<option value="Birthday">Ehehe</option>
+                  </select>
+                </label>
+              </div>
 						</div>
-					</div>
 				</div>
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">-</div>
-							<div class="text-muted">Proposal Diterima</div>
-						</div>
-					</div>
+			</fieldset>
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<input type="hidden" name="is_submitted" value="1"/>
+					<button type="submit" class="btn btn-primary">Update</button>
 				</div>
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">-</div>
-							<div class="text-muted">SPJ Dilakukan</div>
-						</div>
-					</div>
-				</div>
+			</div>
+		<?= form_close() ?>
 		<!-- 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 						<div class="panel panel-red panel-widget ">
 							<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>

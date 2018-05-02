@@ -71,7 +71,7 @@ class Register extends CI_Controller {
 										);
 									$this->m_register->registration($datauser, $dataclient);
 						}
-						else{
+						elseif($data['role']=='organisasi'){
 									$dataclient = array(
 										'nama_organisasi' => $this->input->post('nama'),
 										'tahun_berdiri' => $this->input->post('tahun'),

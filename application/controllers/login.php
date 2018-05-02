@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_login');
 	}
-	
+
 	public function index(){
 		$this->load->view('login');
 	}
@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 
 				$this->session->set_userdata($data_session);
 
-				echo "halaman perusahaan";
+				redirect(base_url('panel_perusahaan/dashboard'));
 			} elseif ($role[0]["role"] == "organisasi") {
 
 				$data_session = array(

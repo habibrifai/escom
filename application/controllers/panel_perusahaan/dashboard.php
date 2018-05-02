@@ -11,15 +11,16 @@ class Dashboard extends CI_Controller {
 
 	public function index(){
 
-		$data['org'] = $this->m_organisasi->jumlah_data("user");
-		$data['per'] = $this->m_perusahaan->jumlah_data("user");
-
-		$this->load->view('admin/dashboard', $data);
+		$this->load->view('perusahaan/dashboard');
 	}
 
 	public function list_spj(){
 		$this->load->view('admin/list_spj');
 	}
+
+  public function edit_profil(){
+    $this->load->view('perusahaan/Edit_profil');
+  }
 
 }
 ?>
