@@ -179,7 +179,7 @@ if ($this->session->userdata('status') != 'login admin') {
 					foreach ($qry as $data) { ?>					
 
 					<tr>
-						<td class="td-read"></td>
+						<td class="td-read"><img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>"></td>
 						<td class="td-read"><?php echo $data["nama_organisasi"]; ?></td>
 						<td class="td-read"><?php echo $data["deskripsi"]; ?></td>
 						<td class="td-read"><?php echo $data["alamat_organisasi"]; ?></td>

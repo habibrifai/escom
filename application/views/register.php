@@ -74,7 +74,9 @@
 					<span class="txt1 p-b-11">
 						Foto Kegiatan
 					</span>
+					<div class="wrap-input100 m-b-36">
 						<input class="p-b-12" type="file" name="foto">
+					</div>
 
 					<span class="txt1 p-b-11">
 						Alamat Kantor

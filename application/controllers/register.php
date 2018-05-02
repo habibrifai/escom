@@ -82,9 +82,11 @@ class Register extends CI_Controller {
 									);
 									$this->m_register->registration($datauser, $dataclient);
 						}
-					$this->load->view('login');
+					// $this->load->view('login');
+						redirect(base_url('login'));
 				}
 				else echo "gagal";
+				var_dump($fileUpload);
 			}
 		}
 	}

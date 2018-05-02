@@ -73,13 +73,14 @@
 					<!-- Nav menu -->
 					<ul class="navbar-menu nav navbar-nav navbar-right">
 						<li><a href=".">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li class="has-dropdown"><a href="#">Causes</a>
+						<!-- <li><a href="#">About</a></li> -->
+						<li class="has-dropdown"><a href="#">Pengguna</a>
 							<ul class="dropdown">
-								<li><a href="single_cause">Single Cause</a></li>
+								<li><a href="perusahaan">Perusahaan</a></li>
+								<li><a href="organisasi">Organisasi</a></li>
 							</ul>
 						</li>
-						<li class="has-dropdown"><a href="#">Events</a>
+						<!-- <li class="has-dropdown"><a href="#">Events</a>
 							<ul class="dropdown">
 								<li><a href="single_event">Single event</a></li>
 							</ul>
@@ -90,7 +91,7 @@
 								<li><a href="single_blog">Single Blog</a></li>
 							</ul>
 						</li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="#">Contact</a></li> -->
 						<li><a href="login">Login</a></li>
 					</ul>
 					<!-- Nav menu -->
