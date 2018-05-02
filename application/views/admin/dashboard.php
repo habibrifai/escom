@@ -175,7 +175,7 @@ if ($this->session->userdata('status') != 'login admin') {
 					<div class="panel panel-orange panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
 							<div class="large"><?php echo $per; ?></div>
-							<div class="text-muted">Akun Perusahaan</div>
+							<div class="text-muted">Akun Perusahaan Terverifikasi</div>
 						</div>
 					</div>
 				</div>
@@ -183,7 +183,7 @@ if ($this->session->userdata('status') != 'login admin') {
 					<div class="panel panel-orange panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
 							<div class="large"><?php echo $org; ?></div>
-							<div class="text-muted">Akun Organisasi</div>
+							<div class="text-muted">Akun Organisasi Terverifikasi</div>
 						</div>
 					</div>
 				</div>
