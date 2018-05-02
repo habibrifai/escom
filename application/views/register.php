@@ -71,13 +71,13 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					<span class="txt1 p-b-11">
+					<!-- <span class="txt1 p-b-11">
 						Foto Kegiatan
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate = "Foto kegiatan is required">
 						<input class="input100" type="file" name="foto" >
 						<span class="focus-input100"></span>
-					</div>
+					</div> -->
 
 					<span class="txt1 p-b-11">
 						Alamat Kantor

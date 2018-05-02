@@ -39,18 +39,43 @@ class Register extends CI_Controller {
 				$this->load->view('register', $data);
 			}
 			else{
-				$this->m_register->registration($data);
-				$data_session = array(
-					'nama' => $data['username'],
-					'status' => "login"
-				);
-				$this->session->set_userdata($data_session);
-				if ($data["role"] == "perusahaan") {
-					echo "halaman perusahaan";
+				if($data['role']=='perusahaan'){
+					$dataclient = array(
+						'nama_perusahaan' => $this->input->post('nama'),
+						'tahun_berdiri' => $this->input->post('tahun'),
+						'alamat_perusahaan' => $this->input->post('alamat'),
+						'deskripsi' => $this->input->post('deskripsi'),
+						'no_tlp' => $this->input->post('notelp')
+					);
 				}
-				elseif ($data["role"] == "organisasi") {
-					echo "halaman organisasi";
+				else{
+					$dataclient = array(
+						'nama_organisasi' => $this->input->post('nama'),
+						'tahun_berdiri' => $this->input->post('tahun'),
+						'alamat_organisasi' => $this->input->post('alamat'),
+						'deskripsi' => $this->input->post('deskripsi'),
+						'no_tlp' => $this->input->post('notelp')
+					);
 				}
+					$datauser = array(
+						'email' => $this->input->post('email'),
+						'username' => $this->input->post('username'),
+						'password' => $this->input->post('password'),
+						'role' => $this->input->post('role'),
+						'status' => "belum terverifikasi"
+					);
+					$this->m_register->registration($datauser, $dataclient);
+					$data_session = array(
+						'nama' => $data['username'],
+						'status' => "login"
+					);
+					$this->session->set_userdata($data_session);
+					if ($data["role"] == "perusahaan") {
+						echo "halaman perusahaan";
+					}
+					elseif ($data["role"] == "organisasi") {
+						echo "halaman organisasi";
+					}
 			}
 		}
 	}
