@@ -1,12 +1,9 @@
 <?php
-
-if ($this->session->userdata('status') != 'login admin') {
+if ($this->session->userdata('status') != 'login organisasi') {
 	redirect(base_url('login'));
 } else {
 
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -118,7 +115,7 @@ if ($this->session->userdata('status') != 'login admin') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="logout"> 
+							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>"> 
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
@@ -152,6 +149,7 @@ if ($this->session->userdata('status') != 'login admin') {
 					<em class="fa fa-home"></em>
 				</a></li>
 				<li class="active">Dashboard</li>
+				<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
 			</ol>
 		</div><!--/.row-->
 
@@ -174,7 +172,7 @@ if ($this->session->userdata('status') != 'login admin') {
 				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 					<div class="panel panel-orange panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large"><?php echo $per; ?></div>
+							<div class="large">1</div>
 							<div class="text-muted">Akun Perusahaan Terverifikasi</div>
 						</div>
 					</div>
@@ -182,7 +180,7 @@ if ($this->session->userdata('status') != 'login admin') {
 				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 					<div class="panel panel-orange panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large"><?php echo $org; ?></div>
+							<div class="large">1</div>
 							<div class="text-muted">Akun Organisasi Terverifikasi</div>
 						</div>
 					</div>

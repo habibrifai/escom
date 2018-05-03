@@ -118,7 +118,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="logout">
+							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
@@ -141,6 +141,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<em class="fa fa-home"></em>
 				</a></li>
 				<li class="active">Dashboard</li>
+				<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
 			</ol>
 		</div><!--/.row-->
 

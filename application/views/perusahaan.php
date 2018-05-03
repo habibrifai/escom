@@ -72,11 +72,12 @@
 					<!-- Nav menu -->
 					<ul class="navbar-menu nav navbar-nav navbar-right">
 						<li><a href="<?php echo base_url() ?>">Home</a></li>
+						<li><a href="<?php echo base_url('about'); ?>">Tentang Kami</a></li>
 						<!-- <li><a href="#">About</a></li> -->
 						<li class="has-dropdown"><a href="#">Pengguna</a>
 							<ul class="dropdown">
-								<li><a href="perusahaan">Perusahaan</a></li>
-								<li><a href="organisasi">Organisasi</a></li>
+								<li><a href="<?php echo base_url('perusahaan'); ?>">Perusahaan</a></li>
+								<li><a href="<?php echo base_url('organisasi'); ?>">Organisasi</a></li>
 							</ul>
 						</li>
 						<!-- <li class="has-dropdown"><a href="#">Events</a>
@@ -101,7 +102,7 @@
 			<!-- Page Header -->
 			<div id="page-header">
 				<!-- section background -->
-				<div class="section-bg" style="background-image: url(<?php echo base_url() ?>assets/img/background-2.jpg);"></div>
+				<div class="section-bg" style="background-image: url(<?php echo base_url() ?>assets/bg/perusahaan.jpg);"></div>
 				<!-- /section background -->
 
 				<!-- page header content -->

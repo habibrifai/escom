@@ -1,6 +1,6 @@
 <?php
 
-class M_ctrlPerusahaan extends CI_Model{
+class M_ctrlOrganisasi extends CI_Model{
 
 	function get_profile($username){
 	$this->db->select('nama_perusahaan, tahun_berdiri, alamat_perusahaan, deskripsi, kategori, foto, no_tlp');
