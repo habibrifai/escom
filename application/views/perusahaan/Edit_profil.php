@@ -145,25 +145,19 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li class="active"><a href="<?php echo base_url('perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li><a href="<?php echo base_url('perusahaan/profil_perusahaan'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
+				<li><a href="<?php echo base_url('perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li class="active"><a href="<?php echo base_url('perusahaan/profil_perusahaan'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
 				<li><a href="<?php echo base_url('perusahaan/something'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
 		</ul>
 	</div>
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#">
-					<em class="fa fa-home"></em>
-				</a></li>
-				<li class="active">Dashboard</li>
-			</ol>
 		</div><!--/.row-->
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Edit Profile</h1>
 			</div>
 		</div><!--/.row-->
 
@@ -171,7 +165,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputEmail3" name="nama" value="<?=$nama ?>" placeholder="Nama Perusahaan">
+            <input type="text" class="form-control" id="inputEmail3" name="nama" value="<?=$nama ?>" placeholder="Nama Perusahaan" disabled>
           </div>
         </div>
         <div class="form-group row">
