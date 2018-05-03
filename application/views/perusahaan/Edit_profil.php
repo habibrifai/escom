@@ -3,17 +3,23 @@
 if ($this->session->userdata('status') != 'login perusahaan') {
 	redirect(base_url('login'));
 } else {
-	$id = $produk->id;
   if($this->input->post('is_submitted')){
       $nama = set_value('nama');
-      $jenis = set_value('jenis');
+      $tahun = set_value('tahun');
+			$alamat = set_value('alamat');
       $deskripsi = set_value('deskripsi');
-      $harga = set_value('biaya');
+      $notelp = set_value('notelp');
+			$kategori = set_value('kategori');
+			$foto = set_value('foto');
+
   } else{
-      $nama = $produk->nama_produk;
-      $jenis = $produk->jenis;
-      $deskripsi = $produk->deskripsi;
-      $harga = $produk->biaya;
+			$nama = $profil->nama_perusahaan;
+			$tahun = $profil->tahun_berdiri;
+			$alamat = $profil->alamat_perusahaan;
+			$deskripsi = $profil->deskripsi;
+			$notelp = $profil->no_tlp;
+			$kategori = $profil->kategori;
+			$foto = $profil->foto;
     }
 }
 
@@ -171,13 +177,13 @@ if ($this->session->userdata('status') != 'login perusahaan') {
         <div class="form-group row">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Tahun Berdiri</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword3" name="harga" value="<?=$harga ?>" placeholder="Tahun Berdiri">
+            <input type="text" class="form-control" id="inputPassword3" name="tahun" value="<?=$tahun ?>" placeholder="Tahun Berdiri">
           </div>
         </div>
         <div class="form-group row">
           <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Alamat Perusahaan</label>
           <div class="col-sm-10">
-          <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" value="<?=$alamat ?>" placeholder="Deskripsi" rows="3"><?=$alamat ?></textarea>
           </div>
         </div>
 				<div class="form-group row">
@@ -189,7 +195,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				<div class="form-group row">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Nomor Telepon</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword3" name="harga" value="<?=$harga ?>" placeholder="Tahun Berdiri">
+            <input type="text" class="form-control" id="inputPassword3" name="notelp" value="<?=$notelp ?>" placeholder="Nomor Telepon">
           </div>
         </div>
         <fieldset class="form-group">
@@ -197,12 +203,15 @@ if ($this->session->userdata('status') != 'login perusahaan') {
             <label for="inputEmail3" class="col-sm-2 col-form-label">Kategori Perusahaan</label>
             <div class="col-sm-10">
               <div class="form-check">
+								<?php if($kategori != null) echo "<p> Saat Ini : $kategori </p>";
+											else echo "<p style=color:red> Saat Ini : Belum Memilih Kategori </p>";
+								?>
                 <label class="form-check-label">
-                  <select class="form-check-input" name="jenis" value="<?=$jenis ?>" selected="<?=$jenis ?>">
-                  <option value="Wedding">Gatau</option>
-                  <option value="Birthday">Isinya</option>
-									<option value="Birthday">Apaan</option>
-									<option value="Birthday">Ehehe</option>
+                  <select class="form-check-input" name="kategori" value="<?=$kategori ?>" selected="<?=$kategori ?>">
+                  <option value="Gatau">Gatau</option>
+                  <option value="Isinya">Isinya</option>
+									<option value="Apaan">Apaan</option>
+									<option value="Ehehe">Ehehe</option>
                   </select>
                 </label>
               </div>
