@@ -125,66 +125,54 @@ if ($this->session->userdata('status') != 'login organisasi') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li class="active"><a href="<?php echo base_url('admin/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-					<em class="fa fa-users">&nbsp;</em> Verifikasi Akun <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
-						<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
-					</a></li>
-					<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
-						<span class="fa fa-arrow-right">&nbsp;</span> Organisasi
-					</a></li>
-				</ul>
-			</li>
-			<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
-		</ul>
-	</div>
+				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li><a href="<?php echo base_url(); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
+			</ul>
+		</div>
 
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#">
-					<em class="fa fa-home"></em>
-				</a></li>
-				<li class="active">Dashboard</li>
-				<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
-			</ol>
-		</div><!--/.row-->
-
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
-			</div>
-		</div><!--/.row-->			
-
-		<div class="panel panel-container">
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 			<div class="row">
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">-</div>
-							<div class="text-muted">SPJ</div>
+				<ol class="breadcrumb">
+					<li><a href="#">
+						<em class="fa fa-home"></em>
+					</a></li>
+					<li class="active">Dashboard</li>
+					<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
+				</ol>
+			</div><!--/.row-->
+
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Dashboard</h1>
+				</div>
+			</div><!--/.row-->			
+
+			<div class="panel panel-container">
+				<div class="row">
+					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+						<div class="panel panel-teal panel-widget border-right">
+							<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
+								<div class="large">-</div>
+								<div class="text-muted">SPJ</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">1</div>
-							<div class="text-muted">Akun Perusahaan Terverifikasi</div>
+					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+						<div class="panel panel-orange panel-widget border-right">
+							<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+								<div class="large">1</div>
+								<div class="text-muted">Akun Perusahaan Terverifikasi</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">1</div>
-							<div class="text-muted">Akun Organisasi Terverifikasi</div>
+					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+						<div class="panel panel-orange panel-widget border-right">
+							<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+								<div class="large">1</div>
+								<div class="text-muted">Akun Organisasi Terverifikasi</div>
+							</div>
 						</div>
 					</div>
-				</div>
 		<!-- 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 						<div class="panel panel-red panel-widget ">
 							<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
