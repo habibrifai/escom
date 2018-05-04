@@ -5,13 +5,12 @@ class Dashboard extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('m_ctrlOrganisasi');
-		$this->load->model('m_organisasi');
+		$this->load->model('m_perusahaan');
 	}
 
 	public function index(){
-
-		$this->load->view('organisasi/dashboard');
+		$data['qry'] = $this->m_perusahaan->get_data("perusahaan");
+		$this->load->view('organisasi/dashboard', $data);
 	}
 }
 ?>

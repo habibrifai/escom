@@ -147,7 +147,7 @@
 
 							if($i == 0){ ?>
 
-							<div class="article causes-details">
+							<div style="text-align: justify; text-justify: inter-word;" class="article causes-details">
 								<!-- article img -->
 								<div class="article-img">
 									<img src="<?php echo base_url('assets/gambar/').$val['foto']; ?>" alt="">

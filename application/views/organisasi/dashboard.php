@@ -146,66 +146,52 @@ if ($this->session->userdata('status') != 'login organisasi') {
 					<h1 class="page-header">Dashboard</h1>
 				</div>
 			</div>
-
+			<?php foreach ($qry as $data) { ?>
 			<div class="panel panel-container">
 				<div class="row">
-					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-						<div class="panel panel-teal panel-widget border-right">
-							<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-								<div class="large">-</div>
-								<div class="text-muted">SPJ</div>
-							</div>
-						</div>
+					<div style="text-align: justify; text-justify: inter-word;" class="col-lg-12">
+						<table class="table-read" border="0">
+							<!-- <tr>
+								<th>Foto</th>
+								<th>Deskripsi Perusahaan</th>
+								<th>Kategori</th>
+								<th>Opsi</th>
+							</tr> -->
+
+							
+							<tr>
+								<td class="td-read"><img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>">Kategori : <?php echo $data['kategori'] ?></td>
+								<td class="td-read"><?php echo $data['deskripsi'] ?></td>
+								<td class="td-read"></td>
+								<td class="td-read"><a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Ajukan Proposal</button></a></td>
+							</tr>
+							
+						</table>
 					</div>
-					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-						<div class="panel panel-orange panel-widget border-right">
-							<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-								<div class="large">1</div>
-								<div class="text-muted">Akun Perusahaan Terverifikasi</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-						<div class="panel panel-orange panel-widget border-right">
-							<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-								<div class="large">1</div>
-								<div class="text-muted">Akun Organisasi Terverifikasi</div>
-							</div>
-						</div>
-					</div>
-		<!-- 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-						<div class="panel panel-red panel-widget ">
-							<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
-								<div class="large">25.2k</div>
-								<div class="text-muted">Page Views</div>
-							</div>
-						</div>
-					</div> -->
-				</div><!--/.row-->
+				</div>
 			</div>
-			<?php  ?>
+			<?php } ?>
 		</div><!--/.row-->
-	</div>	<!--/.main-->
 
-	<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
-	<script>
-		window.onload = function () {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive: true,
-				scaleLineColor: "rgba(0,0,0,.2)",
-				scaleGridLineColor: "rgba(0,0,0,.05)",
-				scaleFontColor: "#c5c7cc"
-			});
-		};
-	</script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
+		<script>
+			window.onload = function () {
+				var chart1 = document.getElementById("line-chart").getContext("2d");
+				window.myLine = new Chart(chart1).Line(lineChartData, {
+					responsive: true,
+					scaleLineColor: "rgba(0,0,0,.2)",
+					scaleGridLineColor: "rgba(0,0,0,.05)",
+					scaleFontColor: "#c5c7cc"
+				});
+			};
+		</script>
 
-</body>
-</html>
+	</body>
+	</html>
