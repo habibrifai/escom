@@ -51,5 +51,9 @@ class Dashboard extends CI_Controller {
 		$data['proposal'] = $this->m_ctrlPerusahaan->get_proposal($this->username);
 		$this->load->view('perusahaan/list_proposal', $data);
 	}
+
+	public function test(){
+		
+	}
 }
 ?>
