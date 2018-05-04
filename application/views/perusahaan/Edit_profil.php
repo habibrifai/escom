@@ -43,6 +43,8 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/styles.css" />
 
+	<link href="<?php echo base_url(); ?>assets/dist/summernote.css" rel="stylesheet">
+
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -145,9 +147,10 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li><a href="<?php echo base_url('perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li class="active"><a href="<?php echo base_url('perusahaan/profil_perusahaan'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
+				<li><a href="<?php echo base_url('panel_perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard/edit_profil'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
 				<li><a href="<?php echo base_url('perusahaan/something'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
 			</ul>
 		</div>
 
@@ -183,7 +186,8 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 			<div class="form-group row">
 				<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Deskripsi</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea>
+					<textarea name="deskripsi" id="summernote"><?=$deskripsi ?></textarea>
+					<!-- <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea> -->
 				</div>
 			</div>
 			<div class="form-group row">
@@ -201,17 +205,23 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 							else echo "<p style=color:red> Saat Ini : Belum Memilih Kategori </p>";
 								?>
 								<label class="form-check-label">
-									<select class="form-check-input" name="kategori" value="<?=$kategori ?>" selected="<?=$kategori ?>">
-										<option value="Gatau">Gatau</option>
-										<option value="Isinya">Isinya</option>
-										<option value="Apaan">Apaan</option>
-										<option value="Ehehe">Ehehe</option>
-									</select>
 								</label>
 							</div>
 						</div>
 					</div>
 				</fieldset>
+				<div class="form-group row">
+					<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Ubah Kategori</label>
+					<div class="col-sm-10">
+						<select class="form-check-input" name="kategori" value="<?=$kategori ?>" selected="<?=$kategori ?>">
+							<option value="pendidikan">Pendidikan</option>
+							<option value="sosial">Sosial</option>
+							<option value="kesenian">Kesenian</option>
+							<option value="olahraga">Olahraga</option>
+							<option value="olahraga">Kesehatan</option>
+						</select>
+					</div>
+				</div>
 				<div class="form-group row">
 					<div class="col-sm-10">
 						<input type="hidden" name="is_submitted" value="1"/>
@@ -241,6 +251,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
 	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
 	<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
+	<script src="<?php echo base_url(); ?>assets/dist/summernote.js"></script>
 	<script>
 		window.onload = function () {
 			var chart1 = document.getElementById("line-chart").getContext("2d");
@@ -251,6 +262,13 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				scaleFontColor: "#c5c7cc"
 			});
 		};
+	</script>
+	<script>
+		$(document).ready(function() {
+			$('#summernote').summernote({
+				height: 300,
+			});
+		});
 	</script>
 
 </body>

@@ -12,5 +12,10 @@ class Dashboard extends CI_Controller {
 		$data['qry'] = $this->m_perusahaan->get_data("perusahaan");
 		$this->load->view('organisasi/dashboard', $data);
 	}
+
+	public function get($kategori){
+		$data['qry'] = $this->m_perusahaan->get_data_kategori("perusahaan",$kategori);
+		$this->load->view('organisasi/dashboard', $data);
+	}
 }
 ?>

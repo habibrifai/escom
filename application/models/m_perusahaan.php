@@ -9,6 +9,13 @@ class M_perusahaan extends CI_Model{
 		return $this->db->get()->result_array();
 	}	
 
+	function get_data_kategori($table,$kategori){	
+		$this->db->select("foto,deskripsi,kategori,nama_perusahaan, id_user");
+		$this->db->from($table);
+		$this->db->where('kategori', $kategori);	
+		return $this->db->get()->result_array();
+	}	
+
 	function do_verif($table,$where){
 		$this->db->where('id_user', $where);
 		$this->db->update($table, array('status' => 'terverifikasi'));

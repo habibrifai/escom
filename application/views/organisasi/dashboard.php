@@ -126,6 +126,7 @@ if ($this->session->userdata('status') != 'login organisasi') {
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
 				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li><a href="<?php echo base_url(); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
 				<li><a href="<?php echo base_url(); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
 			</ul>
 		</div>
@@ -139,52 +140,48 @@ if ($this->session->userdata('status') != 'login organisasi') {
 					<li class="active">Dashboard</li>
 					<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
 				</ol>
-			</div><!--/.row-->
-
-			<script>
-				function updateText(){
-					$('input[name="Club"]').val($('select[name="kategori"] option:selected').val());
-				}
-			</script>  
+			</div><!--/.row--> 
 
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="page-header">Dashboard</h1>
 					<p>Filter Kategori : </p>
 					<label class="form-check-label">
-						<select class="form-check-input" name="kategori" value="" selected="" onchange="updateText()">
+						<select class="form-check-input" name="kategori" onchange="javascript:handleSelect(this)">
 							<option></option>
-							<option>Pendidikan</option>
-							<option>Kesenian</option>
-							<option>Olahraga</option>
-							<option>Sosial</option>
-							<option>Kesehatan</option>
+							<option value="pendidikan">Pendidikan</option>
+							<option value="kesenian">Kesenian</option>
+							<option value="olahraga">Olahraga</option>
+							<option value="sosial">Sosial</option>
+							<option value="kesehatan">Kesehatan</option>
 						</select>
 					</label>
 				</div>
 			</div><br>
+
+			<script type="text/javascript">
+				function handleSelect(elm)
+				{
+					window.location = "<?php echo base_url('panel_organisasi/dashboard/get/')?>" + elm.value ;
+				}
+			</script>
+
 			<?php foreach ($qry as $data) { ?>
 			<div class="panel panel-container">
 				<div class="row">
+					<a href="<?php echo base_url('perusahaan/show_perusahaan/').$data['id_user']; ?>">
 					<div style="text-align: justify; text-justify: inter-word;" class="col-lg-12">
 						<table class="table-read" border="0">
-							<!-- <tr>
-								<th>Foto</th>
-								<th>Deskripsi Perusahaan</th>
-								<th>Kategori</th>
-								<th>Opsi</th>
-							</tr> -->
-
-							
 							<tr>
-								<td class="td-read"><img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>">Kategori : <?php echo $data['kategori'] ?></td>
-								<td class="td-read"><?php echo $data['deskripsi'] ?></td>
-								<td class="td-read"></td>
-								<td class="td-read"><a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Ajukan Proposal</button></a></td>
+								<td style="width: 300px;" class="td-read"><img style="margin-left: 10px;" height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>"></td>
+								<td style="width: 300px;" class="td-read"><?php echo $data['nama_perusahaan'] ?></td>
+								<td style="width: 300px;" class="td-read">Kategori <?php echo $data['kategori'] ?></td>
+								<td class="td-read"><a href="<?php echo base_url(); ?>"><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Ajukan Proposal</button></a></td>
 							</tr>
 							
 						</table>
 					</div>
+					</a>
 				</div>
 			</div>
 			<?php } ?>
