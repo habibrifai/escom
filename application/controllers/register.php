@@ -65,7 +65,6 @@ class Register extends CI_Controller {
 										'nama_perusahaan' => $this->input->post('nama'),
 										'tahun_berdiri' => $this->input->post('tahun'),
 										'alamat_perusahaan' => $this->input->post('alamat'),
-										'deskripsi' => $this->input->post('deskripsi'),
 										'no_tlp' => $this->input->post('notelp'),
 										'foto' => $foto
 										);
@@ -76,7 +75,6 @@ class Register extends CI_Controller {
 										'nama_organisasi' => $this->input->post('nama'),
 										'tahun_berdiri' => $this->input->post('tahun'),
 										'alamat_organisasi' => $this->input->post('alamat'),
-										'deskripsi' => $this->input->post('deskripsi'),
 										'no_tlp' => $this->input->post('notelp'),
 										'foto' => $foto
 									);

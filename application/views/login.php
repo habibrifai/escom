@@ -4,10 +4,10 @@ if ($this->session->userdata('status') == 'login admin') {
 	redirect(base_url('admin/dashboard'));
 } elseif($this->session->userdata('status') == 'login perusahaan') {
 	redirect(base_url('panel_perusahaan/dashboard'));
-} elseif ($this->session->userdata('status') == 'login perusahaan') {
+} elseif ($this->session->userdata('status') == 'login organisasi') {
 	redirect(base_url('panel_organisasi/dashboard'));
 } else {
-	
+
 }
 
 
@@ -19,7 +19,7 @@ if ($this->session->userdata('status') == 'login admin') {
 	<title>Login User</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendor/bootstrap/css/bootstrap.min.css">
@@ -29,13 +29,13 @@ if ($this->session->userdata('status') == 'login admin') {
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendor/animate/animate.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/util.css">
@@ -43,7 +43,7 @@ if ($this->session->userdata('status') == 'login admin') {
 <!--===============================================================================================-->
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
@@ -68,7 +68,7 @@ if ($this->session->userdata('status') == 'login admin') {
 						<input class="input100" type="text" name="username" >
 						<span class="focus-input100"></span>
 					</div>
-					
+
 					<span class="txt1 p-b-11">
 						Password
 					</span>
@@ -93,10 +93,10 @@ if ($this->session->userdata('status') == 'login admin') {
 			</div>
 		</div>
 	</div>
-	
+
 
 	<div id="dropDownSelect1"></div>
-	
+
 <!--===============================================================================================-->
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

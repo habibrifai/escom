@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_ctrlPerusahaan');
 		$this->load->model('m_organisasi');
+		$this->username = $this->session->userdata('nama');
 	}
 
 	public function index(){
@@ -15,7 +16,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function list_spj(){
-		$this->load->view('admin/list_spj');
+		$this->load->view('perusahaan/list_spj');
 	}
 
 	public function edit_profil(){
@@ -26,10 +27,9 @@ class Dashboard extends CI_Controller {
 			$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
 			$this->form_validation->set_rules('notelp', 'No. Telepon', 'required');
 			$this->form_validation->set_rules('kategori', 'kategori', 'required');
-			$username = $this->session->userdata('nama');
 
 			if($this->form_validation->run() == false){
-    			$data['profil'] = $this->m_ctrlPerusahaan->get_profile($username);
+    			$data['profil'] = $this->m_ctrlPerusahaan->get_profile($this->username);
 					$this->load->view('perusahaan/Edit_profil', $data);
 				}
 				else{
@@ -46,5 +46,10 @@ class Dashboard extends CI_Controller {
 			redirect(base_url('panel_perusahaan/dashboard'));
 			}
 		}
+
+	public function list_proposal(){
+		$data['proposal'] = $this->m_ctrlPerusahaan->get_proposal($this->username);
+		$this->load->view('perusahaan/list_proposal', $data);
+	}
 }
 ?>

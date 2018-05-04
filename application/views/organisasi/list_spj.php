@@ -1,6 +1,6 @@
 <?php
 
-if ($this->session->userdata('status') != 'login perusahaan') {
+if ($this->session->userdata('status') != 'login admin') {
 	redirect(base_url('login'));
 } else {
 
@@ -15,7 +15,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin - Dashboard</title>
+	<title>Admin - List SPj</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" />
@@ -23,9 +23,9 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/datepicker3.css" />
-
+	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/styles.css" />
-
+	
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -118,7 +118,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
+							<a class="dropdown-toggle count-info" href="logout"> 
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
@@ -128,10 +128,20 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li><a href="<?php echo base_url('panel_perusahaan/profil_perusahaan'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
-				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
-				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
+				<li class="active"><a href="<?php echo base_url('admin/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+					<em class="fa fa-users">&nbsp;</em> Verifikasi Akun <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
+						<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
+					</a></li>
+					<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
+						<span class="fa fa-arrow-right">&nbsp;</span> Organisasi
+					</a></li>
+				</ul>
+			</li>
+			<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
 		</ul>
 	</div>
 
@@ -141,14 +151,13 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Dashboard</li>
-				<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
+				<li class="active">List SPJ</li>
 			</ol>
 		</div><!--/.row-->
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">List SPJ</h1>
 			</div>
 		</div><!--/.row-->
 
@@ -157,24 +166,24 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">-</div>
-							<div class="text-muted">Proposal dikirim</div>
+							<div class="large">120</div>
+							<div class="text-muted">SPJ</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 					<div class="panel panel-orange panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">-</div>
-							<div class="text-muted">Proposal Diterima</div>
+							<div class="large">24</div>
+							<div class="text-muted">Akun Perusahaan</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 					<div class="panel panel-orange panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">-</div>
-							<div class="text-muted">SPJ Dilakukan</div>
+							<div class="large">24</div>
+							<div class="text-muted">Akun Organisasi</div>
 						</div>
 					</div>
 				</div>
@@ -188,7 +197,6 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					</div> -->
 				</div><!--/.row-->
 			</div>
-			<?php  ?>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 
