@@ -92,7 +92,11 @@
 							</ul>
 						</li>
 						<li><a href="#">Contact</a></li> -->
+						<?php if ($this->session->userdata('nama')) { ?>
+						<li><a href="login"><?php echo $this->session->userdata('nama'); ?></a></li>
+						<?php } else { ?>
 						<li><a href="login">Login</a></li>
+						<?php } ?>
 					</ul>
 					<!-- Nav menu -->
 				</div>
@@ -156,9 +160,9 @@
 							</div>
 						</div>
 						<?php } } ?>
-						<form>
+						<form action="<?php echo base_url('login'); ?>">
 							<input type="hidden" name="">
-							<button class="primary-button">Ajukan Proposal</button>
+							<a href=""><button class="primary-button">Ajukan Proposal</button></a>
 						</form>
 					</main>
 					<!-- /MAIN -->

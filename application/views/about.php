@@ -93,7 +93,11 @@
 							</ul>
 						</li>
 						<li><a href="#">Contact</a></li> -->
+						<?php if ($this->session->userdata('nama')) { ?>
+						<li><a href="login"><?php echo $this->session->userdata('nama'); ?></a></li>
+						<?php } else { ?>
 						<li><a href="login">Login</a></li>
+						<?php } ?>
 					</ul>
 					<!-- Nav menu -->
 				</div>
