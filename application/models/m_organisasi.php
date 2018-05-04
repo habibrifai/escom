@@ -9,6 +9,14 @@ class M_organisasi extends CI_Model{
 		return $this->db->get()->result_array();
 	}	
 
+	function get_id($table,$username){	
+		$this->db->select("organisasi.id_organisasi");
+		$this->db->from($table);
+		$this->db->join('user', 'user.id_user = organisasi.id_user');
+		$this->db->where('username', $username);	
+		return $this->db->get()->result_array();
+	}	
+
 	function do_verif($table,$where){
 		$this->db->where('id_user', $where);
 		$this->db->update($table, array('status' => 'terverifikasi'));

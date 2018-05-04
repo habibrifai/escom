@@ -1,29 +1,8 @@
 <?php
 
-if ($this->session->userdata('status') != 'login perusahaan') {
+if ($this->session->userdata('status') != 'login organisasi') {
 	redirect(base_url('login'));
-} else {
-	if($this->input->post('is_submitted')){
-		$nama = set_value('nama');
-		$tahun = set_value('tahun');
-		$alamat = set_value('alamat');
-		$deskripsi = set_value('deskripsi');
-		$notelp = set_value('notelp');
-		$kategori = set_value('kategori');
-		$foto = set_value('foto');
-
-	} else{
-		$nama = $profil->nama_perusahaan;
-		$tahun = $profil->tahun_berdiri;
-		$alamat = $profil->alamat_perusahaan;
-		$deskripsi = $profil->deskripsi;
-		$notelp = $profil->no_tlp;
-		$kategori = $profil->kategori;
-		$foto = $profil->foto;
-	}
-}
-
-
+} 
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +11,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin - Dashboard</title>
+	<title>Organisasi - Dashboard</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" />
@@ -137,7 +116,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
+							<a class="dropdown-toggle count-info" href="logout">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
@@ -147,10 +126,9 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li><a href="<?php echo base_url('panel_perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard/edit_profil'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
-				<li><a href="<?php echo base_url('perusahaan/something'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
-				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
+				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li><a href="<?php echo base_url(); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
+				<li><a href="<?php echo base_url(); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
 			</ul>
 		</div>
 
@@ -160,86 +138,36 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Edit Profile</h1>
+					<h1 class="page-header">Ajukan Proposal</h1>
 				</div>
 			</div><!--/.row-->
 
-			<?= form_open() ?>
-			<div class="form-group row">
-				<label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputEmail3" name="nama" value="<?=$nama ?>" placeholder="Nama Perusahaan" disabled>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="inputPassword3" class="col-sm-2 col-form-label">Tahun Berdiri</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputPassword3" name="tahun" value="<?=$tahun ?>" placeholder="Tahun Berdiri">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Alamat Perusahaan</label>
-				<div class="col-sm-10">
-					<textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" value="<?=$alamat ?>" placeholder="Deskripsi" rows="3"><?=$alamat ?></textarea>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Deskripsi</label>
-				<div class="col-sm-10">
-					<textarea name="deskripsi" id="summernote"><?=$deskripsi ?></textarea>
-					<!-- <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea> -->
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="inputPassword3" class="col-sm-2 col-form-label">Nomor Telepon</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputPassword3" name="notelp" value="<?=$notelp ?>" placeholder="Nomor Telepon">
-				</div>
-			</div>
-			<fieldset class="form-group">
-				<div class="row">
-					<label for="inputEmail3" class="col-sm-2 col-form-label">Kategori Perusahaan</label>
-					<div class="col-sm-10">
-						<div class="form-check">
-							<?php if($kategori != null) echo "<p> Saat Ini : $kategori </p>";
-							else echo "<p style=color:red> Saat Ini : Belum Memilih Kategori </p>";
-								?>
-								<label class="form-check-label">
-								</label>
-							</div>
-						</div>
-					</div>
-				</fieldset>
+			<form enctype="multipart/form-data" action="<?php echo base_url('panel_organisasi/dashboard/do_kirim')?>" method="POST">
+
 				<div class="form-group row">
-					<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Ubah Kategori</label>
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
 					<div class="col-sm-10">
-						<select class="form-check-input" name="kategori" value="<?=$kategori ?>" selected="<?=$kategori ?>">
-							<option value="pendidikan">Pendidikan</option>
-							<option value="sosial">Sosial</option>
-							<option value="kesenian">Kesenian</option>
-							<option value="olahraga">Olahraga</option>
-							<option value="olahraga">Kesehatan</option>
-						</select>
+						<!-- <?php foreach (array_combine($per, $org) as $data_p => $data_o) { var_dump($per); ?> -->
+						<input type="hidden" name="id_perusahaan" value="<?php echo $per[0]['id_perusahaan'] ?>">
+						<input type="hidden" name="id_organisasi" value="<?php echo $org[0]['id_organisasi'] ?>">
+						<input type="text" class="form-control" name="nama_perusahaan" value="<?php echo $per[0]['nama_perusahaan']; ?>" disabled>
+						<!-- <?php } ?> -->
 					</div>
 				</div>
+
+				<div class="form-group row">
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Upload Proposal</label>
+					<div class="col-sm-10">
+						<input type="file" name="proposal" value="" required="">
+					</div>
+				</div>
+
 				<div class="form-group row">
 					<div class="col-sm-10">
-						<input type="hidden" name="is_submitted" value="1"/>
-						<button type="submit" class="btn btn-primary">Update</button>
+						<button type="submit" class="btn btn-primary">Ajukan Proposal</button>
 					</div>
 				</div>
-				<?= form_close() ?>
-		<!-- 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-						<div class="panel panel-red panel-widget ">
-							<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
-								<div class="large">25.2k</div>
-								<div class="text-muted">Page Views</div>
-							</div>
-						</div>
-					</div> -->
-				</div><!--/.row-->
-			</div>
-			<?php  ?>
+			</form>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 

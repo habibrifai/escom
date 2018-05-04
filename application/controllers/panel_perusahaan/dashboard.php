@@ -6,11 +6,14 @@ class Dashboard extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_ctrlPerusahaan');
+		$this->load->model('m_perusahaan');
 		$this->load->model('m_organisasi');
 		$this->username = $this->session->userdata('nama');
 	}
 
 	public function index(){
+
+		
 
 		$this->load->view('perusahaan/dashboard');
 	}

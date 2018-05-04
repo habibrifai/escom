@@ -10,11 +10,18 @@ class M_perusahaan extends CI_Model{
 	}	
 
 	function get_data_kategori($table,$kategori){	
-		$this->db->select("foto,deskripsi,kategori,nama_perusahaan, id_user");
+		$this->db->select("foto,deskripsi,kategori,nama_perusahaan, id_user, id_perusahaan");
 		$this->db->from($table);
 		$this->db->where('kategori', $kategori);	
 		return $this->db->get()->result_array();
 	}	
+
+	function get_data_id($table,$id){	
+		$this->db->select("nama_perusahaan,id_perusahaan");
+		$this->db->from($table);
+		$this->db->where('id_perusahaan', $id);	
+		return $this->db->get()->result_array();
+	}
 
 	function do_verif($table,$where){
 		$this->db->where('id_user', $where);
@@ -55,6 +62,18 @@ class M_perusahaan extends CI_Model{
 		$this->db->where(array('status'=>'terverifikasi', 'perusahaan.id_user' => $id_user));
 		$this->db->from($table);
 		return $this->db->get()->result_array();
+	}
+
+	function update_jml_proposal($table,$jml,$where){
+		$this->db->where('id_perusahaan', $where);
+		$this->db->update($table, array('jml_proposal_ahir' => $jml));
+	}
+
+	function jumlah_ahir(){
+		$this->db->select();
+		$this->db->from('perusahaan');
+		$this->db->where('id_perusahaan', $where);
+		return $this->db->get();
 	}
 }
 

@@ -22,12 +22,12 @@ class Register extends CI_Controller {
 		$this->form_validation->set_rules('role', 'Role', 'trim|required');
 
 		$config = array(
-						'upload_path' => 'assets/gambar/',
-						'allowed_types' => 'gif|jpg|png|pdf',
-						'max_size' => 150000,
+			'upload_path' => 'assets/gambar/',
+			'allowed_types' => 'gif|jpg|png|pdf',
+						'max_size' => 150000, //in kb
 						'max_width' => 200000,
 						'max_height'=> 200000
-				);
+					);
 
 		$fileUpload = array();
 		$this->upload->initialize($config);
@@ -51,40 +51,40 @@ class Register extends CI_Controller {
 			}
 			else{
 				if($this->upload->do_upload('foto')){
-						$fileUpload = $this->upload->data();
-						$foto = $fileUpload['file_name'];
-						$datauser = array(
-							'email' => $this->input->post('email'),
-							'username' => $this->input->post('username'),
-							'password' => $this->input->post('password'),
-							'role' => $this->input->post('role'),
-							'status' => "belum terverifikasi"
+					$fileUpload = $this->upload->data();
+					$foto = $fileUpload['file_name'];
+					$datauser = array(
+						'email' => $this->input->post('email'),
+						'username' => $this->input->post('username'),
+						'password' => $this->input->post('password'),
+						'role' => $this->input->post('role'),
+						'status' => "belum terverifikasi"
+					);
+					if($data['role']=='perusahaan'){
+						$dataclient = array(
+							'nama_perusahaan' => $this->input->post('nama'),
+							'tahun_berdiri' => $this->input->post('tahun'),
+							'alamat_perusahaan' => $this->input->post('alamat'),
+							'no_tlp' => $this->input->post('notelp'),
+							'foto' => $foto
 						);
-						if($data['role']=='perusahaan'){
-									$dataclient = array(
-										'nama_perusahaan' => $this->input->post('nama'),
-										'tahun_berdiri' => $this->input->post('tahun'),
-										'alamat_perusahaan' => $this->input->post('alamat'),
-										'no_tlp' => $this->input->post('notelp'),
-										'foto' => $foto
-										);
-									$this->m_register->registration($datauser, $dataclient);
-						}
-						elseif($data['role']=='organisasi'){
-									$dataclient = array(
-										'nama_organisasi' => $this->input->post('nama'),
-										'tahun_berdiri' => $this->input->post('tahun'),
-										'alamat_organisasi' => $this->input->post('alamat'),
-										'no_tlp' => $this->input->post('notelp'),
-										'foto' => $foto
-									);
-									$this->m_register->registration($datauser, $dataclient);
-						}
+						$this->m_register->registration($datauser, $dataclient);
+					}
+					elseif($data['role']=='organisasi'){
+						$dataclient = array(
+							'nama_organisasi' => $this->input->post('nama'),
+							'tahun_berdiri' => $this->input->post('tahun'),
+							'alamat_organisasi' => $this->input->post('alamat'),
+							'no_tlp' => $this->input->post('notelp'),
+							'foto' => $foto
+						);
+						$this->m_register->registration($datauser, $dataclient);
+					}
 					// $this->load->view('login');
-						redirect(base_url('login'));
+					redirect(base_url('login'));
 				}
 				else echo "gagal";
-				var_dump($fileUpload);
+				// var_dump($fileUpload);
 			}
 		}
 	}

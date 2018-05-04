@@ -176,7 +176,7 @@ if ($this->session->userdata('status') != 'login organisasi') {
 								<td style="width: 300px;" class="td-read"><img style="margin-left: 10px;" height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>"></td>
 								<td style="width: 300px;" class="td-read"><?php echo $data['nama_perusahaan'] ?></td>
 								<td style="width: 300px;" class="td-read">Kategori <?php echo $data['kategori'] ?></td>
-								<td class="td-read"><a href="<?php echo base_url(); ?>"><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Ajukan Proposal</button></a></td>
+								<td class="td-read"><a href="<?php echo base_url('panel_organisasi/dashboard/kirim_proposal/').$data['id_perusahaan'].'/'.$this->session->userdata('nama'); ?>"><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Ajukan Proposal</button></a></td>
 							</tr>
 							
 						</table>

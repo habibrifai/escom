@@ -160,7 +160,7 @@
 								</div>
 							</div>
 							<?php } } ?>
-							<form action="<?php echo base_url('login'); ?>">
+							<form action="<?php echo base_url('panel_organisasi/dashboard/kirim_proposal'); ?>">
 								<input type="hidden" name="">
 
 								<?php if ($this->session->userdata('status') == "login organisasi") { ?>
