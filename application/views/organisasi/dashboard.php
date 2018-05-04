@@ -141,11 +141,28 @@ if ($this->session->userdata('status') != 'login organisasi') {
 				</ol>
 			</div><!--/.row-->
 
+			<script>
+				function updateText(){
+					$('input[name="Club"]').val($('select[name="kategori"] option:selected').val());
+				}
+			</script>  
+
 			<div class="row">
 				<div class="col-lg-12">
 					<h1 class="page-header">Dashboard</h1>
+					<p>Filter Kategori : </p>
+					<label class="form-check-label">
+						<select class="form-check-input" name="kategori" value="" selected="" onchange="updateText()">
+							<option></option>
+							<option>Pendidikan</option>
+							<option>Kesenian</option>
+							<option>Olahraga</option>
+							<option>Sosial</option>
+							<option>Kesehatan</option>
+						</select>
+					</label>
 				</div>
-			</div>
+			</div><br>
 			<?php foreach ($qry as $data) { ?>
 			<div class="panel panel-container">
 				<div class="row">

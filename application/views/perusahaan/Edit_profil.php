@@ -3,24 +3,24 @@
 if ($this->session->userdata('status') != 'login perusahaan') {
 	redirect(base_url('login'));
 } else {
-  if($this->input->post('is_submitted')){
-      $nama = set_value('nama');
-      $tahun = set_value('tahun');
-			$alamat = set_value('alamat');
-      $deskripsi = set_value('deskripsi');
-      $notelp = set_value('notelp');
-			$kategori = set_value('kategori');
-			$foto = set_value('foto');
+	if($this->input->post('is_submitted')){
+		$nama = set_value('nama');
+		$tahun = set_value('tahun');
+		$alamat = set_value('alamat');
+		$deskripsi = set_value('deskripsi');
+		$notelp = set_value('notelp');
+		$kategori = set_value('kategori');
+		$foto = set_value('foto');
 
-  } else{
-			$nama = $profil->nama_perusahaan;
-			$tahun = $profil->tahun_berdiri;
-			$alamat = $profil->alamat_perusahaan;
-			$deskripsi = $profil->deskripsi;
-			$notelp = $profil->no_tlp;
-			$kategori = $profil->kategori;
-			$foto = $profil->foto;
-    }
+	} else{
+		$nama = $profil->nama_perusahaan;
+		$tahun = $profil->tahun_berdiri;
+		$alamat = $profil->alamat_perusahaan;
+		$deskripsi = $profil->deskripsi;
+		$notelp = $profil->no_tlp;
+		$kategori = $profil->kategori;
+		$foto = $profil->foto;
+	}
 }
 
 
@@ -148,77 +148,77 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				<li><a href="<?php echo base_url('perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 				<li class="active"><a href="<?php echo base_url('perusahaan/profil_perusahaan'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
 				<li><a href="<?php echo base_url('perusahaan/something'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
-		</ul>
-	</div>
+			</ul>
+		</div>
 
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-		</div><!--/.row-->
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+			<div class="row">
+			</div><!--/.row-->
 
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Edit Profile</h1>
-			</div>
-		</div><!--/.row-->
-
-		<?= form_open() ?>
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputEmail3" name="nama" value="<?=$nama ?>" placeholder="Nama Perusahaan" disabled>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Tahun Berdiri</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword3" name="tahun" value="<?=$tahun ?>" placeholder="Tahun Berdiri">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Alamat Perusahaan</label>
-          <div class="col-sm-10">
-          <textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" value="<?=$alamat ?>" placeholder="Deskripsi" rows="3"><?=$alamat ?></textarea>
-          </div>
-        </div>
-				<div class="form-group row">
-          <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Deskripsi</label>
-          <div class="col-sm-10">
-          <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea>
-          </div>
-        </div>
-				<div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Nomor Telepon</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword3" name="notelp" value="<?=$notelp ?>" placeholder="Nomor Telepon">
-          </div>
-        </div>
-        <fieldset class="form-group">
-          <div class="row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Kategori Perusahaan</label>
-            <div class="col-sm-10">
-              <div class="form-check">
-								<?php if($kategori != null) echo "<p> Saat Ini : $kategori </p>";
-											else echo "<p style=color:red> Saat Ini : Belum Memilih Kategori </p>";
-								?>
-                <label class="form-check-label">
-                  <select class="form-check-input" name="kategori" value="<?=$kategori ?>" selected="<?=$kategori ?>">
-                  <option value="Gatau">Gatau</option>
-                  <option value="Isinya">Isinya</option>
-									<option value="Apaan">Apaan</option>
-									<option value="Ehehe">Ehehe</option>
-                  </select>
-                </label>
-              </div>
-						</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Edit Profile</h1>
 				</div>
-			</fieldset>
+			</div><!--/.row-->
+
+			<?= form_open() ?>
 			<div class="form-group row">
+				<label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
 				<div class="col-sm-10">
-					<input type="hidden" name="is_submitted" value="1"/>
-					<button type="submit" class="btn btn-primary">Update</button>
+					<input type="text" class="form-control" id="inputEmail3" name="nama" value="<?=$nama ?>" placeholder="Nama Perusahaan" disabled>
 				</div>
 			</div>
-		<?= form_close() ?>
+			<div class="form-group row">
+				<label for="inputPassword3" class="col-sm-2 col-form-label">Tahun Berdiri</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputPassword3" name="tahun" value="<?=$tahun ?>" placeholder="Tahun Berdiri">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Alamat Perusahaan</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" id="exampleFormControlTextarea1" name="alamat" value="<?=$alamat ?>" placeholder="Deskripsi" rows="3"><?=$alamat ?></textarea>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Deskripsi</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputPassword3" class="col-sm-2 col-form-label">Nomor Telepon</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputPassword3" name="notelp" value="<?=$notelp ?>" placeholder="Nomor Telepon">
+				</div>
+			</div>
+			<fieldset class="form-group">
+				<div class="row">
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Kategori Perusahaan</label>
+					<div class="col-sm-10">
+						<div class="form-check">
+							<?php if($kategori != null) echo "<p> Saat Ini : $kategori </p>";
+							else echo "<p style=color:red> Saat Ini : Belum Memilih Kategori </p>";
+								?>
+								<label class="form-check-label">
+									<select class="form-check-input" name="kategori" value="<?=$kategori ?>" selected="<?=$kategori ?>">
+										<option value="Gatau">Gatau</option>
+										<option value="Isinya">Isinya</option>
+										<option value="Apaan">Apaan</option>
+										<option value="Ehehe">Ehehe</option>
+									</select>
+								</label>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-group row">
+					<div class="col-sm-10">
+						<input type="hidden" name="is_submitted" value="1"/>
+						<button type="submit" class="btn btn-primary">Update</button>
+					</div>
+				</div>
+				<?= form_close() ?>
 		<!-- 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 						<div class="panel panel-red panel-widget ">
 							<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>

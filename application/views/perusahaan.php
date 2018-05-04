@@ -156,68 +156,71 @@
 									<!-- article title -->
 									<h2 class="article-title"><?php echo $val['nama_perusahaan']; ?></h2>
 
-								<p><?php echo $val['deskripsi']; ?></p>
+									<p><?php echo $val['deskripsi']; ?></p>
+								</div>
 							</div>
-						</div>
-						<?php } } ?>
-						<form action="<?php echo base_url('login'); ?>">
-							<input type="hidden" name="">
-							<a href=""><button class="primary-button">Ajukan Proposal</button></a>
-						</form>
-					</main>
-					<!-- /MAIN -->
+							<?php } } ?>
+							<form action="<?php echo base_url('login'); ?>">
+								<input type="hidden" name="">
 
-					<!-- ASIDE -->
-					<aside id="aside" class="col-md-3">
-						<div class="widget">
-							<h3 class="widget-title">Perusahaan Lain</h3>
-							<?php
-							foreach ($list_p as $list_perusahaan) { ?>
-							<div class="widget-post">
-								<a href="<?php echo base_url('perusahaan/show_perusahaan/').$list_perusahaan['id_user']; ?>">
-									<div class="widget-img">
-										<img height="80px" width="auto" src="<?php echo base_url('assets/gambar/').$list_perusahaan['foto']; ?>" alt="">
-									</div>
-									<div class="widget-content">
-										<?php echo $list_perusahaan['nama_perusahaan']; ?>
-									</div>
-								</a>
+								<?php if ($this->session->userdata('status') == "login organisasi") { ?>
+								<a href=""><button class="primary-button">Ajukan Proposal</button></a>
+								<?php } else {} ?>
+							</form>
+						</main>
+						<!-- /MAIN -->
+
+						<!-- ASIDE -->
+						<aside id="aside" class="col-md-3">
+							<div class="widget">
+								<h3 class="widget-title">Perusahaan Lain</h3>
+								<?php
+								foreach ($list_p as $list_perusahaan) { ?>
+								<div class="widget-post">
+									<a href="<?php echo base_url('perusahaan/show_perusahaan/').$list_perusahaan['id_user']; ?>">
+										<div class="widget-img">
+											<img height="80px" width="auto" src="<?php echo base_url('assets/gambar/').$list_perusahaan['foto']; ?>" alt="">
+										</div>
+										<div class="widget-content">
+											<?php echo $list_perusahaan['nama_perusahaan']; ?>
+										</div>
+									</a>
+								</div>
+								<?php } ?>
 							</div>
-							<?php } ?>
-						</div>
-						<div class="widget">
-							<h3 class="widget-title">Organisasi Terdaftar</h3>
-							<?php
-							foreach ($list_o as $list_organisasi) { ?>
-							<div class="widget-post">
-								<a href="<?php echo base_url('organisasi/show_organisasi/').$list_organisasi['id_user']; ?>">
-									<div class="widget-img">
-										<img height="80px" width="auto" src="<?php echo base_url('assets/gambar/').$list_organisasi['foto']; ?>" alt="">
-									</div>
-									<div class="widget-content">
-										<?php echo $list_organisasi['nama_organisasi']; ?>
-									</div>
-								</a>
+							<div class="widget">
+								<h3 class="widget-title">Organisasi Terdaftar</h3>
+								<?php
+								foreach ($list_o as $list_organisasi) { ?>
+								<div class="widget-post">
+									<a href="<?php echo base_url('organisasi/show_organisasi/').$list_organisasi['id_user']; ?>">
+										<div class="widget-img">
+											<img height="80px" width="auto" src="<?php echo base_url('assets/gambar/').$list_organisasi['foto']; ?>" alt="">
+										</div>
+										<div class="widget-content">
+											<?php echo $list_organisasi['nama_organisasi']; ?>
+										</div>
+									</a>
+								</div>
+								<?php } ?>
 							</div>
-							<?php } ?>
-						</div>
-						
-					</aside>
-					<!-- /ASIDE -->
+
+						</aside>
+						<!-- /ASIDE -->
+					</div>
+					<!-- /row -->
 				</div>
-				<!-- /row -->
+				<!-- /container -->
 			</div>
-			<!-- /container -->
-		</div>
-		<!-- /SECTION -->
+			<!-- /SECTION -->
 
-		<!-- FOOTER -->
-		<footer id="footer" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<!-- <div class="row"> -->
-					<!-- footer contact -->
+			<!-- FOOTER -->
+			<footer id="footer" class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<!-- <div class="row"> -->
+						<!-- footer contact -->
 					<!-- <div class="col-md-4">
 						<div class="footer">
 							<div class="footer-logo">
