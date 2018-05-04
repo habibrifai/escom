@@ -69,11 +69,17 @@ class M_perusahaan extends CI_Model{
 		$this->db->update($table, array('jml_proposal_ahir' => $jml));
 	}
 
-	function jumlah_ahir(){
-		$this->db->select();
+	function get_jumlah($where){
+		$this->db->select('perusahaan.jml_proposal_awal, perusahaan.jml_proposal_ahir');
 		$this->db->from('perusahaan');
+		$this->db->join('user', 'user.id_user = perusahaan.id_user');	
+		$this->db->where('username', $where);
+		return $this->db->get()->result_array();
+	}
+
+	function reset_jml($table,$jml,$where){
 		$this->db->where('id_perusahaan', $where);
-		return $this->db->get();
+		$this->db->update($table, array('jml_proposal_ahir' => $jml));
 	}
 }
 

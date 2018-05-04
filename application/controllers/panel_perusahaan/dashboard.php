@@ -13,9 +13,24 @@ class Dashboard extends CI_Controller {
 
 	public function index(){
 
-		
+		$username = $this->session->userdata('nama');
 
-		$this->load->view('perusahaan/dashboard');
+		$jumlah = $this->m_perusahaan->get_jumlah($username);
+
+		// var_dump($jumlah);
+
+		$awal = $jumlah[0]['jml_proposal_awal'];
+		$ahir = $jumlah[0]['jml_proposal_ahir'];
+		// $id_per = $jumlah[0]['id_perusahaan'];
+
+		if ($awal < $ahir) {
+			$data['notif'] = $ahir - $awal;
+			$this->load->view('perusahaan/dashboard', $data);
+		} else {
+			$this->load->view('perusahaan/dashboard');
+		}	
+
+		// $this->m_perusahaan->reset_jml($id_per);
 	}
 
 	public function list_spj(){

@@ -45,7 +45,9 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<ul class="nav navbar-top-links navbar-right">
 						<li class="dropdown">
 							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-								<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
+								<?php if(isset($notif)) { ?>
+								<em class="fa fa-envelope"></em><span class="label label-danger"><?php echo $notif; ?></span>
+								<?php } ?>
 							</a>
 							<ul class="dropdown-menu dropdown-messages">
 								<li>
@@ -85,39 +87,6 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-								<em class="fa fa-bell"></em><span class="label label-info">5</span>
-							</a>
-							<ul class="dropdown-menu dropdown-alerts">
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-envelope"></em> 1 New Message
-											<span class="pull-right text-muted small">3 mins ago</span>
-										</div>
-									</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-heart"></em> 12 New Likes
-											<span class="pull-right text-muted small">4 mins ago</span>
-										</div>
-									</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-user"></em> 5 New Followers
-											<span class="pull-right text-muted small">4 mins ago</span>
-										</div>
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
 							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
@@ -132,52 +101,52 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/edit_profil'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
 				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
 				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
-		</ul>
-	</div>
+			</ul>
+		</div>
 
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#">
-					<em class="fa fa-home"></em>
-				</a></li>
-				<li class="active">Dashboard</li>
-				<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
-			</ol>
-		</div><!--/.row-->
-
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
-			</div>
-		</div><!--/.row-->
-
-		<div class="panel panel-container">
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 			<div class="row">
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">-</div>
-							<div class="text-muted">Proposal dikirim</div>
+				<ol class="breadcrumb">
+					<li><a href="#">
+						<em class="fa fa-home"></em>
+					</a></li>
+					<li class="active">Dashboard</li>
+					<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
+				</ol>
+			</div><!--/.row-->
+
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Dashboard</h1>
+				</div>
+			</div><!--/.row-->
+
+			<div class="panel panel-container">
+				<div class="row">
+					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+						<div class="panel panel-teal panel-widget border-right">
+							<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
+								<div class="large">-</div>
+								<div class="text-muted">Proposal dikirim</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">-</div>
-							<div class="text-muted">Proposal Diterima</div>
+					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+						<div class="panel panel-orange panel-widget border-right">
+							<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+								<div class="large">-</div>
+								<div class="text-muted">Proposal Diterima</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">-</div>
-							<div class="text-muted">SPJ Dilakukan</div>
+					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+						<div class="panel panel-orange panel-widget border-right">
+							<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
+								<div class="large">-</div>
+								<div class="text-muted">SPJ Dilakukan</div>
+							</div>
 						</div>
 					</div>
-				</div>
 		<!-- 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 						<div class="panel panel-red panel-widget ">
 							<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
