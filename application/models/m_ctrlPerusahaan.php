@@ -36,4 +36,8 @@ class M_ctrlPerusahaan extends CI_Model{
     $proposal = $this->db->get();
     return $proposal->result();
 	}
+
+	function get_spj($username){
+		
+	}
 }
