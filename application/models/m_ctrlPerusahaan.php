@@ -39,6 +39,19 @@ class M_ctrlPerusahaan extends CI_Model{
     return $proposal->result();
 	}
 
+	function get_detail_proposal($id){
+		$this->db->select('id_proposal, proposal, tanggal_pengajuan')
+						 ->from('proposal')
+						 ->where('id_proposal', $id);
+		$hasil = $this->db->get()->row();
+		return $hasil;
+	}
+
+	function balas_proposaldb($id, $balasan){
+		$this->db->where('id_proposal', $id)
+						 ->update('proposal', $balasan);
+	}
+
 	function get_spj($username){
 
 	}

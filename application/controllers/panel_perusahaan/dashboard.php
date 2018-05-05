@@ -13,9 +13,7 @@ class Dashboard extends CI_Controller {
 
 	public function index(){
 
-		$username = $this->session->userdata('nama');
-
-		$jumlah = $this->m_perusahaan->get_jumlah($username);
+		$jumlah = $this->m_perusahaan->get_jumlah($this->username);
 
 		// var_dump($jumlah);
 
@@ -71,7 +69,20 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function balas_proposal($id){
+		$this->form_validation->set_rules('balasan', 'Balasan Proposal', 'required');
 
+		if($this->form_validation->run() == false){
+				$data['propos'] = $this->m_ctrlPerusahaan->get_detail_proposal($id);
+				$this->load->view('perusahaan/Balas_proposal', $data);
+			}
+			else{
+				$balasan = array(
+					'isi_balasan' => set_value('balasan'),
+					'status' => 'Disetujui'
+					);
+		$this->m_ctrlPerusahaan->balas_proposaldb($id, $balasan);
+		redirect(base_url('panel_perusahaan/dashboard/'));
+		}
 	}
 	public function tolak_proposal($id){
 
