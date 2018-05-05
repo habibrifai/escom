@@ -143,7 +143,7 @@
 
 						// $r = random_int(0, $jml_data_p - 1);
 
-						foreach ($perusahaan as $i => $val) { 
+						foreach ($perusahaan as $i => $val) {
 
 							if($i == 0){ ?>
 
@@ -156,7 +156,7 @@
 									<!-- article title -->
 									<h2 class="article-title"><?php echo $val['nama_perusahaan']; ?></h2>
 
-									<p><?php echo $val['deskripsi']; ?></p>
+									<?php echo htmlspecialchars_decode($val['deskripsi']); ?>
 								</div>
 							</div>
 							<?php } } ?>

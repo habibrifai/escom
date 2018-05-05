@@ -157,7 +157,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Verifikasi Akun Perusahaan</h1>
+				<h1 class="page-header">List Proposal</h1>
 			</div>
 		</div><!--/.row-->
 
@@ -178,7 +178,8 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 						<td class="td-read"><?php echo $qry->tanggal_pengajuan; ?></td>
 						<td class="td-read"><?php echo $qry->proposal; ?></td>
 						<td>
-
+							<?=anchor('dashboard/balas_proposal/' . $qry->id_proposal,'Balas', ['class'=>'btn btn-primary btn-sm'])?>
+							<?=anchor('dashboard/tolak_proposal/' . $qry->id_proposal,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
 						</td>
 					</tr>
 					<?php } ?>

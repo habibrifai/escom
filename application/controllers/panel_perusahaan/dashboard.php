@@ -28,7 +28,7 @@ class Dashboard extends CI_Controller {
 			$this->load->view('perusahaan/dashboard', $data);
 		} else {
 			$this->load->view('perusahaan/dashboard');
-		}	
+		}
 
 		// $this->m_perusahaan->reset_jml($id_per);
 	}
@@ -60,8 +60,8 @@ class Dashboard extends CI_Controller {
 						'foto' => set_value('foto'),
 						'no_tlp' => set_value('notelp'),
 						);
-			$this->m_ctrlPerusahaan->edit_profile($username, $profil_perusahaan);
-			redirect(base_url('panel_perusahaan/dashboard'));
+			$this->m_ctrlPerusahaan->edit_profile($this->username, $profil_perusahaan);
+			redirect(base_url('panel_perusahaan/dashboard/edit_profil'));
 			}
 		}
 
@@ -70,8 +70,11 @@ class Dashboard extends CI_Controller {
 		$this->load->view('perusahaan/list_proposal', $data);
 	}
 
-	public function test(){
-		
+	public function balas_proposal($id){
+
+	}
+	public function tolak_proposal($id){
+
 	}
 }
 ?>

@@ -164,11 +164,11 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				</div>
 			</div><!--/.row-->
 
-			<?= form_open() ?>
+			<?= form_open('panel_perusahaan/dashboard/edit_profil') ?>
 			<div class="form-group row">
 				<label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputEmail3" name="nama" value="<?=$nama ?>" placeholder="Nama Perusahaan" disabled>
+					<input type="text" class="form-control" id="inputEmail3" name="nama" value="<?=$nama ?>" placeholder="Nama Perusahaan">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -213,12 +213,12 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				<div class="form-group row">
 					<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Ubah Kategori</label>
 					<div class="col-sm-10">
-						<select class="form-check-input" name="kategori" value="<?=$kategori ?>" selected="<?=$kategori ?>">
-							<option value="pendidikan">Pendidikan</option>
-							<option value="sosial">Sosial</option>
-							<option value="kesenian">Kesenian</option>
-							<option value="olahraga">Olahraga</option>
-							<option value="olahraga">Kesehatan</option>
+						<select class="form-check-input" name="kategori" value="<?=$kategori ?>">
+							<option value="Pendidikan">Pendidikan</option>
+							<option value="Sosial">Sosial</option>
+							<option value="Kesenian">Kesenian</option>
+							<option value="Olahraga">Olahraga</option>
+							<option value="Kesehatan">Kesehatan</option>
 						</select>
 					</div>
 				</div>
@@ -262,6 +262,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				scaleFontColor: "#c5c7cc"
 			});
 		};
+		document.getElementById('sel').value = 'bike';
 	</script>
 	<script>
 		$(document).ready(function() {
