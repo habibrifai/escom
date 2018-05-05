@@ -32,7 +32,13 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function list_spj(){
-		$this->load->view('perusahaan/list_spj');
+		$data['spj'] = $this->m_ctrlPerusahaan->get_spj($this->username);
+		$this->load->view('perusahaan/list_spj', $data);
+	}
+
+	public function list_proposal(){
+		$data['proposal'] = $this->m_ctrlPerusahaan->get_proposal($this->username);
+		$this->load->view('perusahaan/list_proposal', $data);
 	}
 
 	public function edit_profil(){
@@ -63,11 +69,6 @@ class Dashboard extends CI_Controller {
 			}
 		}
 
-	public function list_proposal(){
-		$data['proposal'] = $this->m_ctrlPerusahaan->get_proposal($this->username);
-		$this->load->view('perusahaan/list_proposal', $data);
-	}
-
 	public function balas_proposal($id){
 		$this->form_validation->set_rules('balasan', 'Balasan Proposal', 'required');
 
@@ -85,7 +86,11 @@ class Dashboard extends CI_Controller {
 		}
 	}
 	public function tolak_proposal($id){
-
+		$tolak = array(
+			'status' => 'Ditolak'
+			);
+		$this->m_ctrlPerusahaan->tolak_proposaldb($id, $tolak);
+		redirect(base_url('panel_perusahaan/dashboard/'));
 	}
 }
 ?>

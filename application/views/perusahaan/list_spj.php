@@ -15,7 +15,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin - Verifikasi Akun</title>
+	<title>Perusahaan - List SPJ</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" />
@@ -165,16 +165,14 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 			<div class="col-lg-12">
 				<table class="table-read" border="2">
 					<tr>
-						<th>Nama Organisasi</th>
-						<!-- <th>Tanggal Pengajuan</th> -->
 						<th>SPJ</th>
 						<th>Opsi</th>
 					</tr>
 
 					<?php
-					foreach ($proposal as $qry) { ?>
+					foreach ($spj as $qry) { ?>
 					<tr>
-						<td class="td-read"><!--<img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>">--><a href=#><?php echo $qry->nama_organisasi; ?></a></td>
+						<!-- <td class="td-read"><img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>"><a href=#><?php echo $qry->nama_organisasi; ?></a></td> -->
 						<!-- <td class="td-read"><?php echo $qry->tanggal_pengajuan; ?></td> -->
 						<td class="td-read"><?php echo $qry->spj; ?></td>
 						<td>
