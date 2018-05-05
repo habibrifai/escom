@@ -118,7 +118,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="logout">
+							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
@@ -128,20 +128,10 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li><a href="<?php echo base_url('admin/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li class="parent active"><a data-toggle="collapse" href="#sub-item-1">
-					<em class="fa fa-users">&nbsp;</em> Verifikasi Akun <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-					<ul class="children collapse" id="sub-item-1">
-						<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
-							<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
-						</a></li>
-						<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
-							<span class="fa fa-arrow-right">&nbsp;</span> Organisasi
-						</a></li>
-					</ul>
-				</li>
-				<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+				<li><a href="<?php echo base_url('panel_perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/edit_profil'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
+				<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
 			</ul>
 		</div>
 
@@ -157,16 +147,18 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Verifikasi Akun Perusahaan</h1>
+				<h1 class="page-header">List SPJ</h1>
 			</div>
 		</div><!--/.row-->
-
+	<?php if($cek==0){
+			echo "<p>Tidak ada SPJ yang masuk. </p>";
+		} else { ?>
 		<div class="row">
 			<div class="col-lg-12">
 				<table class="table-read" border="2">
 					<tr>
+						<th>Proposal</th>
 						<th>SPJ</th>
-						<th>Opsi</th>
 					</tr>
 
 					<?php
@@ -174,7 +166,12 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<tr>
 						<!-- <td class="td-read"><img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>"><a href=#><?php echo $qry->nama_organisasi; ?></a></td> -->
 						<!-- <td class="td-read"><?php echo $qry->tanggal_pengajuan; ?></td> -->
-						<td class="td-read"><?php echo $qry->spj; ?></td>
+						<td class="td-read"><?php echo $qry->proposal; ?></td>
+						<td class="td-read">
+							<?php if($qry->status_spj!='Cleared')
+											echo 'SPJ Belum Diterima';
+										else echo $qry->spj ?>
+						</td>
 						<td>
 
 						</td>
@@ -183,7 +180,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				</table>
 			</div>
 		</div>
-
+	<?php }?>
 	</div><!--/.row-->
 </div>	<!--/.main-->
 

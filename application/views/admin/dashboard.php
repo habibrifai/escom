@@ -23,9 +23,9 @@ if ($this->session->userdata('status') != 'login admin') {
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/datepicker3.css" />
-	
+
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/styles.css" />
-	
+
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -118,7 +118,7 @@ if ($this->session->userdata('status') != 'login admin') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>"> 
+							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
@@ -160,7 +160,7 @@ if ($this->session->userdata('status') != 'login admin') {
 			<div class="col-lg-12">
 				<h1 class="page-header">Dashboard</h1>
 			</div>
-		</div><!--/.row-->			
+		</div><!--/.row-->
 
 		<div class="panel panel-container">
 			<div class="row">

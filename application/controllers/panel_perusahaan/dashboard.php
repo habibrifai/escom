@@ -33,11 +33,13 @@ class Dashboard extends CI_Controller {
 
 	public function list_spj(){
 		$data['spj'] = $this->m_ctrlPerusahaan->get_spj($this->username);
+		$data['cek'] = $this->m_ctrlPerusahaan->count_spj($this->username);
 		$this->load->view('perusahaan/list_spj', $data);
 	}
 
 	public function list_proposal(){
 		$data['proposal'] = $this->m_ctrlPerusahaan->get_proposal($this->username);
+		$data['cek'] = $this->m_ctrlPerusahaan->count_proposal($this->username);
 		$this->load->view('perusahaan/list_proposal', $data);
 	}
 
@@ -79,15 +81,16 @@ class Dashboard extends CI_Controller {
 			else{
 				$balasan = array(
 					'isi_balasan' => set_value('balasan'),
-					'status' => 'Disetujui'
+					'status_proposal' => 'Disetujui'
 					);
 		$this->m_ctrlPerusahaan->balas_proposaldb($id, $balasan);
 		redirect(base_url('panel_perusahaan/dashboard/'));
 		}
 	}
+
 	public function tolak_proposal($id){
 		$tolak = array(
-			'status' => 'Ditolak'
+			'status_proposal' => 'Ditolak'
 			);
 		$this->m_ctrlPerusahaan->tolak_proposaldb($id, $tolak);
 		redirect(base_url('panel_perusahaan/dashboard/'));
