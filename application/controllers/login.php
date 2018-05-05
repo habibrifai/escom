@@ -25,7 +25,6 @@ class Login extends CI_Controller {
 
 			if ($role[0]["status"] == "terverifikasi") {
 				if ($role[0]["role"] == "admin") {
-
 					$data_session = array(
 						'nama' => $username,
 						'status' => "login admin"
@@ -59,7 +58,7 @@ class Login extends CI_Controller {
 				$data['error_login'] = "Akun belum diverifikasi oleh admin, silakan tunggu 2 x 24 jam.";
 				$this->load->view('login', $data);
 			} else {
-				
+
 			}
 
 		} else {
