@@ -7,12 +7,24 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_perusahaan');
 		$this->load->model('m_organisasi');
+		$this->load->model('m_ctrlOrganisasi');
 		$this->load->model('m_proposal');
+		$this->username = $this->session->userdata('nama');
 	}
 
 	public function index(){
 		$data['qry'] = $this->m_perusahaan->get_data("perusahaan");
 		$this->load->view('organisasi/dashboard', $data);
+	}
+
+	public function proposal_terkirim(){
+		$data['proposal'] = $this->m_ctrlOrganisasi->get_proposal($this->username);
+		$this->load->view('organisasi/proposal_terkirim',$data);
+	}
+
+	public function lihat_balasan($id){
+		$data['balasan'] = $this->m_ctrlOrganisasi->get_balasan_proposal($id, $this->username);
+		$this->load->view('organisasi/balasan_proposal',$data);
 	}
 
 	public function get($kategori){

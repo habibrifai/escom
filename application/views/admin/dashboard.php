@@ -142,6 +142,7 @@ if ($this->session->userdata('status') != 'login admin') {
 				</ul>
 			</li>
 			<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+			<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
 		</ul>
 	</div>
 

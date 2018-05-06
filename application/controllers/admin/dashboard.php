@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_perusahaan');
 		$this->load->model('m_organisasi');
+		$this->load->model('m_proposal');
 	}
 
 	public function index(){
@@ -19,6 +20,21 @@ class Dashboard extends CI_Controller {
 
 	public function list_spj(){
 		$this->load->view('admin/list_spj');
+	}
+
+	public function list_proposal(){
+		$data['profil'] = $this->m_organisasi->get_data_detail('organisasi');
+		$this->load->view('admin/list_proposal',$data);
+	}
+
+	public function list_proposal_organisasi($id){
+		$data['proposal'] = $this->m_proposal->get_organisasi_proposal($id);
+		$this->load->view('admin/list_proposal_organisasi', $data);
+	}
+
+	public function lihat_balasan($id_proposal){
+		$data['balasan'] = $this->m_proposal->get_balasan_proposal($id_proposal);
+		$this->load->view('admin/balasan_proposal_organisasi',$data);
 	}
 
 }

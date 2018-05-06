@@ -20,9 +20,9 @@ if ($this->session->userdata('status') != 'login organisasi') {
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/datepicker3.css" />
-	
+
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/styles.css" />
-	
+
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -115,7 +115,7 @@ if ($this->session->userdata('status') != 'login organisasi') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>"> 
+							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
@@ -126,7 +126,7 @@ if ($this->session->userdata('status') != 'login organisasi') {
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
 				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li><a href="<?php echo base_url(); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
+				<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_terkirim'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
 				<li><a href="<?php echo base_url(); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
 			</ul>
 		</div>
@@ -140,7 +140,7 @@ if ($this->session->userdata('status') != 'login organisasi') {
 					<li class="active">Dashboard</li>
 					<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
 				</ol>
-			</div><!--/.row--> 
+			</div><!--/.row-->
 
 			<div class="row">
 				<div class="col-lg-12">
@@ -178,7 +178,7 @@ if ($this->session->userdata('status') != 'login organisasi') {
 								<td style="width: 300px;" class="td-read">Kategori <?php echo $data['kategori'] ?></td>
 								<td class="td-read"><a href="<?php echo base_url('panel_organisasi/dashboard/kirim_proposal/').$data['id_perusahaan'].'/'.$this->session->userdata('nama'); ?>"><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Ajukan Proposal</button></a></td>
 							</tr>
-							
+
 						</table>
 					</div>
 					</a>
