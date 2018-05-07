@@ -64,7 +64,6 @@ class M_ctrlPerusahaan extends CI_Model{
 						 ->from('perusahaan')
 						 ->join('user', 'user.id_user = perusahaan.id_user')
 						 ->where('username', $username);
-
 		$hasil = $this->db->get()->row();
 
 		$this->db->select('id_proposal, id_perusahaan, nama_organisasi, proposal, tanggal_pengajuan, , status_proposal');
@@ -105,4 +104,20 @@ class M_ctrlPerusahaan extends CI_Model{
 						 ->update('proposal', $balasan);
 	}
 
+	function reset_notif_proposal($username){
+		$this->db->select('id_perusahaan, username')
+             ->from('perusahaan')
+             ->join('user', 'user.id_user = perusahaan.id_user')
+             ->where('username', $username);
+    $hasil = $this->db->get()->row();
+
+		$this->db->select('jml_proposal_ahir')
+						 ->from('perusahaan')
+						 ->where('id_perusahaan', $hasil->id_perusahaan);
+		$jml_proposal = $this->db->get()->row();
+		$notif = array('jml_proposal_awal' => $jml_proposal->jml_proposal_ahir);
+
+    $this->db->where('id_perusahaan', $hasil->id_perusahaan)
+             ->update('perusahaan', $notif);
+	}
 }

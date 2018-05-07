@@ -44,49 +44,6 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<a class="navbar-brand" href="#"><span>ESCOM</span></a>
 					<ul class="nav navbar-top-links navbar-right">
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-								<?php if(isset($notif)) { ?>
-								<em class="fa fa-envelope"></em><span class="label label-danger"><?php echo $notif; ?></span>
-								<?php } ?>
-							</a>
-							<ul class="dropdown-menu dropdown-messages">
-								<li>
-									<div class="dropdown-messages-box">
-										<a href="profile.html" class="pull-left">
-											<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
-										</a>
-										<div class="message-body"><small class="pull-right">3 mins ago</small>
-											<a href="#">
-												<strong>John Doe</strong> commented on <strong>your photo</strong>.
-											</a>
-											<br /><small class="text-muted">1:24 pm - 25/03/2015</small>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="dropdown-messages-box">
-										<a href="profile.html" class="pull-left">
-											<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
-										</a>
-										<div class="message-body"><small class="pull-right">1 hour ago</small>
-											<a href="#">New message from <strong>Jane Doe</strong>.
-											</a>
-											<br /><small class="text-muted">12:27 pm - 25/03/2015</small>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="all-button">
-										<a href="#">
-											<em class="fa fa-inbox"></em> <strong>All Messages</strong>
-										</a>
-									</div>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
 							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
@@ -100,7 +57,11 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/edit_profil'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
 				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
-				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
+				<?php if($notif!=0) { ?>
+					<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo $notif; ?></span></a></li>
+				<?php }else{ ?>
+					<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal </a></li>
+				<?php } ?>
 			</ul>
 		</div>
 

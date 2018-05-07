@@ -9,29 +9,20 @@ class Dashboard extends CI_Controller {
 		$this->load->model('m_perusahaan');
 		$this->load->model('m_organisasi');
 		$this->username = $this->session->userdata('nama');
+		$jumlah = $this->m_perusahaan->get_jumlah($this->username);
+		$awal = $jumlah[0]['jml_proposal_awal'];
+		$ahir = $jumlah[0]['jml_proposal_ahir'];
+		$this->notif = $ahir-$awal;
 	}
 
 	public function index(){
-
-		$jumlah = $this->m_perusahaan->get_jumlah($this->username);
-
-		// var_dump($jumlah);
-
-		$awal = $jumlah[0]['jml_proposal_awal'];
-		$ahir = $jumlah[0]['jml_proposal_ahir'];
-		// $id_per = $jumlah[0]['id_perusahaan'];
-
-		if ($awal < $ahir) {
-			$data['notif'] = $ahir - $awal;
+			$data['notif'] = $this->notif;
 			$this->load->view('perusahaan/dashboard', $data);
-		} else {
-			$this->load->view('perusahaan/dashboard');
-		}
-
 		// $this->m_perusahaan->reset_jml($id_per);
 	}
 
 	public function list_spj(){
+		$data['notif'] = $this->notif;
 		$data['spj'] = $this->m_ctrlPerusahaan->get_spj($this->username);
 		$data['cek'] = $this->m_ctrlPerusahaan->count_spj($this->username);
 		$this->load->view('perusahaan/list_spj', $data);
@@ -40,6 +31,7 @@ class Dashboard extends CI_Controller {
 	public function list_proposal(){
 		$data['proposal'] = $this->m_ctrlPerusahaan->get_proposal($this->username);
 		$data['cek'] = $this->m_ctrlPerusahaan->count_proposal($this->username);
+		$this->m_ctrlPerusahaan->reset_notif_proposal($this->username);
 		$this->load->view('perusahaan/list_proposal', $data);
 	}
 
@@ -53,6 +45,7 @@ class Dashboard extends CI_Controller {
 			$this->form_validation->set_rules('kategori', 'kategori', 'required');
 
 			if($this->form_validation->run() == false){
+					$data['notif'] = $this->notif;
     			$data['profil'] = $this->m_ctrlPerusahaan->get_profile($this->username);
 					$this->load->view('perusahaan/Edit_profil', $data);
 				}
@@ -75,6 +68,7 @@ class Dashboard extends CI_Controller {
 		$this->form_validation->set_rules('balasan', 'Balasan Proposal', 'required');
 
 		if($this->form_validation->run() == false){
+				$data['notif'] = $this->notif;
 				$data['propos'] = $this->m_ctrlPerusahaan->get_detail_proposal($id);
 				$this->load->view('perusahaan/Balas_proposal', $data);
 			}
