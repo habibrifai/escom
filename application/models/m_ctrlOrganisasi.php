@@ -3,12 +3,20 @@
 class M_ctrlOrganisasi extends CI_Model{
 
 	function get_profile($username){
-	$this->db->select('nama_perusahaan, tahun_berdiri, alamat_perusahaan, deskripsi, kategori, foto, no_tlp');
+		$this->db->select('nama_perusahaan, tahun_berdiri, alamat_perusahaan, deskripsi, kategori, foto, no_tlp');
     $this->db->from('perusahaan');
     $this->db->join('user', 'user.id_user = perusahaan.id_user');
     $this->db->where('username', $username);
     $hasil = $this->db->get();
     return $hasil->row();
+	}
+
+	function get_profile_byID($id_organisasi){
+		$this->db->select('id_organisasi, nama_organisasi, tahun_berdiri, alamat_organisasi, foto, no_tlp, deskripsi')
+						 ->from('organisasi')
+						 ->where('id_organisasi', $id_organisasi);
+		$hasil = $this->db->get()->row();
+		return $hasil;
 	}
 
   function edit_profile($username, $profil_perusahaan){

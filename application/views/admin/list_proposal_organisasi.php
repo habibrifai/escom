@@ -158,7 +158,7 @@ if ($this->session->userdata('status') != 'login admin') {
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">List Proposal</h1>
+				<h1 class="page-header">List Proposal <?php echo $profil->nama_organisasi?></h1>
 			</div>
 		</div><!--/.row-->
 		<div class="container">

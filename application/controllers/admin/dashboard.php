@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_perusahaan');
 		$this->load->model('m_organisasi');
+		$this->load->model('m_ctrlOrganisasi');
 		$this->load->model('m_proposal');
 	}
 
@@ -28,6 +29,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function list_proposal_organisasi($id){
+		$data['profil'] = $this->m_ctrlOrganisasi->get_profile_byID($id);
 		$data['proposal'] = $this->m_proposal->get_organisasi_proposal($id);
 		$this->load->view('admin/list_proposal_organisasi', $data);
 	}
