@@ -126,8 +126,8 @@ if ($this->session->userdata('status') != 'login organisasi') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_terkirim'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
+				<li ><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_terkirim'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
 				<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_disetujui'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
 			</ul>
 		</div>
@@ -138,33 +138,30 @@ if ($this->session->userdata('status') != 'login organisasi') {
 
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Ajukan Proposal</h1>
+					<h1 class="page-header">Kirim SPJ</h1>
 				</div>
 			</div><!--/.row-->
 
-			<form enctype="multipart/form-data" action="<?php echo base_url('panel_organisasi/dashboard/do_kirim')?>" method="POST">
+			<form enctype="multipart/form-data" action="<?php echo base_url('panel_organisasi/dashboard/upload_spj')?>" method="POST">
 
 				<div class="form-group row">
 					<label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
 					<div class="col-sm-10">
-						<!-- <?php foreach (array_combine($per, $org) as $data_p => $data_o) { var_dump($per); ?> -->
-						<input type="hidden" name="id_perusahaan" value="<?php echo $per[0]['id_perusahaan'] ?>">
-						<input type="hidden" name="id_organisasi" value="<?php echo $org[0]['id_organisasi'] ?>">
-						<input type="text" class="form-control" name="nama_perusahaan" value="<?php echo $per[0]['nama_perusahaan']; ?>" disabled>
-						<!-- <?php } ?> -->
+						<input type="hidden" name="id_proposal" value="<?php echo $data['id_proposal']; ?>">
+						<input type="text" class="form-control" name="nama_perusahaan" value="<?php echo $data['nama_perusahaan']; ?>" disabled>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="inputEmail3" class="col-sm-2 col-form-label">Upload Proposal</label>
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Upload SPJ</label>
 					<div class="col-sm-10">
-						<input type="file" name="proposal" value="" required="">
+						<input type="file" name="spj" value="" required="">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-sm-10">
-						<button type="submit" class="btn btn-primary">Ajukan Proposal</button>
+						<button type="submit" class="btn btn-primary">Kirim SPJ</button>
 					</div>
 				</div>
 			</form>

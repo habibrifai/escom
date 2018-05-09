@@ -2,7 +2,11 @@
 
 if ($this->session->userdata('status') != 'login organisasi') {
 	redirect(base_url('login'));
-} 
+} else {
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -11,18 +15,13 @@ if ($this->session->userdata('status') != 'login organisasi') {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Organisasi - Dashboard</title>
+	<title>Admin - Verifikasi Akun</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" />
-
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" />
-
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/datepicker3.css" />
-
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/styles.css" />
-
-	<link href="<?php echo base_url(); ?>assets/dist/summernote.css" rel="stylesheet">
 
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -126,78 +125,71 @@ if ($this->session->userdata('status') != 'login organisasi') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 				<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_terkirim'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
-				<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_disetujui'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
+				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_disetujui'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
 			</ul>
 		</div>
 
 		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="#">
+						<em class="fa fa-home"></em>
+					</a></li>
+					<li class="active">Proposal yang Disetujui</li>
+				</ol>
 			</div><!--/.row-->
 
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Ajukan Proposal</h1>
+					<h1 class="page-header">List Proposal</h1>
 				</div>
 			</div><!--/.row-->
+	<?php /*if($cek==0){
+			echo "<p>Belum pernah mengajukan proposal.</p>";
+		} else { */?>
+			<div class="container col-lg-12">
+				<div class="list-group">
+					<?php foreach($proposal as $qry){ ?>
+						<div class="panel panel-primary">
+							<div class="panel-heading"><strong><?php $searches = array('.pdf', '_'); $replacements = array('', ' '); echo str_replace($searches, $replacements,$qry->proposal)?> Untuk Perusahaan <?php echo $qry->nama_perusahaan?></strong></div>
+							<?php if($qry->status_proposal == 'Disetujui'){?>
+								<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a><br>
+									<?=anchor('panel_organisasi/dashboard/lihat_balasan/' . $qry->id_proposal,'Lihat Balasan', ['class'=>'btn btn-primary btn-sm'])?>
+								</div>
+								<?php }elseif($qry->status_proposal == 'Ditolak'){ ?>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-danger"><?php echo $qry->status_proposal?></span></a></div>
+									<?php } else{ ?>
+										<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-default"><?php echo $qry->status_proposal?></span></a></div>
+										<?php } ?>
+									</div>
+									<?php } ?>
+								</div>
+							</div>
+							<?php //} ?>
+						</div><!--/.row-->
+					</div>	<!--/.main-->
 
-			<form enctype="multipart/form-data" action="<?php echo base_url('panel_organisasi/dashboard/do_kirim')?>" method="POST">
+					<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
+					<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
+					<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
+					<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
+					<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
+					<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
+					<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
+					<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
+					<script>
+						window.onload = function () {
+							var chart1 = document.getElementById("line-chart").getContext("2d");
+							window.myLine = new Chart(chart1).Line(lineChartData, {
+								responsive: true,
+								scaleLineColor: "rgba(0,0,0,.2)",
+								scaleGridLineColor: "rgba(0,0,0,.05)",
+								scaleFontColor: "#c5c7cc"
+							});
+						};
+					</script>
 
-				<div class="form-group row">
-					<label for="inputEmail3" class="col-sm-2 col-form-label">Nama Perusahaan</label>
-					<div class="col-sm-10">
-						<!-- <?php foreach (array_combine($per, $org) as $data_p => $data_o) { var_dump($per); ?> -->
-						<input type="hidden" name="id_perusahaan" value="<?php echo $per[0]['id_perusahaan'] ?>">
-						<input type="hidden" name="id_organisasi" value="<?php echo $org[0]['id_organisasi'] ?>">
-						<input type="text" class="form-control" name="nama_perusahaan" value="<?php echo $per[0]['nama_perusahaan']; ?>" disabled>
-						<!-- <?php } ?> -->
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label for="inputEmail3" class="col-sm-2 col-form-label">Upload Proposal</label>
-					<div class="col-sm-10">
-						<input type="file" name="proposal" value="" required="">
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<div class="col-sm-10">
-						<button type="submit" class="btn btn-primary">Ajukan Proposal</button>
-					</div>
-				</div>
-			</form>
-		</div><!--/.row-->
-	</div>	<!--/.main-->
-
-	<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
-	<script src="<?php echo base_url(); ?>assets/dist/summernote.js"></script>
-	<script>
-		window.onload = function () {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive: true,
-				scaleLineColor: "rgba(0,0,0,.2)",
-				scaleGridLineColor: "rgba(0,0,0,.05)",
-				scaleFontColor: "#c5c7cc"
-			});
-		};
-	</script>
-	<script>
-		$(document).ready(function() {
-			$('#summernote').summernote({
-				height: 300,
-			});
-		});
-	</script>
-
-</body>
-</html>
+				</body>
+				</html>

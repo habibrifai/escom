@@ -161,7 +161,7 @@ if ($this->session->userdata('status') != 'login admin') {
 				<h1 class="page-header">List Proposal</h1>
 			</div>
 		</div><!--/.row-->
-		<div class="container">
+		<div class="container col-lg-12">
 			<div class="list-group">
 				<div class="panel panel-info">
 					<div class="panel-heading"><strong>Balasan <?php $searches = array('.pdf', '_'); $replacements = array('', ' '); echo str_replace($searches, $replacements,$balasan->proposal).' dari '.$balasan->nama_perusahaan?></strong></div>

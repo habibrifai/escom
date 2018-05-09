@@ -4,64 +4,82 @@ class M_ctrlOrganisasi extends CI_Model{
 
 	function get_profile($username){
 		$this->db->select('nama_perusahaan, tahun_berdiri, alamat_perusahaan, deskripsi, kategori, foto, no_tlp');
-    $this->db->from('perusahaan');
-    $this->db->join('user', 'user.id_user = perusahaan.id_user');
-    $this->db->where('username', $username);
-    $hasil = $this->db->get();
-    return $hasil->row();
+		$this->db->from('perusahaan');
+		$this->db->join('user', 'user.id_user = perusahaan.id_user');
+		$this->db->where('username', $username);
+		$hasil = $this->db->get();
+		return $hasil->row();
 	}
 
 	function get_profile_byID($id_organisasi){
 		$this->db->select('id_organisasi, nama_organisasi, tahun_berdiri, alamat_organisasi, foto, no_tlp, deskripsi')
-						 ->from('organisasi')
-						 ->where('id_organisasi', $id_organisasi);
+		->from('organisasi')
+		->where('id_organisasi', $id_organisasi);
 		$hasil = $this->db->get()->row();
 		return $hasil;
 	}
 
-  function edit_profile($username, $profil_perusahaan){
-    $this->db->select('id_perusahaan, username')
-             ->from('perusahaan')
-             ->join('user', 'user.id_user = perusahaan.id_user')
-             ->where('username', $username);
-    $hasil = $this->db->get()->row();
+	function edit_profile($username, $profil_perusahaan){
+		$this->db->select('id_perusahaan, username')
+		->from('perusahaan')
+		->join('user', 'user.id_user = perusahaan.id_user')
+		->where('username', $username);
+		$hasil = $this->db->get()->row();
 
-    $this->db->where('id_perusahaan', $hasil->id_perusahaan)
-             ->update('perusahaan',$profil_perusahaan);
+		$this->db->where('id_perusahaan', $hasil->id_perusahaan)
+		->update('perusahaan',$profil_perusahaan);
 	}
 
 	function get_proposal($username){
 		$this->db->select('id_organisasi, username')
-						 ->from('organisasi')
-						 ->join('user', 'user.id_user = organisasi.id_user')
-						 ->where('username', $username);
+		->from('organisasi')
+		->join('user', 'user.id_user = organisasi.id_user')
+		->where('username', $username);
 
 		$hasil = $this->db->get()->row();
 
 		$this->db->select('id_proposal, id_organisasi, nama_perusahaan, proposal, isi_balasan, status_proposal');
-    $this->db->from('proposal');
-    $this->db->join('perusahaan', 'perusahaan.id_perusahaan = proposal.id_perusahaan');
-    $this->db->where('id_organisasi', $hasil->id_organisasi);
+		$this->db->from('proposal');
+		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proposal.id_perusahaan');
+		$this->db->where('id_organisasi', $hasil->id_organisasi);
 						 // ->where('status_proposal', 'belum disetujui');
-    $proposal = $this->db->get();
-    return $proposal->result();
+		$proposal = $this->db->get();
+		return $proposal->result();
+	}
+
+	function get_proposal_disetujui($username){
+		$this->db->select('id_organisasi, username')
+		->from('organisasi')
+		->join('user', 'user.id_user = organisasi.id_user')
+		->where('username', $username);
+
+		$hasil = $this->db->get()->row();
+
+		$this->db->select('id_proposal, id_organisasi, nama_perusahaan, proposal, isi_balasan, status_proposal');
+		$this->db->from('proposal');
+		$this->db->where('status_proposal', 'Disetujui');
+		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proposal.id_perusahaan');
+		$this->db->where('id_organisasi', $hasil->id_organisasi);
+						 // ->where('status_proposal', 'belum disetujui');
+		$proposal = $this->db->get();
+		return $proposal->result();
 	}
 
 	function get_balasan_proposal($id, $username){
 		$this->db->select('id_organisasi, username')
-						 ->from('organisasi')
-						 ->join('user', 'user.id_user = organisasi.id_user')
-						 ->where('username', $username);
+		->from('organisasi')
+		->join('user', 'user.id_user = organisasi.id_user')
+		->where('username', $username);
 
 		$hasil = $this->db->get()->row();
 
-		$this->db->select('id_proposal, id_organisasi, nama_perusahaan, proposal, isi_balasan');
-    $this->db->from('proposal');
-    $this->db->join('perusahaan', 'perusahaan.id_perusahaan = proposal.id_perusahaan');
-    $this->db->where('id_organisasi', $hasil->id_organisasi);
+		$this->db->select('id_proposal, id_organisasi, nama_perusahaan, proposal, isi_balasan, proposal.id_perusahaan');
+		$this->db->from('proposal');
+		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proposal.id_perusahaan');
+		$this->db->where('id_organisasi', $hasil->id_organisasi);
 		$this->db->where('id_proposal', $id);
 						 // ->where('status_proposal', 'belum disetujui');
-    $balasan = $this->db->get();
-    return $balasan->row();
+		$balasan = $this->db->get();
+		return $balasan->row();
 	}
 }

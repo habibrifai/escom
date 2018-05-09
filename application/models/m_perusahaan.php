@@ -82,5 +82,12 @@ class M_perusahaan extends CI_Model{
 		$this->db->where('id_perusahaan', $where);
 		$this->db->update($table, array('jml_proposal_ahir' => $jml));
 	}
+
+	function get_nama($id){	
+		$this->db->select("nama_perusahaan");
+		$this->db->from('perusahaan');
+		$this->db->where('id_perusahaan', $id);
+		return $this->db->get()->result_array();
+	}
 }
 

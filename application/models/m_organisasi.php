@@ -57,4 +57,10 @@ class M_organisasi extends CI_Model{
 		$this->db->from($table);
 		return $this->db->get()->result_array();
 	}
+
+	function upload_spj($data){
+		$this->db->insert('spj', $data);
+		
+
+	}
 }

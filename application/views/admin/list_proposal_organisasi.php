@@ -161,13 +161,13 @@ if ($this->session->userdata('status') != 'login admin') {
 				<h1 class="page-header">List Proposal <?php echo $profil->nama_organisasi?></h1>
 			</div>
 		</div><!--/.row-->
-		<div class="container">
+		<div class="container col-lg-12">
 			<div class="list-group">
 			<?php foreach($proposal as $qry){ ?>
 				<div class="panel panel-primary">
 					<div class="panel-heading"><strong><?php $searches = array('.pdf', '_'); $replacements = array('', ' '); echo str_replace($searches, $replacements,$qry->proposal)?> Untuk Perusahaan <?php echo $qry->nama_perusahaan?></strong></div>
 					<?php if($qry->status_proposal == 'Disetujui'){?>
-					<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a>
+					<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a><br>
 						<?=anchor('admin/dashboard/lihat_balasan/' . $qry->id_proposal,'Lihat Balasan', ['class'=>'btn btn-primary btn-sm'])?>
 					</div>
 				<?php }elseif($qry->status_proposal == 'Ditolak'){ ?>

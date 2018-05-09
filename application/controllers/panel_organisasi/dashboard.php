@@ -22,6 +22,11 @@ class Dashboard extends CI_Controller {
 		$this->load->view('organisasi/proposal_terkirim',$data);
 	}
 
+	public function proposal_disetujui(){
+		$data['proposal'] = $this->m_ctrlOrganisasi->get_proposal_disetujui($this->username);
+		$this->load->view('organisasi/v_kirim_spj',$data);
+	}
+
 	public function lihat_balasan($id){
 		$data['balasan'] = $this->m_ctrlOrganisasi->get_balasan_proposal($id, $this->username);
 		$this->load->view('organisasi/balasan_proposal',$data);
@@ -79,6 +84,47 @@ class Dashboard extends CI_Controller {
 			echo "gagal upload";
 		}
 
+	}
+
+	public function kirim_spj($id_perusahaan, $id_proposal){
+
+		$nama = $this->m_perusahaan->get_nama($id_perusahaan);
+
+		$data['data'] = array(
+			'nama_perusahaan' => $nama[0]['nama_perusahaan'], 
+			'id_proposal' => $id_proposal
+		);
+		
+		$this->load->view('organisasi/kirim_spj', $data);
+	}
+
+	public function upload_spj(){
+
+		$config = array(
+			'upload_path' => 'assets/spj/',
+			'allowed_types' => 'pdf|doc|docx',
+			'max_size' => 15000 //in kb
+		);
+
+		$fileUpload = array();
+		$this->upload->initialize($config);
+
+		if($this->upload->do_upload('spj')){
+			$fileUpload = $this->upload->data();
+			$spj = $fileUpload['file_name'];
+
+			$data = array(
+				'id_proposal' => $this->input->post('id_proposal'),
+				'spj' => $spj
+			);
+
+			$this->m_organisasi->upload_spj($data);
+
+			redirect(base_url('panel_organisasi/dashboard/'));
+
+		} else {
+			echo "gagal upload";
+		}
 	}
 }
 ?>

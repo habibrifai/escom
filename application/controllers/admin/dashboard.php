@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('m_organisasi');
 		$this->load->model('m_ctrlOrganisasi');
 		$this->load->model('m_proposal');
+		$this->load->model('m_spj');
 	}
 
 	public function index(){
@@ -20,7 +21,16 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function list_spj(){
-		$this->load->view('admin/list_spj');
+
+		$id_spj = $this->m_spj->get_id_spj('spj');
+
+		foreach ($id_spj as $key) {
+			# code...
+		}
+
+		$data['spj'] = $this->m_spj->get_data($id_proposal);
+
+		$this->load->view('admin/list_spj', $data);
 	}
 
 	public function list_proposal(){

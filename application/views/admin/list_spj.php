@@ -15,7 +15,7 @@ if ($this->session->userdata('status') != 'login admin') {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin - List SPj</title>
+	<title>Admin - Verifikasi Akun</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" />
@@ -23,9 +23,9 @@ if ($this->session->userdata('status') != 'login admin') {
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/datepicker3.css" />
-	
+
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/styles.css" />
-	
+
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -118,7 +118,7 @@ if ($this->session->userdata('status') != 'login admin') {
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="logout"> 
+							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
@@ -128,7 +128,7 @@ if ($this->session->userdata('status') != 'login admin') {
 		</nav>
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
-				<li class="active"><a href="<?php echo base_url('admin/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li><a href="<?php echo base_url('admin/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 				<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 					<em class="fa fa-users">&nbsp;</em> Verifikasi Akun <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -141,7 +141,8 @@ if ($this->session->userdata('status') != 'login admin') {
 					</a></li>
 				</ul>
 			</li>
-			<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+			<li class="active"><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+			<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
 		</ul>
 	</div>
 
@@ -160,65 +161,58 @@ if ($this->session->userdata('status') != 'login admin') {
 				<h1 class="page-header">List SPJ</h1>
 			</div>
 		</div><!--/.row-->
+		<div class="row">
+			<div class="col-lg-12">
+				<table class="table-read" border="2">
+					<tr>
+						<th>Nama Organisasi</th>
+						<th>Nama Perusahaan</th>
+						<th>SPJ</th>
+						<th>Opsi</th>
+					</tr>
+					
+					
+					<tr>
+						<td class="td-read"><?php echo $spj[2][0]['nama_organisasi']; ?></td>
+						<td class="td-read"><?php echo $spj[1][0]['nama_perusahaan']; ?></td>
+						<td class="td-read"><a href="<?php echo base_url('assets/spj/'.$spj[0]->spj); ?>"><?php echo $spj[0]->spj; ?></a></td>
+						<td>
+							<div style="margin: 10px;">
 
-		<div class="panel panel-container">
-			<div class="row">
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-teal panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">120</div>
-							<div class="text-muted">SPJ</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">Akun Perusahaan</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
-					<div class="panel panel-orange panel-widget border-right">
-						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-							<div class="large">24</div>
-							<div class="text-muted">Akun Organisasi</div>
-						</div>
-					</div>
-				</div>
-		<!-- 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
-						<div class="panel panel-red panel-widget ">
-							<div class="row no-padding"><em class="fa fa-xl fa-search color-red"></em>
-								<div class="large">25.2k</div>
-								<div class="text-muted">Page Views</div>
+								<?=anchor('panel_perusahaan/dashboard/','Teruskan ke Perusahaan', ['class'=>'btn btn-primary btn-sm'])?>
+								<?=anchor('panel_perusahaan/dashboard/','Revisi',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
 							</div>
-						</div>
-					</div> -->
-				</div><!--/.row-->
-			</div>
-		</div><!--/.row-->
-	</div>	<!--/.main-->
 
-	<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
-	<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
-	<script>
-		window.onload = function () {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive: true,
-				scaleLineColor: "rgba(0,0,0,.2)",
-				scaleGridLineColor: "rgba(0,0,0,.05)",
-				scaleFontColor: "#c5c7cc"
-			});
-		};
-	</script>
+							<!-- <?=anchor('panel_perusahaan/dashboard/balas_proposal/' . $qry->id_proposal,'Balas', ['class'=>'btn btn-primary btn-sm'])?>
+							<?=anchor('panel_perusahaan/dashboard/tolak_proposal/' . $qry->id_proposal,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?> -->
+						</td>
+					</tr>
+					
+				</table>
+			</div>
+		</div>
+	</div><!--/.row-->
+</div>	<!--/.main-->
+
+<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
+<script>
+	window.onload = function () {
+		var chart1 = document.getElementById("line-chart").getContext("2d");
+		window.myLine = new Chart(chart1).Line(lineChartData, {
+			responsive: true,
+			scaleLineColor: "rgba(0,0,0,.2)",
+			scaleGridLineColor: "rgba(0,0,0,.05)",
+			scaleFontColor: "#c5c7cc"
+		});
+	};
+</script>
 
 </body>
 </html>
