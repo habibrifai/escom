@@ -63,13 +63,13 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					<span class="txt1 p-b-11">
+					<!-- <span class="txt1 p-b-11">
 						Deskripsi Perusahaan / Organisasi
 					</span>
 					<div class="wrap-input100 validate-input m-b-36" data-validate = "Deskripsi organisasi / perusahaan is required">
 						<textarea class="input100" type="text" name="deskripsi" ></textarea>
 						<span class="focus-input100"></span>
-					</div>
+					</div> -->
 
 					<span class="txt1 p-b-11">
 						Foto Kegiatan

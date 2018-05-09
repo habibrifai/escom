@@ -170,12 +170,12 @@ if ($this->session->userdata('status') != 'login admin') {
 						<th>SPJ</th>
 						<th>Opsi</th>
 					</tr>
-					
-					
+					<?php foreach ($doc as $doc){ ?>
 					<tr>
-						<td class="td-read"><?php echo $spj[2][0]['nama_organisasi']; ?></td>
-						<td class="td-read"><?php echo $spj[1][0]['nama_perusahaan']; ?></td>
-						<td class="td-read"><a href="<?php echo base_url('assets/spj/'.$spj[0]->spj); ?>"><?php echo $spj[0]->spj; ?></a></td>
+						<td class="td-read"><?php echo $doc['nama_organisasi']; ?></td>
+						<td class="td-read"><?php echo $doc['nama_perusahaan']; ?></td>	
+						<td class="td-read"><a href="<?php echo base_url('assets/spj/'.$doc['spj']); ?>"><?php echo $doc['spj']; ?></a></td>
+						
 						<td>
 							<div style="margin: 10px;">
 
@@ -187,7 +187,7 @@ if ($this->session->userdata('status') != 'login admin') {
 							<?=anchor('panel_perusahaan/dashboard/tolak_proposal/' . $qry->id_proposal,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?> -->
 						</td>
 					</tr>
-					
+					<?php } ?>
 				</table>
 			</div>
 		</div>

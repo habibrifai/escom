@@ -7,7 +7,7 @@ class m_register extends CI_Model{
 
 			//buat register ke tabel perusahaan
 			if($datauser['role']=='organisasi'){
-				$query = "INSERT INTO organisasi (id_organisasi, id_user, nama_organisasi, tahun_berdiri, alamat_organisasi, deskripsi, no_tlp, foto)
+				$query = "INSERT INTO organisasi (id_organisasi, id_user, nama_organisasi, tahun_berdiri, alamat_organisasi, no_tlp, foto)
 									VALUES (NULL, (Select id_user FROM user WHERE username = ". "'" .$datauser['username']. "'" . "), '"
 									.$dataclient['nama_organisasi']. "', '"
 									.$dataclient['tahun_berdiri']. "', '"
@@ -17,7 +17,7 @@ class m_register extends CI_Model{
 				$this->db->query($query);
 			}
 			else if($datauser['role']=='perusahaan'){
-				$query = "INSERT INTO perusahaan (id_perusahaan, id_user, nama_perusahaan, tahun_berdiri, alamat_perusahaan, deskripsi, no_tlp, foto)
+				$query = "INSERT INTO perusahaan (id_perusahaan, id_user, nama_perusahaan, tahun_berdiri, alamat_perusahaan, no_tlp, foto)
 									VALUES (NULL, (Select id_user FROM user WHERE username = ". "'" .$datauser['username']. "'" . "), '"
 									.$dataclient['nama_perusahaan']. "', '"
 									.$dataclient['tahun_berdiri']. "', '"

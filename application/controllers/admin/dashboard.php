@@ -22,13 +22,8 @@ class Dashboard extends CI_Controller {
 
 	public function list_spj(){
 
-		$id_spj = $this->m_spj->get_id_spj('spj');
-
-		foreach ($id_spj as $key) {
-			# code...
-		}
-
-		$data['spj'] = $this->m_spj->get_data($id_proposal);
+		$data['doc'] = $this->m_spj->get('spj');
+		
 
 		$this->load->view('admin/list_spj', $data);
 	}
