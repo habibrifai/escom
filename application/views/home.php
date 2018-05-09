@@ -43,7 +43,7 @@
 					<div class="navbar-header">
 						<!-- Logo -->
 						<div class="navbar-brand">
-							<a class="logo" href="."><img src="assets/img/logo.png" alt="logo"></a>
+							<a class="logo" href="."><img src="assets/bg/logo.jpg" alt="logo"></a>
 						</div>
 						<!-- Logo -->
 
