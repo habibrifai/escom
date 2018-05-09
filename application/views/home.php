@@ -22,6 +22,8 @@
 	<!-- Font Awesome Icon -->
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="assets/css/style.css" />
 
@@ -95,163 +97,163 @@
 						<li><a href="#">Contact</a></li> -->
 
 						<?php if ($this->session->userdata('nama')) { ?>
-						<li><a href="login"><?php echo $this->session->userdata('nama'); ?></a></li>
-						<?php } else { ?>
-						<li><a href="login">Login</a></li>
-						<?php } ?>
-					</ul>
-					<!-- Nav menu -->
-				</div>
-			</nav>
-			<!-- /NAVGATION -->
+							<li><a href="login"><?php echo $this->session->userdata('nama'); ?></a></li>
+							<?php } else { ?>
+								<li><a href="login">Login</a></li>
+								<?php } ?>
+							</ul>
+							<!-- Nav menu -->
+						</div>
+					</nav>
+					<!-- /NAVGATION -->
 
-			<!-- HOME OWL -->
-			<div id="home-owl" class="owl-carousel owl-theme">
-				<!-- home item -->
-				<div class="home-item">
-					<!-- section background -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/a.jpg);"></div>
-					<!-- /section background -->
+					<!-- HOME OWL -->
+					<div id="home-owl" class="owl-carousel owl-theme">
+						<!-- home item -->
+						<div class="home-item">
+							<!-- section background -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/a.jpg);"></div>
+							<!-- /section background -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Art</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang kesenian.</p>
-										<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Art</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang kesenian.</p>
+												<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
-					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
+						<!-- /home item -->
 
-				<!-- home item -->
-				<div class="home-item">
-					<!-- Background Image -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/b.jpg);"></div>
-					<!-- /Background Image -->
+						<!-- home item -->
+						<div class="home-item">
+							<!-- Background Image -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/b.jpg);"></div>
+							<!-- /Background Image -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Education</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang pendidikan.</p>
-										<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Education</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang pendidikan.</p>
+												<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
-					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
+						<!-- /home item -->
 
-				<!-- home item -->
-				<div class="home-item">
-					<!-- Background Image -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/c.jpg);"></div>
-					<!-- /Background Image -->
+						<!-- home item -->
+						<div class="home-item">
+							<!-- Background Image -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/c.jpg);"></div>
+							<!-- /Background Image -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Sport</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang olahraga.</p>
-										<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Sport</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang olahraga.</p>
+												<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
-					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
+						<!-- /home item -->
 
-				<!-- home item -->
-				<div class="home-item">
-					<!-- Background Image -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/d.jpg);"></div>
-					<!-- /Background Image -->
+						<!-- home item -->
+						<div class="home-item">
+							<!-- Background Image -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/d.jpg);"></div>
+							<!-- /Background Image -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Health</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang kesehatan.</p>
-										<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Health</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang kesehatan.</p>
+												<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
-					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
+						<!-- /home item -->
 
-				<!-- home item -->
-				<div class="home-item">
-					<!-- Background Image -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/e.jpg);"></div>
-					<!-- /Background Image -->
+						<!-- home item -->
+						<div class="home-item">
+							<!-- Background Image -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/e.jpg);"></div>
+							<!-- /Background Image -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Social</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang sosial.</p>
-										<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Social</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang sosial.</p>
+												<a href="<?php echo base_url('login'); ?>" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
+						<!-- /home item -->
 					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
-			</div>
-			<!-- /HOME OWL -->
-		</header>
-		<!-- /HEADER -->
+					<!-- /HOME OWL -->
+				</header>
+				<!-- /HEADER -->
 
-		<!-- ABOUT -->
-		<div id="about" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- about content -->
-					<div style="text-align: center; margin-bottom: 30px;" class="col-md-12">
-						<div class="section-title">
-							<h2 class="title">Welcome to ESCOM</h2>
-							<p class="sub-title">ESCOM adalah platform aplikasi yang dimaksudkan untuk memungkinkan organisasi atau organisasi menjalin kerjasama sponsorship dengan perusahaan.</p>
-						</div>
-						<div class="about-content">
-							<p>ESCOM didasarkan prinsip crowdfunding yaitu memberi kesempatan untuk mendapatkan pendanaan pada program kegiatan organisasi yang selanjutnya perusahaan menerima keuntungan timbal balik berupa non komersial.</p>
-							<p>Melalui ESCOM perusahaan yang ingin mendukung kegiatan organisasi tim dapat melakukannya dengan cara yang berbeda. Sebagai imbalannya, pihak yang berkontribusi akan mendapatkan peran partisipasi pada kegiatan tersebut.</p>
-							<a href="<?php echo base_url('about'); ?>" class="primary-button">Read More</a>
-						</div>
-					</div><br>
-					<!-- /about content -->
+				<!-- ABOUT -->
+				<div id="about" class="section">
+					<!-- container -->
+					<div class="container">
+						<!-- row -->
+						<div class="row">
+							<!-- about content -->
+							<div style="text-align: center; margin-bottom: 30px;" class="col-md-12">
+								<div class="section-title">
+									<h2 class="title">Welcome to ESCOM</h2>
+									<p class="sub-title">ESCOM adalah platform aplikasi yang dimaksudkan untuk memungkinkan organisasi atau organisasi menjalin kerjasama sponsorship dengan perusahaan.</p>
+								</div>
+								<div class="about-content">
+									<p>ESCOM didasarkan prinsip crowdfunding yaitu memberi kesempatan untuk mendapatkan pendanaan pada program kegiatan organisasi yang selanjutnya perusahaan menerima keuntungan timbal balik berupa non komersial.</p>
+									<p>Melalui ESCOM perusahaan yang ingin mendukung kegiatan organisasi tim dapat melakukannya dengan cara yang berbeda. Sebagai imbalannya, pihak yang berkontribusi akan mendapatkan peran partisipasi pada kegiatan tersebut.</p>
+									<a href="<?php echo base_url('about'); ?>" class="primary-button">Read More</a>
+								</div>
+							</div><br>
+							<!-- /about content -->
 
-					<!-- about video -->
+							<!-- about video -->
 					<!-- <div class="col-md-offset-1 col-md-6">
 						<a href="#" class="about-video">
 							<i class="play-icon fa fa-play"></i>
@@ -451,54 +453,54 @@
 						</div>
 					</div> -->
 					<!-- /causes -->
-				<!-- </div> -->
-				<!-- /row -->
-			<!-- </div> -->
-			<!-- /container -->
-		<!-- </div> -->
-		<!-- /CAUSESS -->
+					<!-- </div> -->
+					<!-- /row -->
+					<!-- </div> -->
+					<!-- /container -->
+					<!-- </div> -->
+					<!-- /CAUSESS -->
 
-		<!-- NUMBERS -->
-		<div id="numbers" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- number -->
-					<div class="col-md-4 col-sm-6">
-						<div class="number">
-							<i class="fa fa-smile-o"></i>
-							<h3>-</h3>
-							<span>Proposal Terdanai</span>
-						</div>
-					</div>
-					<!-- /number -->
+					<!-- NUMBERS -->
+					<div id="numbers" class="section">
+						<!-- container -->
+						<div class="container">
+							<!-- row -->
+							<div class="row">
+								<!-- number -->
+								<div class="col-md-4 col-sm-6">
+									<div class="number">
+										<i class="fas fa-book"></i>
+										<h3>-</h3>
+										<span>Proposal Terdanai</span>
+									</div>
+								</div>
+								<!-- /number -->
 
-					<!-- number -->
-					<div class="col-md-4 col-sm-6">
-						<a href="<?php echo base_url('perusahaan'); ?>">
-							<div class="number">
-								<i class="fa fa-heartbeat"></i>
-								<h3><?php echo $per; ?></h3>
-								<span>Perusahaan yang Terdaftar</span>
-							</div>
-						</a>
-					</div>
-					<!-- /number -->
+								<!-- number -->
+								<div class="col-md-4 col-sm-6">
+									<a href="<?php echo base_url('perusahaan'); ?>">
+										<div class="number">
+											<i class="fas fa-building"></i>
+											<h3><?php echo $per; ?></h3>
+											<span>Perusahaan yang Terdaftar</span>
+										</div>
+									</a>
+								</div>
+								<!-- /number -->
 
-					<!-- number -->
-					<div class="col-md-4 col-sm-6">
-						<a href="<?php echo base_url('organisasi'); ?>">
-							<div class="number">
-								<i class="fa fa-money"></i>
-								<h3><?php echo $org; ?></h3>
-								<span>Organisasi yang Terdaftar</span>
-							</div>
-						</a>
-					</div>
-					<!-- /number -->
+								<!-- number -->
+								<div class="col-md-4 col-sm-6">
+									<a href="<?php echo base_url('organisasi'); ?>">
+										<div class="number">
+											<i class="fas fa-sitemap"></i>
+											<h3><?php echo $org; ?></h3>
+											<span>Organisasi yang Terdaftar</span>
+										</div>
+									</a>
+								</div>
+								<!-- /number -->
 
-					<!-- number -->
+								<!-- number -->
 					<!-- <div class="col-md-3 col-sm-6">
 						<div class="number">
 							<i class="fa fa-handshake-o"></i>
@@ -636,24 +638,24 @@
 						</div>
 					</div> -->
 					<!-- /event -->
-				<!-- </div> -->
-				<!-- /row -->
-			<!-- </div> -->
-			<!-- /container -->
-		<!-- </div> -->
-		<!-- /EVENTS -->
+					<!-- </div> -->
+					<!-- /row -->
+					<!-- </div> -->
+					<!-- /container -->
+					<!-- </div> -->
+					<!-- /EVENTS -->
 
-		<!-- TESTIMONIAL -->
-		<!-- <div id="testimonial" class="section"> -->
-			<!-- background section -->
-			<!-- <div class="section-bg" style="background-image: url(assets/img/background-2.jpg);" data-stellar-background-ratio="0.5"></div> -->
-			<!-- /background section -->
+					<!-- TESTIMONIAL -->
+					<!-- <div id="testimonial" class="section"> -->
+						<!-- background section -->
+						<!-- <div class="section-bg" style="background-image: url(assets/img/background-2.jpg);" data-stellar-background-ratio="0.5"></div> -->
+						<!-- /background section -->
 
-			<!-- container -->
-			<!-- <div class="container"> -->
-				<!-- row -->
-				<!-- <div class="row"> -->
-					<!-- Testimonial owl -->
+						<!-- container -->
+						<!-- <div class="container"> -->
+							<!-- row -->
+							<!-- <div class="row"> -->
+								<!-- Testimonial owl -->
 					<!-- <div class="col-md-12">
 						<div id="testimonial-owl" class="owl-carousel owl-theme"> -->
 							<!-- testimonial -->
@@ -724,32 +726,32 @@
 							</div> -->
 							<!-- /testimonial -->
 						<!-- </div>
-					</div> -->
-					<!-- /Testimonial owl -->
-				<!-- </div> -->
-				<!-- /Row -->
-			<!-- </div> -->
-			<!-- /container -->
-		<!-- </div> -->
-		<!-- /TESTIMONIAL -->
+						</div> -->
+						<!-- /Testimonial owl -->
+						<!-- </div> -->
+						<!-- /Row -->
+						<!-- </div> -->
+						<!-- /container -->
+						<!-- </div> -->
+						<!-- /TESTIMONIAL -->
 
-		<!-- BLOG -->
-		<div id="blog" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- section title -->
-					<div class="col-md-8 col-md-offset-2">
+						<!-- BLOG -->
+						<!-- <div id="blog" class="section"> -->
+							<!-- container -->
+							<!-- <div class="container"> -->
+								<!-- row -->
+								<!-- <div class="row"> -->
+									<!-- section title -->
+					<!-- <div class="col-md-8 col-md-offset-2">
 						<div class="section-title text-center">
 							<h2 class="title">Our Blog</h2>
 							<p class="sub-title">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang </p>
 						</div>
-					</div>
+					</div> -->
 					<!-- /section title -->
 
 					<!-- blog -->
-					<div class="col-md-4">
+					<!-- <div class="col-md-4">
 						<div class="article">
 							<div class="article-img">
 								<a href="single-blog.html">
@@ -766,11 +768,11 @@
 								<p>Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang </p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- /blog -->
 
 					<!-- blog -->
-					<div class="col-md-4">
+					<!-- <div class="col-md-4">
 						<div class="article">
 							<div class="article-img">
 								<a href="single-blog.html">
@@ -787,11 +789,11 @@
 								<p>Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang </p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- /blog -->
 
 					<!-- blog -->
-					<div class="col-md-4">
+					<!-- <div class="col-md-4">
 						<div class="article">
 							<div class="article-img">
 								<a href="single-blog.html">
@@ -808,41 +810,51 @@
 								<p>Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang </p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- /blog -->
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /BLOG -->
+					<!-- </div> -->
+					<!-- /row -->
+					<!-- </div> -->
+					<!-- /container -->
+					<!-- </div> -->
+					<!-- /BLOG -->
 
-		<!-- FOOTER -->
-		<footer id="footer" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- footer contact -->
-					<div class="col-md-4">
-						<div class="footer">
-							<div class="footer-logo">
-								<a class="logo" href="#"><img src="assets/img/logo.png" alt=""></a>
-							</div>
-							<p>Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang </p>
-							<ul class="footer-contact">
-								<li><i class="fa fa-map-marker"></i> 2736 Hinkle Deegan Lake Road</li>
-								<li><i class="fa fa-phone"></i> 607-279-9246</li>
-								<li><i class="fa fa-envelope"></i> <a href="#">Charity@email.com</a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- /footer contact -->
+					<!-- FOOTER -->
+					<footer id="footer" class="section">
+						<!-- container -->
+						<div class="container">
+							<!-- row -->
+							<div class="row">
+								<div style="text-align: center;" class="section-title">
+									<h3 class="title">Contact Us</h3>
+								</div>
+								<!-- footer contact -->
+								<div style="text-align: center;" class="col-md-6">
+									
+									<div class="footer">
+										<div class="footer-logo">
+											<img style="width: 150px; border-radius: 15px;" src="assets/bg/logo.jpg" alt="">
+										</div>						
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="footer">
+										<!-- <p>Jadilah bagian dari kami sebagai penyedia atau penerima sponsor.</p> -->
+										<ul class="footer-contact">
+											<li><i class="fa fa-phone"></i><a> 081 - 217 - 131 - 747</a></li>
+											<li><i class="fa fa-envelope"></i><a href="https://www.gmail.com"> escom0518@gmail.com</a></li>
+											<li><i class="fab fa-facebook-square"></i><a> escom</a></li>
+											<li><i class="fab fa-instagram"></i><a> escom0518</a></li>
+											<li><i class="fab fa-line"></i><a> @svs9858v</a></li>
+										</ul>
+									</div>
+								</div>
+								<!-- /footer contact -->
 
-					<!-- footer galery -->
-					<div class="col-md-4">
-						<div class="footer">
-							<h3 class="footer-title">Galery</h3>
+								<!-- footer galery -->
+					<!-- <div class="col-md-4">
+						<div class="footer"> -->
+							<!-- <h3 class="footer-title">Galery</h3>
 							<ul class="footer-galery">
 								<li><a href="#"><img src="assets/img/galery-1.jpg" alt=""></a></li>
 								<li><a href="#"><img src="assets/img/galery-2.jpg" alt=""></a></li>
@@ -850,50 +862,50 @@
 								<li><a href="#"><img src="assets/img/galery-4.jpg" alt=""></a></li>
 								<li><a href="#"><img src="assets/img/galery-5.jpg" alt=""></a></li>
 								<li><a href="#"><img src="assets/img/galery-6.jpg" alt=""></a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- /footer galery -->
+							</ul> -->
+						<!-- </div>
+						</div> -->
+						<!-- /footer galery -->
 
-					<!-- footer newsletter -->
-					<div class="col-md-4">
-						<div class="footer">
-							<h3 class="footer-title">Newsletter</h3>
+						<!-- footer newsletter -->
+					<!-- <div class="col-md-4">
+						<div class="footer"> -->
+							<!-- <h3 class="footer-title">Newsletter</h3>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
 							<form class="footer-newsletter">
 								<input class="input" type="email" placeholder="Enter your email">
 								<button class="primary-button">Subscribe</button>
-							</form>
-							<ul class="footer-social">
+							</form> -->
+							<!-- <ul class="footer-social">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 								<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							</ul>
-						</div>
+							</ul> -->
+						<!-- </div>
+						</div> -->
+						<!-- /footer newsletter -->
 					</div>
-					<!-- /footer newsletter -->
-				</div>
-				<!-- /row -->
+					<!-- /row -->
 
-				<!-- footer copyright & nav -->
-				<div id="footer-bottom" class="row">
-					<div class="col-md-6 col-md-push-6">
-						<ul class="footer-nav">
+					<!-- footer copyright & nav -->
+					<div id="footer-bottom" class="row">
+						<div class="col-md-6 col-md-push-6">
+						<!-- <ul class="footer-nav">
 							<li><a href="#">Home</a></li>
 							<li><a href="#">About</a></li>
 							<li><a href="#">Causes</a></li>
 							<li><a href="#">Events</a></li>
 							<li><a href="#">Blog</a></li>
 							<li><a href="#">Contact</a></li>
-						</ul>
+						</ul> -->
 					</div>
 
 					<div class="col-md-6 col-md-pull-6">
 						<div class="footer-copyright">
 							<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 							</div>
 						</div>
