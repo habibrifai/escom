@@ -135,71 +135,73 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 			</ul>
 		</div>
 
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#">
-					<em class="fa fa-home"></em>
-				</a></li>
-				<li class="active">Verifiksi Akun</li>
-			</ol>
-		</div><!--/.row-->
+		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+			<div class="row">
+				<ol class="breadcrumb">
+					<li><a href="#">
+						<em class="fa fa-home"></em>
+					</a></li>
+					<li class="active">Verifiksi Akun</li>
+				</ol>
+			</div><!--/.row-->
 
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">List Proposal</h1>
-			</div>
-		</div><!--/.row-->
-	<?php if($cek==0){
-			echo "<p>Tidak ada Proposal yang masuk. </p>";
-		} else { ?>
-		<div class="row">
-			<div class="col-lg-12">
-				<table class="table-read" border="2">
-					<tr>
-						<th>Nama Organisasi</th>
-						<th>Tanggal Pengajuan</th>
-						<th>Proposal</th>
-						<th>Opsi</th>
-					</tr>
-					<?php
-					foreach ($proposal as $qry) { ?>
-					<tr>
-						<td class="td-read"><!--<img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>">--><a href=#><?php echo $qry->nama_organisasi; ?></a></td>
-						<td class="td-read"><?php echo $qry->tanggal_pengajuan; ?></td>
-						<td class="td-read"><?php echo $qry->proposal; ?></td>
-						<td>
-							<?=anchor('panel_perusahaan/dashboard/balas_proposal/' . $qry->id_proposal,'Balas', ['class'=>'btn btn-primary btn-sm'])?>
-							<?=anchor('panel_perusahaan/dashboard/tolak_proposal/' . $qry->id_proposal,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
-						</td>
-					</tr>
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">List Proposal</h1>
+				</div>
+			</div><!--/.row-->
+			<?php if($cek==0){
+				echo "<p>Tidak ada Proposal yang masuk. </p>";
+			} else { ?>
+				<div class="row">
+					<div class="col-lg-12">
+						<table class="table-read" border="2">
+							<tr>
+								<th>Nama Organisasi</th>
+								<th>Tanggal Pengajuan</th>
+								<th>Proposal</th>
+								<th>Opsi</th>
+							</tr>
+							<?php
+							foreach ($proposal as $qry) { ?>
+								<tr>
+									<td class="td-read"><!--<img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>">--><a href=#><?php echo $qry->nama_organisasi; ?></a></td>
+									<td class="td-read"><?php echo $qry->tanggal_pengajuan; ?></td>
+									<td class="td-read"><a href="<?php echo base_url('assets/proposal/'.$qry->proposal); ?>"><?php echo $qry->proposal; ?></a></td>
+									<td>
+										<div style="margin: 15px;">
+											<?=anchor('panel_perusahaan/dashboard/balas_proposal/' . $qry->id_proposal,'Balas', ['class'=>'btn btn-primary btn-sm'])?>
+											<?=anchor('panel_perusahaan/dashboard/tolak_proposal/' . $qry->id_proposal,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
+										</div>
+									</td>
+								</tr>
+								<?php } ?>
+							</table>
+						</div>
+					</div>
 					<?php } ?>
-				</table>
-			</div>
-		</div>
-	<?php } ?>
-	</div><!--/.row-->
-</div>	<!--/.main-->
+				</div><!--/.row-->
+			</div>	<!--/.main-->
 
-<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
-<script>
-	window.onload = function () {
-		var chart1 = document.getElementById("line-chart").getContext("2d");
-		window.myLine = new Chart(chart1).Line(lineChartData, {
-			responsive: true,
-			scaleLineColor: "rgba(0,0,0,.2)",
-			scaleGridLineColor: "rgba(0,0,0,.05)",
-			scaleFontColor: "#c5c7cc"
-		});
-	};
-</script>
+			<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
+			<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
+			<script src="<?php echo base_url(); ?>assets/admin/js/chart.min.js"></script>
+			<script src="<?php echo base_url(); ?>assets/admin/js/chart-data.js"></script>
+			<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart.js"></script>
+			<script src="<?php echo base_url(); ?>assets/admin/js/easypiechart-data.js"></script>
+			<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap-datepicker.js"></script>
+			<script src="<?php echo base_url(); ?>assets/admin/js/custom.js"></script>
+			<script>
+				window.onload = function () {
+					var chart1 = document.getElementById("line-chart").getContext("2d");
+					window.myLine = new Chart(chart1).Line(lineChartData, {
+						responsive: true,
+						scaleLineColor: "rgba(0,0,0,.2)",
+						scaleGridLineColor: "rgba(0,0,0,.05)",
+						scaleFontColor: "#c5c7cc"
+					});
+				};
+			</script>
 
-</body>
-</html>
+		</body>
+		</html>

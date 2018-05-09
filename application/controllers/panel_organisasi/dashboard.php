@@ -67,7 +67,9 @@ class Dashboard extends CI_Controller {
 			$data = array(
 				'id_organisasi' => $this->input->post('id_organisasi'),
 				'id_perusahaan' => $this->input->post('id_perusahaan'),
-				'proposal' => $proposal
+				'proposal' => $proposal,
+				'tanggal_pengajuan' => date("d-m-Y"),
+				'status_proposal' => 'belum disetujui'
 			);
 
 			$this->m_proposal->upload_proposal($data);
@@ -78,7 +80,7 @@ class Dashboard extends CI_Controller {
 
 			$this->m_perusahaan->update_jml_proposal('perusahaan',$jml,$data['id_perusahaan']);
 
-			// $this->load->view('organisasi/proposal_terkirim');
+			$this->load->view('organisasi/proposal_terkirim');
 
 		} else {
 			echo "gagal upload";
