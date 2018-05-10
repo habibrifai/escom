@@ -41,7 +41,7 @@
 					<div class="navbar-header">
 						<!-- Logo -->
 						<div class="navbar-brand">
-							<a class="logo" href="."><img src="<?php echo base_url() ?>assets/img/logo.png" alt="logo"></a>
+							<a class="logo" href="."><img src="<?php echo base_url() ?>assets/bg/logo.jpg" alt="logo"></a>
 						</div>
 						<!-- Logo -->
 
@@ -292,7 +292,7 @@
 					<div class="col-md-6 col-md-pull-6">
 						<div class="footer-copyright">
 							<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved || Colorlib || edited by Sistem Informasi ITS '15
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 							</div>
 						</div>

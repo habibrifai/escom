@@ -42,87 +42,14 @@ if ($this->session->userdata('status') != 'login admin') {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
 					<a class="navbar-brand" href="#"><span>ESCOM</span></a>
-					<ul class="nav navbar-top-links navbar-right">
+					<a style="float: right; font-size: 15px;" class="navbar-brand" href="#"><span>Welcome <?php echo $this->session->userdata('nama'); ?></span></a>
+					<!-- <ul class="nav navbar-top-links navbar-right">
 						<li class="dropdown">
-							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-								<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
-							</a>
-							<ul class="dropdown-menu dropdown-messages">
-								<li>
-									<div class="dropdown-messages-box">
-										<a href="profile.html" class="pull-left">
-											<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
-										</a>
-										<div class="message-body"><small class="pull-right">3 mins ago</small>
-											<a href="#">
-												<strong>John Doe</strong> commented on <strong>your photo</strong>.
-											</a>
-											<br /><small class="text-muted">1:24 pm - 25/03/2015</small>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="dropdown-messages-box">
-										<a href="profile.html" class="pull-left">
-											<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
-										</a>
-										<div class="message-body"><small class="pull-right">1 hour ago</small>
-											<a href="#">New message from <strong>Jane Doe</strong>.
-											</a>
-											<br /><small class="text-muted">12:27 pm - 25/03/2015</small>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="all-button">
-										<a href="#">
-											<em class="fa fa-inbox"></em> <strong>All Messages</strong>
-										</a>
-									</div>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-								<em class="fa fa-bell"></em><span class="label label-info">5</span>
-							</a>
-							<ul class="dropdown-menu dropdown-alerts">
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-envelope"></em> 1 New Message
-											<span class="pull-right text-muted small">3 mins ago</span>
-										</div>
-									</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-heart"></em> 12 New Likes
-											<span class="pull-right text-muted small">4 mins ago</span>
-										</div>
-									</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-user"></em> 5 New Followers
-											<span class="pull-right text-muted small">4 mins ago</span>
-										</div>
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="logout"> 
+							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 			</div><!-- /.container-fluid -->
 		</nav>
@@ -142,6 +69,8 @@ if ($this->session->userdata('status') != 'login admin') {
 					</ul>
 				</li>
 				<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
+				<li><a href="<?php echo base_url('logout'); ?>"><em class="fa fa-sign-out">&nbsp;</em> Logout</a></li>
 			</ul>
 		</div>
 
@@ -161,54 +90,32 @@ if ($this->session->userdata('status') != 'login admin') {
 			</div>
 		</div><!--/.row-->
 
-		<div class="row">
-			<div class="col-lg-12">
-				<table class="table-read" border="2">
-					<tr>
-						<th>Foto</th>
-						<th>Nama Perusahaan</th>
-						<th>Deskripsi</th>
-						<th>Alamat Perusahaan</th>
-						<th>Tahun Berdiri</th>
-						<th>E-mail</th>
-						<th>No Telepon</th>
-						<th>Opsi</th>
-					</tr>
-
-					<?php
-					foreach ($qry as $data) { ?>					
-
-					<tr>
-						<td class="td-read"><img height="140px" width="200px" src="<?php echo base_url('assets/gambar/').$data['foto']; ?>"></td>
-						<td class="td-read"><?php echo $data["nama_perusahaan"]; ?></td>
-						<td class="td-read"><?php echo $data["deskripsi"]; ?></td>
-						<td class="td-read"><?php echo $data["alamat_perusahaan"]; ?></td>
-						<td class="td-read"><?php echo $data["tahun_berdiri"]; ?></td>
-						<td class="td-read"><?php echo $data["email"]; ?></td>
-						<td class="td-read"><?php echo $data["no_tlp"]; ?></td>
-						<td>
-
-							<?php
-							if ($data["status"] == "terverifikasi") { ?>
-							<a href=""><button style="margin: 7px;" class="btn btn-sm btn-success">Verified</button></a>
-							<?php } elseif ($data["status"] == "belum terverifikasi") { ?>
-							<form method="POST" action="do_verif_perusahaan">
-								<input type="hidden" name="id_user" value="<?php echo $data['id_user']; ?>">
-								<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_perusahaan']; ?>">
-								<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Verifikasi</button></a>
-							</form>
-							<form method="POST" action="lol">
-								<input type="hidden" name="id_user" value="<?php echo $data['id_user']; ?>">
-								<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_perusahaan']; ?>">
-								<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-danger">Hapus</button></a>
-							</form>		
-							<?php } ?>				
-						</td>
-					</tr>
-					<?php } ?>
-				</table>
-			</div>
-		</div>
+		<div class="container col-lg-12">
+			<div class="list-group">
+				<?php foreach($qry as $data){ ?>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<strong>
+								<?php echo $data['nama_perusahaan'] ?>
+							</strong>
+						</div>
+						
+						<div class="panel-body"><a href="<?php echo base_url('admin/verif_akun/detail_akun_perusahaan').$data['id_perusahaan']; ?>" class="list-group-item"><?php echo $data['alamat_perusahaan']; ?>
+						<?php if($data['status'] == 'terverifikasi'){  ?>
+							<span style="font-size:15px;" class="badge label label-success">
+								<?php echo $data['status'] ?>
+							</span></a>
+							<?php } elseif($data['status'] == 'belum terverifikasi'){ ?>
+								<span style="font-size:15px;" class="badge label label-warning">
+									<?php echo $data['status'] ?>
+								</span></a>
+								<?php } ?>
+								<br><?=anchor('admin/verif_akun/detail_akun_perusahaan/'.$data['id_perusahaan'],'Detail', ['class'=>'btn btn-primary btn-sm'])?>
+							</div>
+						</div><br><!--/.row-->
+						<?php } ?>
+					</div>
+				</div>
 
 	</div><!--/.row-->
 </div>	<!--/.main-->

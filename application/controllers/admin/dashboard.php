@@ -44,5 +44,12 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/balasan_proposal_organisasi',$data);
 	}
 
+	public function update_status($id_spj){
+		$data = array('status_spj' => 'Cleared');
+		$this->m_spj->update_status($id_spj, $data);
+
+		redirect(base_url('admin/dashboard/list_spj'));
+	}
+
 }
 ?>

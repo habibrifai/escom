@@ -16,8 +16,8 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function index(){
-			$data['notif'] = $this->notif;
-			$this->load->view('perusahaan/dashboard', $data);
+		$data['notif'] = $this->notif;
+		$this->load->view('perusahaan/dashboard', $data);
 		// $this->m_perusahaan->reset_jml($id_per);
 	}
 
@@ -37,55 +37,54 @@ class Dashboard extends CI_Controller {
 
 	public function edit_profil(){
 
-			$this->form_validation->set_rules('nama', 'Nama Perusahaan', 'required');
-			$this->form_validation->set_rules('tahun', 'Tahun Berdiri', 'required');
-			$this->form_validation->set_rules('alamat', 'Alamat Perusahaan', 'required');
-			$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
-			$this->form_validation->set_rules('notelp', 'No. Telepon', 'required');
-			$this->form_validation->set_rules('kategori', 'kategori', 'required');
+		$this->form_validation->set_rules('nama', 'Nama Perusahaan', 'required');
+		$this->form_validation->set_rules('tahun', 'Tahun Berdiri', 'required');
+		$this->form_validation->set_rules('alamat', 'Alamat Perusahaan', 'required');
+		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+		$this->form_validation->set_rules('notelp', 'No. Telepon', 'required');
+		$this->form_validation->set_rules('kategori', 'kategori', 'required');
 
-			if($this->form_validation->run() == false){
-					$data['notif'] = $this->notif;
-    			$data['profil'] = $this->m_ctrlPerusahaan->get_profile($this->username);
-					$this->load->view('perusahaan/Edit_profil', $data);
-				}
-				else{
-					$profil_perusahaan = array(
-						'nama_perusahaan' => set_value('nama'),
-						'tahun_berdiri' => set_value('tahun'),
-						'alamat_perusahaan' => set_value('alamat'),
-						'deskripsi' => set_value('deskripsi'),
-						'kategori' => set_value('kategori'),
-						'foto' => set_value('foto'),
-						'no_tlp' => set_value('notelp'),
-						);
+		if($this->form_validation->run() == false){
+			$data['notif'] = $this->notif;
+			$data['profil'] = $this->m_ctrlPerusahaan->get_profile($this->username);
+			$this->load->view('perusahaan/Edit_profil', $data);
+		}
+		else{
+			$profil_perusahaan = array(
+				'nama_perusahaan' => set_value('nama'),
+				'tahun_berdiri' => set_value('tahun'),
+				'alamat_perusahaan' => set_value('alamat'),
+				'deskripsi' => set_value('deskripsi'),
+				'kategori' => set_value('kategori'),
+				'no_tlp' => set_value('notelp'),
+			);
 			$this->m_ctrlPerusahaan->edit_profile($this->username, $profil_perusahaan);
 			redirect(base_url('panel_perusahaan/dashboard/edit_profil'));
-			}
 		}
+	}
 
 	public function balas_proposal($id){
 		$this->form_validation->set_rules('balasan', 'Balasan Proposal', 'required');
 
 		if($this->form_validation->run() == false){
-				$data['notif'] = $this->notif;
-				$data['propos'] = $this->m_ctrlPerusahaan->get_detail_proposal($id);
-				$this->load->view('perusahaan/Balas_proposal', $data);
-			}
-			else{
-				$balasan = array(
-					'isi_balasan' => set_value('balasan'),
-					'status_proposal' => 'Disetujui'
-					);
-		$this->m_ctrlPerusahaan->balas_proposaldb($id, $balasan);
-		redirect(base_url('panel_perusahaan/dashboard/'));
+			$data['notif'] = $this->notif;
+			$data['propos'] = $this->m_ctrlPerusahaan->get_detail_proposal($id);
+			$this->load->view('perusahaan/Balas_proposal', $data);
+		}
+		else{
+			$balasan = array(
+				'isi_balasan' => set_value('balasan'),
+				'status_proposal' => 'Disetujui'
+			);
+			$this->m_ctrlPerusahaan->balas_proposaldb($id, $balasan);
+			redirect(base_url('panel_perusahaan/dashboard/'));
 		}
 	}
 
 	public function tolak_proposal($id){
 		$tolak = array(
 			'status_proposal' => 'Ditolak'
-			);
+		);
 		$this->m_ctrlPerusahaan->tolak_proposaldb($id, $tolak);
 		redirect(base_url('panel_perusahaan/dashboard/'));
 	}

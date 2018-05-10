@@ -11,6 +11,15 @@ class M_ctrlOrganisasi extends CI_Model{
 		return $hasil->row();
 	}
 
+	function get_profil($username){
+		$this->db->select('nama_organisasi, tahun_berdiri, alamat_organisasi, deskripsi, no_tlp, id_organisasi');
+		$this->db->from('organisasi');
+		$this->db->join('user', 'user.id_user = organisasi.id_user');
+		$this->db->where('username', $username);
+		$hasil = $this->db->get();
+		return $hasil->row();
+	}
+
 	function get_profile_byID($id_organisasi){
 		$this->db->select('id_organisasi, nama_organisasi, tahun_berdiri, alamat_organisasi, foto, no_tlp, deskripsi')
 		->from('organisasi')
@@ -81,5 +90,10 @@ class M_ctrlOrganisasi extends CI_Model{
 						 // ->where('status_proposal', 'belum disetujui');
 		$balasan = $this->db->get();
 		return $balasan->row();
+	}
+
+	function update_profil($id_organisasi,$data){
+		$this->db->where('id_organisasi', $id_organisasi);
+		$this->db->update('organisasi', $data);
 	}
 }

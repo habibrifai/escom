@@ -5,8 +5,15 @@ class M_perusahaan extends CI_Model{
 	function get_data($table){	
 		$this->db->select("foto,kategori,nama_perusahaan,deskripsi,tahun_berdiri,alamat_perusahaan,user.email,user.status,no_tlp,user.id_user,perusahaan.id_perusahaan");
 		$this->db->from($table);
-		$this->db->where('status', 'terverifikasi');
 		$this->db->join('user', 'user.id_user = perusahaan.id_user');	
+		return $this->db->get()->result_array();
+	}	
+
+	function detail($table,$id){	
+		$this->db->select("foto,kategori,nama_perusahaan,deskripsi,tahun_berdiri,alamat_perusahaan,user.email,user.status,no_tlp,user.id_user,perusahaan.id_perusahaan");
+		$this->db->from($table);
+		$this->db->join('user', 'user.id_user = perusahaan.id_user');	
+		$this->db->where('id_perusahaan', $id);
 		return $this->db->get()->result_array();
 	}	
 

@@ -825,19 +825,19 @@
 						<div class="container">
 							<!-- row -->
 							<div class="row">
-								<div style="text-align: center;" class="section-title">
+								<!-- <div style="text-align: center;" class="section-title">
 									<h3 class="title">Contact Us</h3>
-								</div>
+								</div> -->
 								<!-- footer contact -->
-								<div style="text-align: center;" class="col-md-6">
-									
+								<div style="text-align: center;" class="col-md-4">
+									<h3 class="footer-title">Contact Us</h3>
 									<div class="footer">
 										<div class="footer-logo">
 											<img style="width: 150px; border-radius: 15px;" src="assets/bg/logo.jpg" alt="">
 										</div>						
 									</div>
 								</div>
-								<div class="col-6">
+								<div class="col-md-4">
 									<div class="footer">
 										<!-- <p>Jadilah bagian dari kami sebagai penyedia atau penerima sponsor.</p> -->
 										<ul class="footer-contact">
@@ -847,6 +847,16 @@
 											<li><i class="fab fa-instagram"></i><a> escom0518</a></li>
 											<li><i class="fab fa-line"></i><a> @svs9858v</a></li>
 										</ul>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="footer">
+										<h3 class="footer-title">How to Apply</h3>
+										<p>You can click the link below to know more about how to apply proposal in this website.</p>
+										<form action="<?php echo base_url('assets/doc/HOW_TO_APPLY.docx'); ?>" class="footer-newsletter">
+											<!-- <input class="input" type="email" placeholder="Enter your email"> -->
+											<button class="primary-button">Download </button>
+										</form>
 									</div>
 								</div>
 								<!-- /footer contact -->

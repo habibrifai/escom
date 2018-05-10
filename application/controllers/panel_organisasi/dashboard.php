@@ -117,6 +117,7 @@ class Dashboard extends CI_Controller {
 
 			$data = array(
 				'id_proposal' => $this->input->post('id_proposal'),
+				'status_spj' => 'idle',
 				'spj' => $spj
 			);
 
@@ -127,6 +128,26 @@ class Dashboard extends CI_Controller {
 		} else {
 			echo "gagal upload";
 		}
+	}
+
+	public function edit_profil(){
+		$data['profil'] = $this->m_ctrlOrganisasi->get_profil($this->username);
+		$this->load->view('organisasi/edit_profil', $data);
+
+	}
+
+	public function do_update_profil(){
+		$id = $this->input->post('id');
+		$data = array(
+			'nama_organisasi' => $this->input->post('nama'),
+			'tahun_berdiri' => $this->input->post('tahun'),
+			'alamat_organisasi' => $this->input->post('alamat'),
+			'deskripsi' => $this->input->post('deskripsi'),
+			'no_tlp' => $this->input->post('notelp')
+		);
+
+		$this->m_ctrlOrganisasi->update_profil($id, $data);
+		redirect(base_url('panel_organisasi/dashboard/edit_profil'));
 	}
 }
 ?>

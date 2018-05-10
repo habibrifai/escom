@@ -9,6 +9,14 @@ class M_organisasi extends CI_Model{
 		return $this->db->get()->result_array();
 	}
 
+	function detail($table,$id){
+		$this->db->select("foto,nama_organisasi,deskripsi,tahun_berdiri,alamat_organisasi,user.email,user.status,no_tlp,user.id_user,organisasi.id_organisasi");
+		$this->db->from($table);
+		$this->db->join('user', 'user.id_user = organisasi.id_user');
+		$this->db->where('id_organisasi', $id);
+		return $this->db->get()->result_array();
+	}
+
 	function get_id($table,$username){
 		$this->db->select("organisasi.id_organisasi");
 		$this->db->from($table);

@@ -16,6 +16,13 @@ class Verif_akun extends CI_Controller {
 		$this->load->view('admin/verif_akun_perusahaan', $data);
 	}
 
+	public function detail_akun_perusahaan($id){
+
+		$data['qry'] = $this->m_perusahaan->detail("perusahaan",$id);
+
+		$this->load->view('admin/detail_akun_perusahaan', $data);
+	}
+
 	public function do_verif_perusahaan(){
 		$id_user = $this->input->post('id_user');
 		$this->m_perusahaan->do_verif("user",$id_user);
@@ -29,6 +36,13 @@ class Verif_akun extends CI_Controller {
 		$data['qry'] = $this->m_organisasi->get_data("organisasi");
 
 		$this->load->view('admin/verif_akun_organisasi', $data);
+	}
+
+	public function detail_akun_organisasi($id){
+
+		$data['qry'] = $this->m_organisasi->detail("organisasi",$id);
+
+		$this->load->view('admin/detail_akun_organisasi', $data);
 	}
 
 	public function do_verif_organisasi(){

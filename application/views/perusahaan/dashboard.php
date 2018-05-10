@@ -42,13 +42,16 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
 					<a class="navbar-brand" href="#"><span>ESCOM</span></a>
-					<ul class="nav navbar-top-links navbar-right">
-						<li class="dropdown">
-							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
-								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
-							</a>
-						</li>
-					</ul>
+					<a style="float: right; font-size: 15px;" class="navbar-brand" href="#"><span>Welcome <?php echo $this->session->userdata('nama'); ?></span></a>
+					<!-- <div>
+						<ul class="nav navbar-top-links" style="float: right;">
+							<li class="dropdown">
+								<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
+									<p style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
+								</a>
+							</li>
+						</ul>
+					</div> -->
 				</div>
 			</div><!-- /.container-fluid -->
 		</nav>
@@ -62,6 +65,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				<?php }else{ ?>
 					<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal </a></li>
 				<?php } ?>
+				<li><a href="<?php echo base_url('logout'); ?>"><em class="fa fa-sign-out">&nbsp;</em> Logout</a></li>
 			</ul>
 		</div>
 
@@ -72,7 +76,6 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 						<em class="fa fa-home"></em>
 					</a></li>
 					<li class="active">Dashboard</li>
-					<li class="active">Welcome <?php echo $this->session->userdata('nama'); ?></li>
 				</ol>
 			</div><!--/.row-->
 

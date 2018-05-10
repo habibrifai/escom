@@ -42,87 +42,14 @@ if ($this->session->userdata('status') != 'login admin') {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
 					<a class="navbar-brand" href="#"><span>ESCOM</span></a>
-					<ul class="nav navbar-top-links navbar-right">
-						<li class="dropdown">
-							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-								<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
-							</a>
-							<ul class="dropdown-menu dropdown-messages">
-								<li>
-									<div class="dropdown-messages-box">
-										<a href="profile.html" class="pull-left">
-											<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
-										</a>
-										<div class="message-body"><small class="pull-right">3 mins ago</small>
-											<a href="#">
-												<strong>John Doe</strong> commented on <strong>your photo</strong>.
-											</a>
-											<br /><small class="text-muted">1:24 pm - 25/03/2015</small>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="dropdown-messages-box">
-										<a href="profile.html" class="pull-left">
-											<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
-										</a>
-										<div class="message-body"><small class="pull-right">1 hour ago</small>
-											<a href="#">New message from <strong>Jane Doe</strong>.
-											</a>
-											<br /><small class="text-muted">12:27 pm - 25/03/2015</small>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="all-button">
-										<a href="#">
-											<em class="fa fa-inbox"></em> <strong>All Messages</strong>
-										</a>
-									</div>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-								<em class="fa fa-bell"></em><span class="label label-info">5</span>
-							</a>
-							<ul class="dropdown-menu dropdown-alerts">
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-envelope"></em> 1 New Message
-											<span class="pull-right text-muted small">3 mins ago</span>
-										</div>
-									</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-heart"></em> 12 New Likes
-											<span class="pull-right text-muted small">4 mins ago</span>
-										</div>
-									</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#">
-										<div>
-											<em class="fa fa-user"></em> 5 New Followers
-											<span class="pull-right text-muted small">4 mins ago</span>
-										</div>
-									</a>
-								</li>
-							</ul>
-						</li>
+					<a style="float: right; font-size: 15px;" class="navbar-brand" href="#"><span>Welcome <?php echo $this->session->userdata('nama'); ?></span></a>
+					<!-- <ul class="nav navbar-top-links navbar-right">
 						<li class="dropdown">
 							<a class="dropdown-toggle count-info" href="<?php echo base_url('logout'); ?>">
 								<p onMouseOver="this.style.color='#30a5ff'" onMouseOut="this.style.color='#FFF'" style="font-size: 15px; color: #FFF"><i class="fa fa-sign-out fa-fw"></i></p>
 							</a>
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 			</div><!-- /.container-fluid -->
 		</nav>
@@ -143,6 +70,7 @@ if ($this->session->userdata('status') != 'login admin') {
 			</li>
 			<li class="active"><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
 			<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
+			<li><a href="<?php echo base_url('logout'); ?>"><em class="fa fa-sign-out">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div>
 
@@ -172,19 +100,22 @@ if ($this->session->userdata('status') != 'login admin') {
 					</tr>
 					<?php foreach ($doc as $doc){ ?>
 					<tr>
+						
 						<td class="td-read"><?php echo $doc['nama_organisasi']; ?></td>
 						<td class="td-read"><?php echo $doc['nama_perusahaan']; ?></td>	
-						<td class="td-read"><a href="<?php echo base_url('assets/spj/'.$doc['spj']); ?>"><?php echo $doc['spj']; ?></a></td>
-						
+						<td class="td-read"><a href="<?php echo base_url('assets/spj/'.$doc['spj']); ?>"><?php echo $doc['spj']; ?></a>
+						</td>
 						<td>
+							<?php if($doc['status_spj'] == 'idle'){ ?>
 							<div style="margin: 10px;">
-
-								<?=anchor('panel_perusahaan/dashboard/','Teruskan ke Perusahaan', ['class'=>'btn btn-primary btn-sm'])?>
+								<?=anchor('admin/dashboard/update_status/'.$doc['id_spj'],'Teruskan ke Perusahaan', ['class'=>'btn btn-primary btn-sm'])?>
 								<?=anchor('panel_perusahaan/dashboard/','Revisi',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
 							</div>
-
-							<!-- <?=anchor('panel_perusahaan/dashboard/balas_proposal/' . $qry->id_proposal,'Balas', ['class'=>'btn btn-primary btn-sm'])?>
-							<?=anchor('panel_perusahaan/dashboard/tolak_proposal/' . $qry->id_proposal,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?> -->
+							<?php } elseif($doc['status_spj'] == 'Cleared') { ?>
+								<div style="margin: 10px;">
+									<input class="btn btn-success btn-sm" type="button" name="" value="Cleared">
+								</div>
+							<?php } ?>
 						</td>
 					</tr>
 					<?php } ?>

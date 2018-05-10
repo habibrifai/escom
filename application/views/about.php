@@ -43,7 +43,7 @@
 					<div class="navbar-header">
 						<!-- Logo -->
 						<div class="navbar-brand">
-							<a class="logo" href="."><img src="assets/img/logo.png" alt="logo"></a>
+							<a class="logo" href="."><img src="assets/bg/logo.jpg" alt="logo"></a>
 						</div>
 						<!-- Logo -->
 
@@ -94,162 +94,171 @@
 						</li>
 						<li><a href="#">Contact</a></li> -->
 						<?php if ($this->session->userdata('nama')) { ?>
-						<li><a href="login"><?php echo $this->session->userdata('nama'); ?></a></li>
-						<?php } else { ?>
-						<li><a href="login">Login</a></li>
-						<?php } ?>
-					</ul>
-					<!-- Nav menu -->
-				</div>
-			</nav>
-			<!-- /NAVGATION -->
+							<li><a href="login"><?php echo $this->session->userdata('nama'); ?></a></li>
+							<?php } else { ?>
+								<li><a href="login">Login</a></li>
+								<?php } ?>
+							</ul>
+							<!-- Nav menu -->
+						</div>
+					</nav>
+					<!-- /NAVGATION -->
 
-			<!-- HOME OWL -->
-			<div id="home-owl" class="owl-carousel owl-theme">
-				<!-- home item -->
-				<div class="home-item">
-					<!-- section background -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/a.jpg);"></div>
-					<!-- /section background -->
+					<!-- HOME OWL -->
+					<div id="home-owl" class="owl-carousel owl-theme">
+						<!-- home item -->
+						<div class="home-item">
+							<!-- section background -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/a.jpg);"></div>
+							<!-- /section background -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Art</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang kesenian.</p>
-										<a href="#" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Art</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang kesenian.</p>
+												<a href="#" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
-					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
+						<!-- /home item -->
 
-				<!-- home item -->
-				<div class="home-item">
-					<!-- Background Image -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/b.jpg);"></div>
-					<!-- /Background Image -->
+						<!-- home item -->
+						<div class="home-item">
+							<!-- Background Image -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/b.jpg);"></div>
+							<!-- /Background Image -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Education</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang pendidikan.</p>
-										<a href="#" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Education</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang pendidikan.</p>
+												<a href="#" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
-					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
+						<!-- /home item -->
 
-				<!-- home item -->
-				<div class="home-item">
-					<!-- Background Image -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/c.jpg);"></div>
-					<!-- /Background Image -->
+						<!-- home item -->
+						<div class="home-item">
+							<!-- Background Image -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/c.jpg);"></div>
+							<!-- /Background Image -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Sport</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang olahraga.</p>
-										<a href="#" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Sport</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang olahraga.</p>
+												<a href="#" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
-					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
+						<!-- /home item -->
 
-				<!-- home item -->
-				<div class="home-item">
-					<!-- Background Image -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/d.jpg);"></div>
-					<!-- /Background Image -->
+						<!-- home item -->
+						<div class="home-item">
+							<!-- Background Image -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/d.jpg);"></div>
+							<!-- /Background Image -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Health</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang kesehatan.</p>
-										<a href="#" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Health</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang kesehatan.</p>
+												<a href="#" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
-					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
+						<!-- /home item -->
 
-				<!-- home item -->
-				<div class="home-item">
-					<!-- Background Image -->
-					<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/e.jpg);"></div>
-					<!-- /Background Image -->
+						<!-- home item -->
+						<div class="home-item">
+							<!-- Background Image -->
+							<div class="section-bg" style="background-image: url(<?php echo base_url(); ?>assets/bg/e.jpg);"></div>
+							<!-- /Background Image -->
 
-					<!-- home content -->
-					<div class="home">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="home-content">
-										<h1>Social</h1>
-										<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang sosial.</p>
-										<a href="#" class="primary-button">Join Us Now!</a>
+							<!-- home content -->
+							<div class="home">
+								<div class="container">
+									<div class="row">
+										<div class="col-md-8">
+											<div class="home-content">
+												<h1>Social</h1>
+												<p class="lead">Jadilah bagian dari kami sebagai penyedia atau penerima sponsor di bidang sosial.</p>
+												<a href="#" class="primary-button">Join Us Now!</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- /home content -->
 						</div>
+						<!-- /home item -->
 					</div>
-					<!-- /home content -->
-				</div>
-				<!-- /home item -->
-			</div>
-			<!-- /HOME OWL -->
-		</header>
-		<!-- /HEADER -->
+					<!-- /HOME OWL -->
+				</header>
+				<!-- /HEADER -->
 
-		<!-- ABOUT -->
-		<div id="about" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- about content -->
-					<div style="text-align: justify; text-justify: inter-word;" class="col-md-12">
-						<div class="section-title">
-							<h2 class="title">Welcome to ESCOM</h2>
-							<p class="sub-title">ESCOM adalah platform aplikasi yang dimaksudkan untuk memungkinkan organisasi atau organisasi menjalin kerjasama sponsorship dengan perusahaan.</p>
-						</div>
-						<div class="about-content">
-							<p>ESCOM didasarkan prinsip crowdfunding yaitu memberi kesempatan untuk mendapatkan pendanaan pada program kegiatan organisasi yang selanjutnya perusahaan menerima keuntungan timbal balik berupa non komersial.  Melalui ESCOM perusahaan yang ingin mendukung kegiatan organisasi tim dapat melakukannya dengan cara yang berbeda. Sebagai imbalannya, pihak yang berkontribusi akan mendapatkan peran partisipasi pada kegiatan tersebut. Menjalin kerjasama  sponsorshipdi ESCOM itu mudah dan hal yang sama berlaku untuk menemukan dan memilih perusahaan potensial yang akan menjadi mitra serta mudah untuk memilih mensponsori dalam sebuah kekgiatan. Menggunakan berbagai metode pembayaran sederhana. Terbentuknya Perusahaan ini dilatarbelakangi oleh fenomena bahwa terdapat demand yang saling menguntungkan antara kebutuhan dana kegiatan organisasi dan kebutuhan akan tanggung jawab serta peningkatan image perusahaan terhadap sosial dan lingkungan melewati sebuah kegiatan.</p>
-							<p> Organisasi yang terus memiliki agenda aktif dan berbagai kegiatan dengan harapan dapat terus mendapatkan keterlibatan masyarakat secara luas ternyata terdapat permasalahan di bidang penggalangan dana maupun secara umum berhubungan dengan bagian keuangan. Dewasa ini, perkembangan teknologi informasi merupakan pendukung dan dapat menjadi tren positif yang dapat membantu proses donasi secara lebih masif dan fleksibel, salah satunya melalui crowdfunding. Usulan yang dapat dicermati sebagai solusi dari manajemen fundraising tersebut adalah perlunya sebuah platform yang dapat mendukung peluang agar perusahaan dapat berpartisipasi secara lebih menarik dan  dapat terus memantau serta mendapatkan report yang jelas. Untuk itu ESCOM dipandang sebagai alternatif yang tepat dan terhubung dengan teknologi internet aplikasi yang menjadi bagian penting dari masyarakat masa kini.  ESCOM dilakukan dengan bekerjasama perusahaan jaringan donatur yang beragam, dimana project dari suatu organisasi lingkungan hidup juga diketahui dan memiliki kesempatan untuk mendapatkan dukungan finansial. Selain itu platform ini dapat terhubung dengan sistem yang terintegrasi dengan database sponsorship perusahaan yang dapat membantu dalam relasi paska pendanaan dan ketentuan partisipasi/reward yang tentu saja menjadi penentu loyalitas donatur.</p><br><br>
-						</div>
-					</div><br>
-					<!-- /about content -->
+				<!-- ABOUT -->
+				<div id="about" class="section">
+					<!-- container -->
+					<div class="container">
+						<!-- row -->
+						<div class="row">
+							<!-- about content -->
+							<div style="text-align: justify; text-justify: inter-word;" class="col-md-12">
+								<div class="section-title">
+									<h2 class="title">Welcome to ESCOM</h2>
+									<p class="sub-title">ESCOM adalah platform aplikasi yang dimaksudkan untuk memungkinkan organisasi atau organisasi menjalin kerjasama sponsorship dengan perusahaan.</p>
+								</div>
+								<div class="about-content">
+									<p>
+										Visi:
+										Menjadi sebuah lembaga utama yang menjembatani program csr dan organisasi yang membutuhkan dana di Indonesia
 
-					<!-- about video -->
+										<br><br>Misi:
+										<br>1. Menjalin kemitraan yang baik dengan stakeholder
+										<br>2. Memberikan layanan website yang praktis dan sederhana kepada pelanggan 
+										<br>3. Memberikan rasa aman dan nyaman kepada pengguna platform dengan melakukan peningkatan layanan secara berkelanjutan terhadap perkembangan teknologi informasi 
+									</p>
+									<p>ESCOM didasarkan prinsip crowdfunding yaitu memberi kesempatan untuk mendapatkan pendanaan pada program kegiatan organisasi yang selanjutnya perusahaan menerima keuntungan timbal balik berupa non komersial.  Melalui ESCOM perusahaan yang ingin mendukung kegiatan organisasi tim dapat melakukannya dengan cara yang berbeda. Sebagai imbalannya, pihak yang berkontribusi akan mendapatkan peran partisipasi pada kegiatan tersebut. Menjalin kerjasama  sponsorshipdi ESCOM itu mudah dan hal yang sama berlaku untuk menemukan dan memilih perusahaan potensial yang akan menjadi mitra serta mudah untuk memilih mensponsori dalam sebuah kekgiatan. Menggunakan berbagai metode pembayaran sederhana. Terbentuknya Perusahaan ini dilatarbelakangi oleh fenomena bahwa terdapat demand yang saling menguntungkan antara kebutuhan dana kegiatan organisasi dan kebutuhan akan tanggung jawab serta peningkatan image perusahaan terhadap sosial dan lingkungan melewati sebuah kegiatan.</p>
+									<p> Organisasi yang terus memiliki agenda aktif dan berbagai kegiatan dengan harapan dapat terus mendapatkan keterlibatan masyarakat secara luas ternyata terdapat permasalahan di bidang penggalangan dana maupun secara umum berhubungan dengan bagian keuangan. Dewasa ini, perkembangan teknologi informasi merupakan pendukung dan dapat menjadi tren positif yang dapat membantu proses donasi secara lebih masif dan fleksibel, salah satunya melalui crowdfunding. Usulan yang dapat dicermati sebagai solusi dari manajemen fundraising tersebut adalah perlunya sebuah platform yang dapat mendukung peluang agar perusahaan dapat berpartisipasi secara lebih menarik dan  dapat terus memantau serta mendapatkan report yang jelas. Untuk itu ESCOM dipandang sebagai alternatif yang tepat dan terhubung dengan teknologi internet aplikasi yang menjadi bagian penting dari masyarakat masa kini.  ESCOM dilakukan dengan bekerjasama perusahaan jaringan donatur yang beragam, dimana project dari suatu organisasi lingkungan hidup juga diketahui dan memiliki kesempatan untuk mendapatkan dukungan finansial. Selain itu platform ini dapat terhubung dengan sistem yang terintegrasi dengan database sponsorship perusahaan yang dapat membantu dalam relasi paska pendanaan dan ketentuan partisipasi/reward yang tentu saja menjadi penentu loyalitas donatur.</p><br><br>
+								</div>
+							</div><br>
+							<!-- /about content -->
+
+							<!-- about video -->
 					<!-- <div class="col-md-offset-1 col-md-6">
 						<a href="#" class="about-video">
 							<i class="play-icon fa fa-play"></i>
@@ -277,7 +286,7 @@
 					<div class="col-md-6 col-md-pull-6">
 						<div class="footer-copyright">
 							<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved || Colorlib || edited by Sistem Informasi ITS '15
 								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 							</div>
 						</div>
