@@ -283,7 +283,7 @@
 						
 					</div>
 
-					<div class="col-md-6 col-md-pull-6">
+					<div class="col-md-12">
 						<div class="footer-copyright">
 							<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved || Colorlib || edited by Sistem Informasi ITS '15

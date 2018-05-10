@@ -96,5 +96,33 @@ class M_perusahaan extends CI_Model{
 		$this->db->where('id_perusahaan', $id);
 		return $this->db->get()->result_array();
 	}
+
+	function jml_proposal_disetujui($username){	
+		$this->db->select('proposal.proposal, proposal.id_perusahaan');
+		$this->db->from('perusahaan');
+		$this->db->join('user', 'perusahaan.id_user = user.id_user');
+		$this->db->join('proposal', 'proposal.id_perusahaan = perusahaan.id_perusahaan');
+		$this->db->where(array('username' => $username, 'status_proposal' => 'Disetujui'));
+		return $this->db->get()->num_rows();
+	}
+
+	function jml_proposal_diterima($username){	
+		$this->db->select('proposal.proposal, proposal.id_perusahaan');
+		$this->db->from('perusahaan');
+		$this->db->join('user', 'perusahaan.id_user = user.id_user');
+		$this->db->join('proposal', 'proposal.id_perusahaan = perusahaan.id_perusahaan');
+		$this->db->where(array('username' => $username));
+		return $this->db->get()->num_rows();
+	}
+
+	function jml_spj($username){	
+		$this->db->select('proposal.proposal, proposal.id_perusahaan');
+		$this->db->from('perusahaan');
+		$this->db->join('user', 'perusahaan.id_user = user.id_user');
+		$this->db->join('proposal', 'proposal.id_perusahaan = perusahaan.id_perusahaan');
+		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
+		$this->db->where(array('username' => $username));
+		return $this->db->get()->num_rows();
+	}
 }
 

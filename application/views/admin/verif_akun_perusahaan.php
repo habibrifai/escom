@@ -100,7 +100,7 @@ if ($this->session->userdata('status') != 'login admin') {
 							</strong>
 						</div>
 						
-						<div class="panel-body"><a href="<?php echo base_url('admin/verif_akun/detail_akun_perusahaan').$data['id_perusahaan']; ?>" class="list-group-item"><?php echo $data['alamat_perusahaan']; ?>
+						<div class="panel-body"><a href="<?php echo base_url('admin/verif_akun/detail_akun_perusahaan/').$data['id_perusahaan']; ?>" class="list-group-item"><?php echo $data['alamat_perusahaan']; ?>
 						<?php if($data['status'] == 'terverifikasi'){  ?>
 							<span style="font-size:15px;" class="badge label label-success">
 								<?php echo $data['status'] ?>

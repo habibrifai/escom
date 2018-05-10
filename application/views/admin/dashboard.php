@@ -6,7 +6,6 @@ if ($this->session->userdata('status') != 'login admin') {
 
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -69,8 +68,16 @@ if ($this->session->userdata('status') != 'login admin') {
 					</a></li>
 				</ul>
 			</li>
-			<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
-			<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
+			<?php if($jml!=0) { ?>
+				<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ &nbsp;<span class="label label-danger"><?php echo $jml; ?></span></a></li>
+			<?php } else { ?>
+				<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+			<?php } ?>
+			<?php if($notif!=0) { ?>
+				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo $notif; ?></span></a></li>
+			<?php }else{ ?>
+				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
+			<?php } ?>
 			<li><a href="<?php echo base_url('logout'); ?>"><em class="fa fa-sign-out">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div>
@@ -96,8 +103,8 @@ if ($this->session->userdata('status') != 'login admin') {
 				<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-							<div class="large">-</div>
-							<div class="text-muted">SPJ</div>
+							<div class="large"><?php echo $spj; ?></div>
+							<div class="text-muted">SPJ Terverifikasi</div>
 						</div>
 					</div>
 				</div>

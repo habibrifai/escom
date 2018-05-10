@@ -17,8 +17,10 @@ class Dashboard extends CI_Controller {
 
 	public function index(){
 		$data['notif'] = $this->notif;
+		$data['jml_disetujui'] = $this->m_perusahaan->jml_proposal_disetujui($this->username);
+		$data['jml_diterima'] = $this->m_perusahaan->jml_proposal_diterima($this->username);
+		$data['jml_spj'] = $this->m_perusahaan->jml_spj($this->username);
 		$this->load->view('perusahaan/dashboard', $data);
-		// $this->m_perusahaan->reset_jml($id_per);
 	}
 
 	public function list_spj(){

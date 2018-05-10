@@ -160,15 +160,12 @@
 								</div>
 							</div>
 							<?php } } ?>
-							<form action="<?php echo base_url('panel_organisasi/dashboard/kirim_proposal'); ?>">
-								<input type="hidden" name="">
-
+							<form action="<?php echo base_url('panel_organisasi/dashboard'); ?>">
 								<?php if ($this->session->userdata('status') == "login organisasi") { ?>
 								<a href=""><button class="primary-button">Ajukan Proposal</button></a>
 								<?php } elseif($this->session->userdata('status') == NULL) { ?>
 								<a href=""><button class="primary-button">Ajukan Proposal</button></a>
 								<?php } ?>
-							</form>
 						</main>
 						<!-- /MAIN -->
 
@@ -289,7 +286,7 @@
 						</ul> -->
 					</div>
 
-					<div class="col-md-6 col-md-pull-6">
+					<div class="col-md-12">
 						<div class="footer-copyright">
 							<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved || Colorlib || edited by Sistem Informasi ITS '15

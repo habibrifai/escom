@@ -83,17 +83,28 @@ if ($this->session->userdata('status') != 'login organisasi') {
 					<?php foreach($proposal as $qry){ ?>
 						<div class="panel panel-primary">
 							<div class="panel-heading"><strong><?php $searches = array('.pdf', '_'); $replacements = array('', ' '); echo str_replace($searches, $replacements,$qry->proposal)?> Untuk Perusahaan <?php echo $qry->nama_perusahaan?></strong></div>
-							<?php if($qry->status_proposal == 'Disetujui'){?>
-								<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a><br>
-									<?=anchor('panel_organisasi/dashboard/lihat_balasan/' . $qry->id_proposal,'Lihat Balasan', ['class'=>'btn btn-primary btn-sm'])?>
-								</div>
-								<?php }elseif($qry->status_proposal == 'Ditolak'){ ?>
-									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-danger"><?php echo $qry->status_proposal?></span></a></div>
-									<?php } else{ ?>
-										<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-default"><?php echo $qry->status_proposal?></span></a></div>
-										<?php } ?>
+								<?php if($qry->status_proposal == 'Disetujui' && $qry->status_spj == 'Cleared'){?>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a>
 									</div>
-									<?php } ?>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/spj/<?=$qry->spj?>" class="list-group-item"><?php echo $qry->spj?><span style="font-size:15px;" class="badge label label-success">SPJ Terkirim</span></a><br>
+									</div>
+								<?php } elseif($qry->status_proposal == 'Disetujui' && $qry->status_spj == 'idle'){ ?>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a>
+									</div>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/spj/<?=$qry->spj?>" class="list-group-item"><?php echo $qry->spj?><span style="font-size:15px;" class="badge label label-default">SPJ Dalam Koreksi</span></a><br>
+									<?=anchor('panel_organisasi/dashboard/lihat_balasan/' . $qry->id_proposal,'Lihat Balasan', ['class'=>'btn btn-primary btn-sm'])?>
+									</div>
+								<?php } elseif($qry->status_proposal == 'Disetujui'){ ?>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a>
+									</div>
+									<div class="panel-body"><span style="font-size:15px; float: right;" class="badge label label-default">Belum Upload SPJ</span><br>
+									<?=anchor('panel_organisasi/dashboard/lihat_balasan/' . $qry->id_proposal,'Lihat Balasan', ['class'=>'btn btn-primary btn-sm'])?>
+									</div>
+								<?php } elseif ($qry->status_proposal == 'Ditolak'){ ?>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-danger"><?php echo $qry->status_proposal?></span></a></div>
+								<?php } ?>
+									</div>
+					<?php } ?>
 								</div>
 							</div>
 							<?php //} ?>

@@ -17,5 +17,11 @@ class M_spj extends CI_Model{
 		$this->db->where('id_spj', $id_spj);
 		$this->db->update('spj', $data);
 	}
+
+	function jumlah_data($status){
+		$this->db->where('status_spj', $status);
+		$this->db->from('spj');
+		return $this->db->get()->num_rows();
+	}
 }
 ?>

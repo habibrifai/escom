@@ -24,6 +24,11 @@ class Dashboard extends CI_Controller {
 
 	public function proposal_disetujui(){
 		$data['proposal'] = $this->m_ctrlOrganisasi->get_proposal_disetujui($this->username);
+
+		// $data['spj'] = $this->m_ctrlOrganisasi->cek_spj($this->username);
+
+		// var_dump($data['spj']);
+
 		$this->load->view('organisasi/v_kirim_spj',$data);
 	}
 
@@ -40,11 +45,6 @@ class Dashboard extends CI_Controller {
 	public function kirim_proposal($id,$username){
 		$data['per'] = $this->m_perusahaan->get_data_id("perusahaan",$id);
 		$data['org'] = $this->m_organisasi->get_id("organisasi",$username);
-
-		// echo $id;
-		// echo $username;
-
-		// var_dump($data);
 
 		$this->load->view('organisasi/kirim_proposal', $data);
 	}
@@ -76,11 +76,11 @@ class Dashboard extends CI_Controller {
 
 			$jml = $this->m_proposal->jumlah($data['id_perusahaan'])->num_rows();
 
-			echo $jml;
+			// echo $jml;
 
 			$this->m_perusahaan->update_jml_proposal('perusahaan',$jml,$data['id_perusahaan']);
 
-			$this->load->view('organisasi/proposal_terkirim');
+			redirect(base_url('panel_organisasi/dashboard/proposal_terkirim'));
 
 		} else {
 			echo "gagal upload";

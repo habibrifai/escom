@@ -10,25 +10,32 @@ class Dashboard extends CI_Controller {
 		$this->load->model('m_ctrlOrganisasi');
 		$this->load->model('m_proposal');
 		$this->load->model('m_spj');
+		// $jumlah = $this->m_organisasi->get_data_detail('organisasi');
+
+		// $awal = $jumlah[0]['jml_proposal_awal'];
+		// $ahir = $jumlah[0]['jumlah_proposal'];
+		// $this->notif = $ahir-$awal;
 	}
 
 	public function index(){
-
+		$data['jml'] = $this->m_spj->jumlah_data('idle');
+		$data['spj'] = $this->m_spj->jumlah_data('Cleared');
 		$data['org'] = $this->m_organisasi->jumlah_data("user");
 		$data['per'] = $this->m_perusahaan->jumlah_data("user");
-
+		$data['notif'] = '1';
+		
 		$this->load->view('admin/dashboard', $data);
 	}
 
 	public function list_spj(){
-
 		$data['doc'] = $this->m_spj->get('spj');
-		
 
 		$this->load->view('admin/list_spj', $data);
 	}
 
 	public function list_proposal(){
+		// $data['notif'] = $this->notif;
+
 		$data['profil'] = $this->m_organisasi->get_data_detail('organisasi');
 		$this->load->view('admin/list_proposal',$data);
 	}

@@ -6,7 +6,6 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -90,15 +89,15 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 						<div class="panel panel-teal panel-widget border-right">
 							<div class="row no-padding"><em class="fa fa-xl fa-shopping-cart color-blue"></em>
-								<div class="large">-</div>
-								<div class="text-muted">Proposal dikirim</div>
+								<div class="large"><?php echo $jml_disetujui; ?></div>
+								<div class="text-muted">Proposal Disetujui</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 						<div class="panel panel-orange panel-widget border-right">
 							<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-								<div class="large">-</div>
+								<div class="large"><?php echo $jml_diterima; ?></div>
 								<div class="text-muted">Proposal Diterima</div>
 							</div>
 						</div>
@@ -106,7 +105,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
 						<div class="panel panel-orange panel-widget border-right">
 							<div class="row no-padding"><em class="fa fa-xl fa-users color-teal"></em>
-								<div class="large">-</div>
+								<div class="large"><?php echo $jml_spj; ?></div>
 								<div class="text-muted">SPJ Dilakukan</div>
 							</div>
 						</div>

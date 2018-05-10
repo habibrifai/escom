@@ -64,10 +64,11 @@ class M_ctrlOrganisasi extends CI_Model{
 
 		$hasil = $this->db->get()->row();
 
-		$this->db->select('id_proposal, id_organisasi, nama_perusahaan, proposal, isi_balasan, status_proposal');
+		$this->db->select('proposal.id_proposal, id_organisasi, nama_perusahaan, proposal, isi_balasan, status_proposal, spj.spj, spj.status_spj');
 		$this->db->from('proposal');
 		$this->db->where('status_proposal', 'Disetujui');
 		$this->db->join('perusahaan', 'perusahaan.id_perusahaan = proposal.id_perusahaan');
+		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal', 'left');
 		$this->db->where('id_organisasi', $hasil->id_organisasi);
 						 // ->where('status_proposal', 'belum disetujui');
 		$proposal = $this->db->get();
@@ -95,5 +96,16 @@ class M_ctrlOrganisasi extends CI_Model{
 	function update_profil($id_organisasi,$data){
 		$this->db->where('id_organisasi', $id_organisasi);
 		$this->db->update('organisasi', $data);
+	}
+
+	function cek_spj($username){
+		$this->db->select('spj.spj');
+		$this->db->from('organisasi');
+		$this->db->join('user', 'organisasi.id_user = user.id_user');
+		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
+		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
+		$this->db->where(array('username' => $username, 'status_spj' => 'Cleared'));
+		return $this->db->get()->result();
+
 	}
 }
