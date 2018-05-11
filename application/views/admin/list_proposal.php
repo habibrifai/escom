@@ -102,7 +102,7 @@ if ($this->session->userdata('status') != 'login admin') {
 					<div style="text-align:center;" class="panel-heading"><?php echo $qry['nama_organisasi']?></div>
 					<div style="font-size:15px; "class="panel-body"><img style="display:block;margin-left:auto;margin-right:auto;width:150px;height:150px;" src="<?php echo base_url().'assets/gambar/'.$qry['foto']?>" alt="logo"></div>
 					<div class="panel-footer" style="display: block;">
-						<?php if($hasil > 0) { ?>
+						<?php if($hasil > 0 || $qry['status_notif_admin'] == 'Disetujui' || $qry['status_notif_admin'] == 'Ditolak') { ?>
 							<span style="float: right;" class="label label-danger"><?php echo $hasil; ?></span>
 							<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
 						<?php } else { ?>
@@ -112,7 +112,7 @@ if ($this->session->userdata('status') != 'login admin') {
 				</div>
 			</div>
 		</div>
-		<?php }?>
+		<?php } ?>
 	</div>	<!--/.main-->
 
 	<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>

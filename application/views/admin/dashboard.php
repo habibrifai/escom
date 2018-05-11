@@ -80,6 +80,8 @@ if ($this->session->userdata('status') != 'login admin') {
 				$ahir = $notif['jumlah_proposal'];
 				$hasil[] = $ahir-$awal;
 
+				$stts[] = $notif['status_notif_admin'];
+
 			} ?>
 
 			<?php
@@ -89,10 +91,18 @@ if ($this->session->userdata('status') != 'login admin') {
 						$result = 1;
 					} 
 				}
+
+				$res = 0;
+				for($i = 0; $i < count($stts); $i++){
+					if ($stts[$i] == 'Disetujui' || $stts[$i] == 'Ditolak') {
+						$res = 1;
+					} 
+				}
+
 			?>
 
-			<?php if($result != 0) { ?>
-				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo $result; ?></span></a></li>
+			<?php if($result != 0 || $res != 0) { ?>
+				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo 'i'; ?></span></a></li>
 			<?php }else{ ?>
 				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
 			<?php }  ?>

@@ -58,12 +58,28 @@ class M_proposal extends CI_Model{
 
 	function reset_notif_status($username,$kolom){
 
-		$data = array($kolom => '-');
-		
-		$this->db->join('user', 'user.username = $username');
+		$this->db->select('proposal.id_proposal');
+		$this->db->from('user');
 		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
-		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
-		$this->db->update('proposal', $data);
+		$this->db->join('proposal', 'proposal.id_organisasi = organisasi.id_organisasi');
+		$this->db->where('user.username', $username);
+		$h = $this->db->get()->row();
+
+		// return $h;
+
+		if (isset($h)) {
+			$data = array($kolom => '-');
+			$this->db->where('id_proposal', $h->id_proposal);
+			$this->db->update('proposal', $data);
+		}
+	}
+
+	function reset_status_notif_admin($id,$table){
+
+		$data = array('status_notif_admin' => '-');
+
+		$this->db->where('id_organisasi', $id);
+		$this->db->update($table, $data);
 	}
 
 }

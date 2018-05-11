@@ -45,23 +45,40 @@ class M_spj extends CI_Model{
 	}
 
 	function reset_status_notif($username){
-		$this->db->join('user', 'user.username = '.$username);
-		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
-		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
+		$this->db->select('spj.id_spj');
+		$this->db->from('user');
+		$this->db->join('perusahaan', 'perusahaan.id_user = user.id_user');
+		$this->db->join('proposal', 'proposal.id_perusahaan = perusahaan.id_perusahaan');
 		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
+		$this->db->where('user.username', $username);
+		$h = $this->db->get()->row();
 
-		$data = array('status_notif' => '-');
-		$this->db->update('spj', $data);
+		// return $h;
+
+		if (isset($h)) {
+			$data = array('status_notif' => '-');
+			$this->db->where('id_spj', $h->id_spj);
+			$this->db->update('spj', $data);
+		}
 	}
 
 	function reset_status_notif_organisasi($username){
-		$this->db->join('user', 'user.username = '.$username);
-		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
-		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
-		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
 
-		$data = array('status_notif_organisasi' => '-');
-		$this->db->update('spj', $data);
+		$this->db->select('spj.id_spj');
+		$this->db->from('user');
+		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
+		$this->db->join('proposal', 'proposal.id_organisasi = organisasi.id_organisasi');
+		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
+		$this->db->where('user.username', $username);
+		$h = $this->db->get()->row();
+
+		// return $h;
+
+		if (isset($h)) {
+			$data = array('status_notif_organisasi' => '-');
+			$this->db->where('id_spj', $h->id_spj);
+			$this->db->update('spj', $data);
+		}
 	}
 }
 ?>

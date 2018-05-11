@@ -31,6 +31,8 @@ class Dashboard extends CI_Controller {
 		// 	$notif_stts = 0;
 		// }
 
+		
+
 		$data['notif_status'] = $this->m_organisasi->get_data_detail('organisasi');
 
 		// echo $this->notif;
@@ -58,6 +60,7 @@ class Dashboard extends CI_Controller {
 
 	public function list_proposal_organisasi($id){
 		$this->m_organisasi->reset_jml_proposal($id,'organisasi');
+		$this->m_proposal->reset_status_notif_admin($id, 'proposal');
 		$data['profil'] = $this->m_ctrlOrganisasi->get_profile_byID($id);
 		$data['proposal'] = $this->m_proposal->get_organisasi_proposal($id);
 		$this->load->view('admin/list_proposal_organisasi', $data);
