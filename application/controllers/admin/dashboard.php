@@ -31,7 +31,9 @@ class Dashboard extends CI_Controller {
 		// 	$notif_stts = 0;
 		// }
 
-		$data['notif_status'] = 0;
+		$data['notif_status'] = $this->m_organisasi->get_data_detail('organisasi');
+
+		// echo $this->notif;
 
 		$data['jml'] = $this->m_spj->jumlah_data('idle');
 		$data['spj'] = $this->m_spj->jumlah_data('Cleared');
@@ -48,7 +50,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function list_proposal(){
-		$this->m_proposal->reset_notif_status($this->username, 'status_notif_admin');
+		// $this->m_proposal->reset_notif_status($this->username, 'status_notif_admin');
 
 		$data['profil'] = $this->m_organisasi->get_data_detail('organisasi');
 		$this->load->view('admin/list_proposal',$data);
