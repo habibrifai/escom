@@ -58,7 +58,11 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 			<ul class="nav menu">
 				<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/edit_profil'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
-				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+				<?php if($notif_spj == 1){ ?>
+					<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ &nbsp;<span class="label label-danger"><?php echo $notif_spj; ?></span></a></li>
+				<?php } elseif($notif_spj == 0) { ?>
+					<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
+				<?php } ?>
 				<?php if($notif!=0) { ?>
 					<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo $notif; ?></span></a></li>
 				<?php }else{ ?>

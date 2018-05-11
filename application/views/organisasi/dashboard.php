@@ -1,4 +1,4 @@
-<?php
+	<?php
 if ($this->session->userdata('status') != 'login organisasi') {
 	redirect(base_url('login'));
 } else {
@@ -54,8 +54,16 @@ if ($this->session->userdata('status') != 'login organisasi') {
 			<ul class="nav menu">
 				<li class="active"><a href="<?php echo base_url('panel_organisasi/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 				<li><a href="<?php echo base_url('panel_organisasi/dashboard/edit_profil'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Edit Profil</a></li>
-				<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_terkirim'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
-				<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_disetujui'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
+				<?php if($notif_status == 1){ ?>
+					<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_terkirim'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim &nbsp;<span class="label label-danger"><?php echo $notif_status; ?></span></a></li>
+				<?php } else { ?>
+					<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_terkirim'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Proposal Terkirim</a></li>
+				<?php } ?>
+				<?php if($notif_spj == 1){ ?>
+					<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_disetujui'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ &nbsp;<span class="label label-danger"><?php echo $notif_spj; ?></span></a></li>
+				<?php } elseif($notif_spj == 0) { ?>
+					<li><a href="<?php echo base_url('panel_organisasi/dashboard/proposal_disetujui'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Kirim SPJ</a></li>
+				<?php } ?>
 				<li><a href="<?php echo base_url('logout'); ?>"><em class="fa fa-sign-out">&nbsp;</em> Logout</a></li>
 			</ul>
 		</div>

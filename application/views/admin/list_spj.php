@@ -106,10 +106,10 @@ if ($this->session->userdata('status') != 'login admin') {
 						<td class="td-read"><a href="<?php echo base_url('assets/spj/'.$doc['spj']); ?>"><?php echo $doc['spj']; ?></a>
 						</td>
 						<td>
-							<?php if($doc['status_spj'] == 'idle'){ ?>
+							<?php if($doc['status_spj'] == 'idle' || $doc['status_spj'] == 'Revisi'){ ?>
 							<div style="margin: 10px;">
-								<?=anchor('admin/dashboard/update_status/'.$doc['id_spj'],'Teruskan ke Perusahaan', ['class'=>'btn btn-primary btn-sm'])?>
-								<?=anchor('panel_perusahaan/dashboard/','Revisi',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
+								<?=anchor('admin/dashboard/update_status/'.$doc['id_spj'].'/'.'Cleared','Teruskan ke Perusahaan', ['class'=>'btn btn-primary btn-sm'])?>
+								<?=anchor('admin/dashboard/update_status/'.$doc['id_spj'].'/'.'Revisi','Revisi', ['class'=>'btn btn-danger btn-sm'])?>
 							</div>
 							<?php } elseif($doc['status_spj'] == 'Cleared') { ?>
 								<div style="margin: 10px;">

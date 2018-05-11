@@ -89,14 +89,25 @@ if ($this->session->userdata('status') != 'login admin') {
 				<h1 class="page-header">List Proposal</h1>
 			</div>
 		</div><!--/.row-->
-		<?php foreach($profil as $qry){?>
+		<?php foreach($profil as $qry){
+
+			$awal = $qry['jml_proposal_awal'];
+			$ahir = $qry['jumlah_proposal'];
+			$hasil = $ahir - $awal;
+
+			?>
 			<div class="col-md-4 col-sm-4">
 			<div class="list-group">
 				<div class="panel panel-info">
 					<div style="text-align:center;" class="panel-heading"><?php echo $qry['nama_organisasi']?></div>
 					<div style="font-size:15px; "class="panel-body"><img style="display:block;margin-left:auto;margin-right:auto;width:150px;height:150px;" src="<?php echo base_url().'assets/gambar/'.$qry['foto']?>" alt="logo"></div>
-					<div class="panel-footer">
-						<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
+					<div class="panel-footer" style="display: block;">
+						<?php if($hasil > 0) { ?>
+							<span style="float: right;" class="label label-danger"><?php echo $hasil; ?></span>
+							<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
+						<?php } else { ?>
+							<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
+						<?php } ?>
 					</div>
 				</div>
 			</div>

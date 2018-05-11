@@ -94,6 +94,12 @@ if ($this->session->userdata('status') != 'login organisasi') {
 									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/spj/<?=$qry->spj?>" class="list-group-item"><?php echo $qry->spj?><span style="font-size:15px;" class="badge label label-default">SPJ Dalam Koreksi</span></a><br>
 									<?=anchor('panel_organisasi/dashboard/lihat_balasan/' . $qry->id_proposal,'Lihat Balasan', ['class'=>'btn btn-primary btn-sm'])?>
 									</div>
+								<?php } elseif($qry->status_proposal == 'Disetujui' && $qry->status_spj == 'Revisi'){ ?>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a>
+									</div>
+									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/spj/<?=$qry->spj?>" class="list-group-item"><?php echo $qry->spj?><span style="font-size:15px;" class="badge label label-danger">SPJ Harus Direvisi</span></a><br>
+									<?=anchor('panel_organisasi/dashboard/lihat_balasan/' . $qry->id_proposal,'Lihat Balasan', ['class'=>'btn btn-primary btn-sm'])?>
+									</div>
 								<?php } elseif($qry->status_proposal == 'Disetujui'){ ?>
 									<div class="panel-body"><a href="<?php echo base_url(); ?>assets/proposal/<?=$qry->proposal?>" class="list-group-item"><?php echo $qry->proposal?><span style="font-size:15px;" class="badge label label-success"><?php echo $qry->status_proposal?></span></a>
 									</div>

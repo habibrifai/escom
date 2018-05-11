@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('m_ctrlOrganisasi');
 		$this->load->model('m_proposal');
 		$this->load->model('m_spj');
+		$this->username = $this->session->userdata('nama');
 		// $jumlah = $this->m_organisasi->get_data_detail('organisasi');
 
 		// $awal = $jumlah[0]['jml_proposal_awal'];
@@ -18,11 +19,24 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function index(){
+		// $status_notif = $this->m_proposal->cek_status_notif_admin();
+
+		// if(isset($status_notif)){
+		// 	if($status_notif->status_notif_admin == "Disetujui" || $status_notif->status_notif_admin == "Ditolak"){
+		// 		$notif_stts = 1;
+		// 	} else {
+		// 		$notif_stts = 0;
+		// 	}
+		// } else {
+		// 	$notif_stts = 0;
+		// }
+
+		$data['notif_status'] = 0;
+
 		$data['jml'] = $this->m_spj->jumlah_data('idle');
 		$data['spj'] = $this->m_spj->jumlah_data('Cleared');
 		$data['org'] = $this->m_organisasi->jumlah_data("user");
 		$data['per'] = $this->m_perusahaan->jumlah_data("user");
-		$data['notif'] = '1';
 		
 		$this->load->view('admin/dashboard', $data);
 	}
@@ -34,13 +48,14 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function list_proposal(){
-		// $data['notif'] = $this->notif;
+		$this->m_proposal->reset_notif_status($this->username, 'status_notif_admin');
 
 		$data['profil'] = $this->m_organisasi->get_data_detail('organisasi');
 		$this->load->view('admin/list_proposal',$data);
 	}
 
 	public function list_proposal_organisasi($id){
+		$this->m_organisasi->reset_jml_proposal($id,'organisasi');
 		$data['profil'] = $this->m_ctrlOrganisasi->get_profile_byID($id);
 		$data['proposal'] = $this->m_proposal->get_organisasi_proposal($id);
 		$this->load->view('admin/list_proposal_organisasi', $data);
@@ -51,8 +66,8 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/balasan_proposal_organisasi',$data);
 	}
 
-	public function update_status($id_spj){
-		$data = array('status_spj' => 'Cleared');
+	public function update_status($id_spj,$status){
+		$data = array('status_spj' => $status, 'status_notif' => $status);
 		$this->m_spj->update_status($id_spj, $data);
 
 		redirect(base_url('admin/dashboard/list_spj'));

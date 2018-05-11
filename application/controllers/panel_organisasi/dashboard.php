@@ -9,15 +9,46 @@ class Dashboard extends CI_Controller {
 		$this->load->model('m_organisasi');
 		$this->load->model('m_ctrlOrganisasi');
 		$this->load->model('m_proposal');
+		$this->load->model('m_spj');
 		$this->username = $this->session->userdata('nama');
 	}
 
 	public function index(){
+		$status_notif = $this->m_proposal->cek_status_notif($this->username);
+
+		$notif_spj_cleared = $this->m_spj->cek_spj_cleared($this->username);
+
+		if(isset($notif_spj_cleared)){
+			if ($notif_spj_cleared->status_notif == "Cleared" || $notif_spj_cleared->status_notif == "Revisi") {
+				$notif_spj = 1;
+			} else {
+				$notif_spj = 0;
+			}
+		} else {
+			$notif_spj = 0;
+		}
+
+		$data['notif_spj'] = $notif_spj;
+
+		if(isset($status_notif)){
+			if($status_notif->status_notif == "Disetujui" || $status_notif->status_notif == "Ditolak"){
+				$notif_stts = 1;
+			} else {
+				$notif_stts = 0;
+			}
+		} else {
+			$notif_stts = 0;
+		}
+
+		$data['notif_status'] = $notif_stts;
 		$data['qry'] = $this->m_perusahaan->get_data("perusahaan");
 		$this->load->view('organisasi/dashboard', $data);
 	}
 
 	public function proposal_terkirim(){
+
+		$this->m_proposal->reset_notif_status($this->username, 'status_notif');
+
 		$data['proposal'] = $this->m_ctrlOrganisasi->get_proposal($this->username);
 		$this->load->view('organisasi/proposal_terkirim',$data);
 	}

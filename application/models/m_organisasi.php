@@ -68,7 +68,18 @@ class M_organisasi extends CI_Model{
 
 	function upload_spj($data){
 		$this->db->insert('spj', $data);
-		
+	}
 
+	function reset_jml_proposal($id_organisasi, $table){
+		$this->db->select('jumlah_proposal');
+		$this->db->from($table);
+		$this->db->where('id_organisasi', $id_organisasi);
+		$jml = $this->db->get()->row();
+		// var_dump($jml);
+
+		$data = array('jml_proposal_awal' => $jml->jumlah_proposal);
+		$this->db->where('id_organisasi', $id_organisasi);
+		$this->db->update($table, $data);
+		
 	}
 }

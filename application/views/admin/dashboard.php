@@ -73,11 +73,12 @@ if ($this->session->userdata('status') != 'login admin') {
 			<?php } else { ?>
 				<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
 			<?php } ?>
-			<?php if($notif!=0) { ?>
-				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo $notif; ?></span></a></li>
+
+			<?php if($notif_status == 1) { ?>
+				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo $notif_status; ?></span></a></li>
 			<?php }else{ ?>
 				<li><a href="<?php echo base_url('admin/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal</a></li>
-			<?php } ?>
+			<?php }  ?>
 			<li><a href="<?php echo base_url('logout'); ?>"><em class="fa fa-sign-out">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div>

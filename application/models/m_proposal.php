@@ -40,4 +40,30 @@ class M_proposal extends CI_Model{
 		return $balasan->row();
 	}
 
+	function cek_status_notif($username){
+		$this->db->select('proposal.status_notif, proposal.status_notif_admin');
+		$this->db->from('user');
+		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
+		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
+		$this->db->where('username', $username);
+		return $this->db->get()->row();
+	}
+
+	// function cek_status_notif_admin(){
+	// 	$this->db->select('proposal.status_notif_admin, proposal.id_organisasi');
+	// 	$this->db->from('proposal');
+	// 	$this->db->join('organisasi', 'organisasi.id_organisasi = proposal.id_organisasi', 'left');
+	// 	return $this->db->get()->row();
+	// }
+
+	function reset_notif_status($username,$kolom){
+
+		$data = array($kolom => '-');
+		
+		$this->db->join('user', 'user.username = $username');
+		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
+		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
+		$this->db->update('proposal', $data);
+	}
+
 }
