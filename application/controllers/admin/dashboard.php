@@ -69,7 +69,11 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function update_status($id_spj,$status){
-		$data = array('status_spj' => $status, 'status_notif' => $status);
+		$data = array(
+			'status_spj' => $status, 
+			'status_notif' => $status,
+			'status_notif_organisasi' => $status
+		);
 		$this->m_spj->update_status($id_spj, $data);
 
 		redirect(base_url('admin/dashboard/list_spj'));

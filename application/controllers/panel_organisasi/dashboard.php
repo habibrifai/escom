@@ -16,10 +16,10 @@ class Dashboard extends CI_Controller {
 	public function index(){
 		$status_notif = $this->m_proposal->cek_status_notif($this->username);
 
-		$notif_spj_cleared = $this->m_spj->cek_spj_cleared($this->username);
+		$notif_spj_cleared = $this->m_spj->cek_spj_cleared_organisasi($this->username);
 
 		if(isset($notif_spj_cleared)){
-			if ($notif_spj_cleared->status_notif == "Cleared" || $notif_spj_cleared->status_notif == "Revisi") {
+			if ($notif_spj_cleared->status_notif_organisasi == "Cleared" || $notif_spj_cleared->status_notif_organisasi == "Revisi") {
 				$notif_spj = 1;
 			} else {
 				$notif_spj = 0;
@@ -56,9 +56,7 @@ class Dashboard extends CI_Controller {
 	public function proposal_disetujui(){
 		$data['proposal'] = $this->m_ctrlOrganisasi->get_proposal_disetujui($this->username);
 
-		// $data['spj'] = $this->m_ctrlOrganisasi->cek_spj($this->username);
-
-		// var_dump($data['spj']);
+		$this->m_spj->reset_status_notif_organisasi($this->username);
 
 		$this->load->view('organisasi/v_kirim_spj',$data);
 	}

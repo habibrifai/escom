@@ -34,6 +34,16 @@ class M_spj extends CI_Model{
 		return $this->db->get()->row();
 	}
 
+	function cek_spj_cleared_organisasi($username){
+		$this->db->select('spj.status_notif_organisasi');
+		$this->db->from('user');
+		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
+		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
+		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
+		$this->db->where('username', $username);
+		return $this->db->get()->row();
+	}
+
 	function reset_status_notif($username){
 		$this->db->join('user', 'user.username = '.$username);
 		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
@@ -41,6 +51,16 @@ class M_spj extends CI_Model{
 		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
 
 		$data = array('status_notif' => '-');
+		$this->db->update('spj', $data);
+	}
+
+	function reset_status_notif_organisasi($username){
+		$this->db->join('user', 'user.username = '.$username);
+		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
+		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
+		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
+
+		$data = array('status_notif_organisasi' => '-');
 		$this->db->update('spj', $data);
 	}
 }
