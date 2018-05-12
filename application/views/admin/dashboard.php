@@ -80,8 +80,19 @@ if ($this->session->userdata('status') != 'login admin') {
 				$ahir = $notif['jumlah_proposal'];
 				$hasil[] = $ahir-$awal;
 
-				$stts[] = $notif['status_notif_admin'];
+				// $stts[] = $status_notif_admin->status_notif_admin;
 
+				// echo $status_notif_admin->status_notif_admin;
+
+			} ?>
+
+			<?php foreach ($status_notif_admin as $sts) {
+
+				$stts[] = $sts['status_notif_admin'];
+
+				// echo $sts['id_organisasi'];
+				// echo $sts['status_notif_admin'];
+				
 			} ?>
 
 			<?php

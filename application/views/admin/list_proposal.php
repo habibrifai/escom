@@ -89,25 +89,77 @@ if ($this->session->userdata('status') != 'login admin') {
 				<h1 class="page-header">List Proposal</h1>
 			</div>
 		</div><!--/.row-->
+
+		<?php $lol = 0; ?>
+
+		<?php foreach ($status_notif_admin as $sts) {
+
+			$stts[] = $sts['status_notif_admin'];
+			$s[] = $sts['id_organisasi'];
+
+			// echo $sts['status_notif_admin'];
+
+			if ($sts['status_notif_admin'] == 'Disetujui' || $sts['status_notif_admin'] == 'Ditolak') {
+				// echo $stts[$i];
+				// echo 'disetujui/ditolak';
+				$lol = 1;
+			}
+
+			
+		} ?>
+
+		<!-- <?php echo $lol; ?> -->
+
+		<!-- <?php $h = count($stts); ?> -->
+
+		<!-- <?php echo $stts[0]; ?>
+		<?php echo $stts[1]; ?>
+		<?php echo $stts[2]; ?>  -->
+		
+
+		
+
+
+
 		<?php foreach($profil as $qry){
 
 			$awal = $qry['jml_proposal_awal'];
 			$ahir = $qry['jumlah_proposal'];
 			$hasil = $ahir - $awal;
 
+			// echo $sts['status_notif_admin'];
+
 			?>
+
 			<div class="col-md-4 col-sm-4">
 			<div class="list-group">
 				<div class="panel panel-info">
 					<div style="text-align:center;" class="panel-heading"><?php echo $qry['nama_organisasi']?></div>
 					<div style="font-size:15px; "class="panel-body"><img style="display:block;margin-left:auto;margin-right:auto;width:150px;height:150px;" src="<?php echo base_url().'assets/gambar/'.$qry['foto']?>" alt="logo"></div>
 					<div class="panel-footer" style="display: block;">
-						<?php if($hasil > 0 || $qry['status_notif_admin'] == 'Disetujui' || $qry['status_notif_admin'] == 'Ditolak') { ?>
-							<span style="float: right;" class="label label-danger"><?php echo $hasil; ?></span>
-							<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
-						<?php } else { ?>
-							<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
-						<?php } ?>
+						<?php $sama = 0; ?>
+
+						<?php for ($i=0; $i < $h; $i++) {
+								if ($s[$i] == $qry['id_organisasi']) {
+									$sama = 1;
+								} else {
+									$sama = 0;
+								}
+						} ?>
+
+							<!-- <?php echo $lol; ?> -->
+
+							<?php if($sama == 1 || $hasil > 0) { ?>
+								<?php if($hasil > 0 || $lol == 1){ ?>
+									<span style="float: right;" class="label label-danger"><?php echo $hasil; ?></span>
+									<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
+								<?php } else { ?>
+									<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
+								<?php } ?>
+							<?php } else { ?>
+								<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
+							<?php } ?>
+
 					</div>
 				</div>
 			</div>
