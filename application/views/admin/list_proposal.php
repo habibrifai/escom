@@ -106,7 +106,7 @@ if ($this->session->userdata('status') != 'login admin') {
 			}
 
 			
-		} ?>
+		} ?> 
 
 		<!-- <?php echo $lol; ?> -->
 
@@ -142,14 +142,18 @@ if ($this->session->userdata('status') != 'login admin') {
 						<?php for ($i=0; $i < $h; $i++) {
 								if ($s[$i] == $qry['id_organisasi']) {
 									$sama = 1;
-								} else {
-									$sama = 0;
 								}
 						} ?>
 
-							<!-- <?php echo $lol; ?> -->
+							<!-- <?php var_dump($sts); ?> -->
+							
 
-							<?php if($sama == 1 || $hasil > 0) { ?>
+							<?php if($sama = 1) {?>
+
+								<!-- <?php echo $qry['id_organisasi']; ?>
+								<?php echo $s[$y]; ?> -->
+								
+
 								<?php if($hasil > 0 || $lol == 1){ ?>
 									<span style="float: right;" class="label label-danger"><?php echo $hasil; ?></span>
 									<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
@@ -159,13 +163,15 @@ if ($this->session->userdata('status') != 'login admin') {
 							<?php } else { ?>
 								<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
 							<?php } ?>
-
+								
 					</div>
 				</div>
 			</div>
 		</div>
+		
 		<?php } ?>
-	</div>	<!--/.main-->
+
+	</div>
 
 	<script src="<?php echo base_url(); ?>assets/admin/js/jquery-1.11.1.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>

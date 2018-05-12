@@ -31,7 +31,7 @@ class M_spj extends CI_Model{
 		$this->db->join('proposal', 'perusahaan.id_perusahaan = proposal.id_perusahaan');
 		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
 		$this->db->where('username', $username);
-		return $this->db->get()->row();
+		return $this->db->get()->result();
 	}
 
 	function cek_spj_cleared_organisasi($username){
@@ -41,7 +41,7 @@ class M_spj extends CI_Model{
 		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
 		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
 		$this->db->where('username', $username);
-		return $this->db->get()->row();
+		return $this->db->get()->result();
 	}
 
 	function reset_status_notif($username){
@@ -70,14 +70,17 @@ class M_spj extends CI_Model{
 		$this->db->join('proposal', 'proposal.id_organisasi = organisasi.id_organisasi');
 		$this->db->join('spj', 'proposal.id_proposal = spj.id_proposal');
 		$this->db->where('user.username', $username);
-		$h = $this->db->get()->row();
+		$h = $this->db->get()->result();
 
 		// return $h;
 
 		if (isset($h)) {
-			$data = array('status_notif_organisasi' => '-');
-			$this->db->where('id_spj', $h->id_spj);
-			$this->db->update('spj', $data);
+
+			foreach ($h as $key) {
+				$data = array('status_notif_organisasi' => '-');
+				$this->db->where('id_spj', $key->id_spj);
+				$this->db->update('spj', $data);
+			}
 		}
 	}
 }

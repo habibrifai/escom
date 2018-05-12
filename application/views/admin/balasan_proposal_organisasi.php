@@ -15,7 +15,7 @@ if ($this->session->userdata('status') != 'login admin') {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin - List Proposal</title>
+	<title>Admin - Balasan Proposal</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" />
@@ -80,13 +80,13 @@ if ($this->session->userdata('status') != 'login admin') {
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">List Proposal</li>
+				<li class="active">Balasan Proposal</li>
 			</ol>
 		</div><!--/.row-->
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">List Proposal</h1>
+				<h1 class="page-header">Balasan Proposal</h1>
 			</div>
 		</div><!--/.row-->
 		<div class="container col-lg-12">

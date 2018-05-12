@@ -41,12 +41,20 @@ class M_proposal extends CI_Model{
 	}
 
 	function cek_status_notif($username){
-		$this->db->select('proposal.status_notif, proposal.status_notif_admin');
+		$this->db->select('organisasi.id_organisasi');
 		$this->db->from('user');
 		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
-		$this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
+		// $this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi', 'right');
 		$this->db->where('username', $username);
-		return $this->db->get()->row();
+		$t = $this->db->get()->row();
+
+		if (isset($t)) {
+			$this->db->select('status_notif, status_notif_admin');
+			$this->db->from('proposal');
+			$this->db->where('id_organisasi', $t->id_organisasi);
+
+			return $this->db->get()->result();
+		}
 	}
 
 	// function cek_status_notif_admin(){
@@ -58,7 +66,7 @@ class M_proposal extends CI_Model{
 
 	function reset_notif_status($username,$kolom){
 
-		$this->db->select('proposal.id_proposal');
+		$this->db->select('proposal.id_proposal, organisasi.id_organisasi');
 		$this->db->from('user');
 		$this->db->join('organisasi', 'organisasi.id_user = user.id_user');
 		$this->db->join('proposal', 'proposal.id_organisasi = organisasi.id_organisasi');
@@ -69,7 +77,7 @@ class M_proposal extends CI_Model{
 
 		if (isset($h)) {
 			$data = array($kolom => '-');
-			$this->db->where('id_proposal', $h->id_proposal);
+			$this->db->where('id_organisasi', $h->id_organisasi);
 			$this->db->update('proposal', $data);
 		}
 	}

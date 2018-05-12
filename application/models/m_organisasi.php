@@ -54,6 +54,7 @@ class M_organisasi extends CI_Model{
 		$this->db->select("jumlah_proposal,jml_proposal_awal,foto,nama_organisasi,deskripsi,tahun_berdiri,alamat_organisasi,user.email,user.status,no_tlp,user.id_user,organisasi.id_organisasi");
 		$this->db->from($table);
 		$this->db->join('user', 'user.id_user = organisasi.id_user');
+		// $this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
 		$this->db->where('status', 'terverifikasi');
 
 		return $this->db->get()->result_array();

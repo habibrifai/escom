@@ -18,26 +18,33 @@ class Dashboard extends CI_Controller {
 
 		$notif_spj_cleared = $this->m_spj->cek_spj_cleared_organisasi($this->username);
 
-		if(isset($notif_spj_cleared)){
-			if ($notif_spj_cleared->status_notif_organisasi == "Cleared" || $notif_spj_cleared->status_notif_organisasi == "Revisi") {
-				$notif_spj = 1;
+		$notif_spj = 0;
+
+		foreach ($notif_spj_cleared as $k) {
+			if(isset($k)){
+				if ($k->status_notif_organisasi == "Cleared" || $k->status_notif_organisasi == "Revisi") {
+					$notif_spj = 1;
+				}
 			} else {
 				$notif_spj = 0;
 			}
-		} else {
-			$notif_spj = 0;
 		}
 
 		$data['notif_spj'] = $notif_spj;
 
-		if(isset($status_notif)){
-			if($status_notif->status_notif == "Disetujui" || $status_notif->status_notif == "Ditolak"){
-				$notif_stts = 1;
+
+		$notif_stts = 0;
+
+		foreach ($status_notif as $key) {
+			if(isset($key)){
+				if($key->status_notif == "Disetujui" || $key->status_notif == "Ditolak"){
+					$notif_stts = 1;
+				} else {
+					$notif_stts = 0;
+				}
 			} else {
 				$notif_stts = 0;
 			}
-		} else {
-			$notif_stts = 0;
 		}
 
 		$data['notif_status'] = $notif_stts;

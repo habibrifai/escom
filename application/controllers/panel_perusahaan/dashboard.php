@@ -21,14 +21,16 @@ class Dashboard extends CI_Controller {
 
 		$notif_spj_cleared = $this->m_spj->cek_spj_cleared($this->username);
 
-		if(isset($notif_spj_cleared)){
-			if ($notif_spj_cleared->status_notif == "Cleared" || $notif_spj_cleared->status_notif == "Revisi") {
-				$notif_spj = 1;
+		$notif_spj = 0;
+
+		foreach ($notif_spj_cleared as $key) {
+			if(isset($key)){
+				if ($key->status_notif == "Cleared" || $key->status_notif == "Revisi") {
+					$notif_spj = 1;
+				}
 			} else {
 				$notif_spj = 0;
 			}
-		} else {
-			$notif_spj = 0;
 		}
 
 		$data['notif_spj'] = $notif_spj;
