@@ -166,6 +166,48 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
+	public function kirim_revisi_spj($id_spj,$id_proposal,$id_perusahaan){
+		$nama = $this->m_perusahaan->get_nama($id_perusahaan);
+
+		$data['data'] = array(
+			'nama_perusahaan' => $nama[0]['nama_perusahaan'], 
+			'id_proposal' => $id_proposal,
+			'id_spj' => $id_spj
+		);
+		
+		$this->load->view('organisasi/kirim_revisi_spj', $data);
+	}
+
+	public function upload_revisi_spj(){
+
+		$config = array(
+			'upload_path' => 'assets/spj/',
+			'allowed_types' => 'pdf|doc|docx',
+			'max_size' => 15000 //in kb
+		);
+
+		$id_spj = $this->input->post('id_proposal');
+		$fileUpload = array();
+		$this->upload->initialize($config);
+
+		if($this->upload->do_upload('spj')){
+			$fileUpload = $this->upload->data();
+			$spj = $fileUpload['file_name'];
+
+			$data = array(
+				'status_spj' => 'idle',
+				'spj' => $spj
+			);
+
+			$this->m_organisasi->upload_revisi_spj($id_spj,$data);
+
+			redirect(base_url('panel_organisasi/dashboard/'));
+
+		} else {
+			echo "gagal upload";
+		}
+	}
+
 	public function edit_profil(){
 		$data['profil'] = $this->m_ctrlOrganisasi->get_profil($this->username);
 		$this->load->view('organisasi/edit_profil', $data);
