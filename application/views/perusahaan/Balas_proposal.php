@@ -9,6 +9,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 		$id = $propos->id_proposal;
 		$proposal = $propos->proposal;
 		$tanggal = $propos->tanggal_pengajuan;
+		$id_organisasi = $propos->id_organisasi;
 	}
 }
 
@@ -64,12 +65,12 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
 				<li><a href="<?php echo base_url('panel_perusahaan/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard/edit_profil'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
+				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/edit_profil'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> Profil Perusahaan</a></li>
 				<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ</a></li>
 				<?php if($notif!=0) { ?>
-					<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo $notif; ?></span></a></li>
+					<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal &nbsp;<span class="label label-danger"><?php echo $notif; ?></span></a></li>
 				<?php }else{ ?>
-					<li><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal </a></li>
+					<li class="active"><a href="<?php echo base_url('panel_perusahaan/dashboard/list_proposal'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List Proposal </a></li>
 				<?php } ?>
 				<li><a href="<?php echo base_url('logout'); ?>"><em class="fa fa-sign-out">&nbsp;</em> Logout</a></li>
 			</ul>
@@ -84,8 +85,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<h1 class="page-header">Balasan Proposal <?=str_replace('.pdf','',$proposal) ?></h1>
 				</div>
 			</div><!--/.row-->
-
-			<?= form_open('panel_perusahaan/dashboard/balas_proposal/' .$id) ?>
+			<?= form_open('panel_perusahaan/dashboard/balas_proposal/'.$id); ?>
 			<div class="form-group row">
 				<label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Pengajuan</label>
 				<div class="col-sm-10">
@@ -93,9 +93,11 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 				</div>
 			</div>
 			<div class="form-group row">
-				<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Deskripsi</label>
+				<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Upload Dokumen Perjanjian</label>
 				<div class="col-sm-10">
 					<textarea name="balasan" id="summernote" required=""></textarea>
+					<input type="hidden" value="<?php echo $id_organisasi; ?>" name="id_organisasi">
+					<!-- <input type="file" name="balasan" required=""> -->
 					<!-- <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea> -->
 				</div>
 			</div>

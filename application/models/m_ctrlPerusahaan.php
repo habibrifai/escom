@@ -77,7 +77,7 @@ class M_ctrlPerusahaan extends CI_Model{
 	}
 
 	function get_detail_proposal($id){
-		$this->db->select('id_proposal, proposal, tanggal_pengajuan')
+		$this->db->select('id_proposal, proposal, tanggal_pengajuan, id_organisasi')
 		->from('proposal')
 		->where('id_proposal', $id);
 		$hasil = $this->db->get()->row();

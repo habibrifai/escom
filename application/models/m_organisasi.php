@@ -51,7 +51,7 @@ class M_organisasi extends CI_Model{
 	}
 
 	function get_data_detail($table){
-		$this->db->select("jumlah_proposal,jml_proposal_awal,foto,nama_organisasi,deskripsi,tahun_berdiri,alamat_organisasi,user.email,user.status,no_tlp,user.id_user,organisasi.id_organisasi");
+		$this->db->select("jumlah_proposal,jml_proposal_awal,foto,nama_organisasi,deskripsi,tahun_berdiri,alamat_organisasi,user.email,user.status,no_tlp,user.id_user,organisasi.id_organisasi,organisasi.status_notif_admin");
 		$this->db->from($table);
 		$this->db->join('user', 'user.id_user = organisasi.id_user');
 		// $this->db->join('proposal', 'organisasi.id_organisasi = proposal.id_organisasi');
@@ -93,5 +93,18 @@ class M_organisasi extends CI_Model{
 		$this->db->where('id_organisasi', $id_organisasi);
 		$this->db->update($table, $data);
 		
+	}
+
+	function set_status_notif_admin($id_organisasi, $data){
+		$this->db->where('id_organisasi', $id_organisasi);
+		$this->db->update('organisasi', $data);
+	}
+
+	function reset_status_notif_admin($id,$table){
+
+		$data = array('status_notif_admin' => '-');
+
+		$this->db->where('id_organisasi', $id);
+		$this->db->update($table, $data);
 	}
 }

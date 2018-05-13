@@ -63,6 +63,7 @@ class Dashboard extends CI_Controller {
 	public function list_proposal_organisasi($id){
 		$this->m_organisasi->reset_jml_proposal($id,'organisasi');
 		$this->m_proposal->reset_status_notif_admin($id, 'proposal');
+		$this->m_organisasi->reset_status_notif_admin($id, 'organisasi');
 		$data['profil'] = $this->m_ctrlOrganisasi->get_profile_byID($id);
 		$data['proposal'] = $this->m_proposal->get_organisasi_proposal($id);
 		$this->load->view('admin/list_proposal_organisasi', $data);
