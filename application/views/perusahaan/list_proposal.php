@@ -69,7 +69,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<li><a href="#">
 						<em class="fa fa-home"></em>
 					</a></li>
-					<li class="active">Verifiksi Akun</li>
+					<li class="active">List Proposal</li>
 				</ol>
 			</div><!--/.row-->
 
@@ -78,9 +78,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<h1 class="page-header">List Proposal</h1>
 				</div>
 			</div><!--/.row-->
-			<?php if($cek==0){
-				echo "<p>Tidak ada Proposal yang masuk. </p>";
-			} else { ?>
+			
 				<div class="row">
 					<div class="col-lg-12">
 						<table class="table-read" border="2">
@@ -97,17 +95,29 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 									<td class="td-read"><?php echo $qry->tanggal_pengajuan; ?></td>
 									<td class="td-read"><a href="<?php echo base_url('assets/proposal/'.$qry->proposal); ?>"><?php echo $qry->proposal; ?></a></td>
 									<td>
+
+										<?php if($qry->status_proposal == 'belum disetujui') { ?>
+
 										<div style="margin: 15px;">
 											<?=anchor('panel_perusahaan/dashboard/balas_proposal/' . $qry->id_proposal,'Balas', ['class'=>'btn btn-primary btn-sm'])?>
 											<?=anchor('panel_perusahaan/dashboard/tolak_proposal/' . $qry->id_proposal,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
 										</div>
+										<?php } elseif($qry->status_proposal == 'Disetujui') { ?>
+										<div style="margin: 15px;">
+											<button class="btn btn-success btn-sm">Sudah Disetujui</button>
+										</div>
+										<?php } elseif($qry->status_proposal == 'Ditolak') { ?>
+										<div style="margin: 15px;">
+											<button class="btn btn-danger btn-sm">Sudah Ditolak</button>
+										</div>
+										<?php } ?>
 									</td>
 								</tr>
 								<?php } ?>
 							</table>
 						</div>
 					</div>
-					<?php } ?>
+				
 				</div><!--/.row-->
 			</div>	<!--/.main-->
 

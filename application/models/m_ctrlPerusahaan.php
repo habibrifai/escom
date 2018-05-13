@@ -70,8 +70,9 @@ class M_ctrlPerusahaan extends CI_Model{
 		$this->db->select('id_proposal, id_perusahaan, nama_organisasi, proposal, tanggal_pengajuan, status_proposal');
 		$this->db->from('proposal');
 		$this->db->join('organisasi', 'organisasi.id_organisasi = proposal.id_organisasi');
-		$this->db->where('id_perusahaan', $hasil->id_perusahaan)
-		->where('status_proposal', 'belum disetujui');
+		$this->db->where('id_perusahaan', $hasil->id_perusahaan);
+		$this->db->order_by("tanggal_pengajuan", "desc");
+		// ->where('status_proposal', 'belum disetujui');
 		$proposal = $this->db->get();
 		return $proposal->result();
 	}
