@@ -186,7 +186,7 @@ class Dashboard extends CI_Controller {
 			'max_size' => 15000 //in kb
 		);
 
-		$id_spj = $this->input->post('id_proposal');
+		$id_spj = $this->input->post('id_spj');
 		$fileUpload = array();
 		$this->upload->initialize($config);
 
@@ -196,6 +196,7 @@ class Dashboard extends CI_Controller {
 
 			$data = array(
 				'status_spj' => 'idle',
+				'status_notif' => '-',
 				'spj' => $spj
 			);
 
