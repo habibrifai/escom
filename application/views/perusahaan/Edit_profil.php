@@ -10,7 +10,6 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 		$deskripsi = set_value('deskripsi');
 		$notelp = set_value('notelp');
 		$kategori = set_value('kategori');
-		$foto = set_value('foto');
 
 	} else{
 		$nama = $profil->nama_perusahaan;

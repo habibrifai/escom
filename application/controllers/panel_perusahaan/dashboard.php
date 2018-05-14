@@ -84,70 +84,37 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function balas_proposal($id){
-		$this->form_validation->set_rules('balasan', 'Balasan Proposal', 'required');
-
-		if($this->form_validation->run() == false){
 			$data['notif'] = $this->notif;
 			$data['propos'] = $this->m_ctrlPerusahaan->get_detail_proposal($id);
 			$this->load->view('perusahaan/Balas_proposal', $data);
-		}
-		else{
-
-			$id_organisasi = $this->input->post('id_organisasi');
-
-			$balasan = array(
-				'isi_balasan' => set_value('balasan'),
-				'status_proposal' => 'Disetujui',
-				'status_notif' => 'Disetujui',
-				'status_notif_admin' => 'Disetujui'
-			);
-
-			$status_proposal_organisasi = array('status_notif_admin' => 'Disetujui');
-
-			$this->m_organisasi->set_status_notif_admin($id_organisasi, $status_proposal_organisasi);
-
-			$this->m_ctrlPerusahaan->balas_proposaldb($id, $balasan);
-			redirect(base_url('panel_perusahaan/dashboard/'));
-		}
 	}
 
-	public function upload_balasan(){
-
+	public function do_balas($id){
 		$config = array(
 			'upload_path' => 'assets/balasan/',
 			'allowed_types' => 'pdf|doc|docx',
 			'max_size' => 15000 //in kb
 			);
-		
-		$id_organisasi = $this->input->post('id_organisasi');
+
 		$fileUpload = array();
 		$this->upload->initialize($config);
+		$id_organisasi = $this->input->post('id_organisasi');
 
-		// echo 'halo';
-		// echo $id_organisasi;
-		var_dump($this->upload->do_upload('balasan'));
-
-		// if($this->upload->do_upload('balasan')){
-		// 	$fileUpload = $this->upload->data();
-		// 	$balasan = $fileUpload['file_name'];
-		// 	$balasan = array(
-		// 		'isi_balasan' => $balasan,
-		// 		'status_proposal' => 'Disetujui',
-		// 		'status_notif' => 'Disetujui',
-		// 		'status_notif_admin' => 'Disetujui'
-		// 	);
-
-		// 	$status_proposal_organisasi = array('status_notif_admin' => 'Disetujui');
-
-		// 	$this->m_organisasi->set_status_notif_admin($id_organisasi, $status_proposal_organisasi);
-
-		// 	$this->m_ctrlPerusahaan->balas_proposaldb($id, $balasan);
-		// 	redirect(base_url('panel_perusahaan/dashboard/'));
-
-		// } else {
-		// 	echo 'gagal';
-		// 	echo $id_organisasi;
-		// }
+		if($this->upload->do_upload('balasan')){
+				$fileUpload = $this->upload->data();
+				$isi_balasan = $fileUpload['file_name'];
+				$balasan = array(
+					'isi_balasan' => $isi_balasan,
+					'status_proposal' => 'Disetujui',
+					'status_notif' => 'Disetujui',
+					'status_notif_admin' => 'Disetujui'
+				);
+				$status_proposal_organisasi = array('status_notif_admin' => 'Disetujui');
+				$this->m_organisasi->set_status_notif_admin($id_organisasi, $status_proposal_organisasi);
+				$this->m_ctrlPerusahaan->balas_proposaldb($id, $balasan);
+				redirect(base_url('panel_perusahaan/dashboard/'));
+			}
+		else echo 'gagal';
 	}
 
 	public function tolak_proposal($id){

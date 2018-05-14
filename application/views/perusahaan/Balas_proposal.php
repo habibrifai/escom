@@ -3,14 +3,10 @@
 if ($this->session->userdata('status') != 'login perusahaan') {
 	redirect(base_url('login'));
 } else {
-	if($this->input->post('is_submitted')){
-		$isi = set_value('isi_balasan');
-	} else{
 		$id = $propos->id_proposal;
 		$proposal = $propos->proposal;
 		$tanggal = $propos->tanggal_pengajuan;
 		$id_organisasi = $propos->id_organisasi;
-	}
 }
 
 
@@ -85,7 +81,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 					<h1 class="page-header">Balasan Proposal <?=str_replace('.pdf','',$proposal) ?></h1>
 				</div>
 			</div><!--/.row-->
-			<?= form_open('panel_perusahaan/dashboard/balas_proposal/'.$id); ?>
+			<?= form_open_multipart('panel_perusahaan/dashboard/do_balas/'.$id); ?>
 			<div class="form-group row">
 				<label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Pengajuan</label>
 				<div class="col-sm-10">
@@ -95,8 +91,10 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 			<div class="form-group row">
 				<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Upload Dokumen Perjanjian</label>
 				<div class="col-sm-10">
-					<textarea name="balasan" id="summernote" required=""></textarea>
-					<input type="hidden" value="<?php echo $id_organisasi; ?>" name="id_organisasi">
+					<div class="wrap-input100 m-b-36">
+						<input class="p-b-12" type="file" name="balasan">
+						<input type="hidden" value="<?php echo $id_organisasi; ?>" name="id_organisasi">
+					</div>
 					<!-- <input type="file" name="balasan" required=""> -->
 					<!-- <textarea class="form-control" id="exampleFormControlTextarea1" name="deskripsi" value="<?=$deskripsi ?>" placeholder="Deskripsi" rows="3"><?=$deskripsi ?></textarea> -->
 				</div>
