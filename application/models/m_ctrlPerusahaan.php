@@ -67,7 +67,7 @@ class M_ctrlPerusahaan extends CI_Model{
 		->where('username', $username);
 		$hasil = $this->db->get()->row();
 
-		$this->db->select('id_proposal, id_perusahaan, nama_organisasi, proposal, tanggal_pengajuan, status_proposal');
+		$this->db->select('id_proposal, id_perusahaan, nama_organisasi, proposal, tanggal_pengajuan, status_proposal, proposal.id_organisasi');
 		$this->db->from('proposal');
 		$this->db->join('organisasi', 'organisasi.id_organisasi = proposal.id_organisasi');
 		$this->db->where('id_perusahaan', $hasil->id_perusahaan);

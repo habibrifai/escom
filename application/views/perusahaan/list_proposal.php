@@ -100,7 +100,7 @@ if ($this->session->userdata('status') != 'login perusahaan') {
 
 										<div style="margin: 15px;">
 											<?=anchor('panel_perusahaan/dashboard/balas_proposal/' . $qry->id_proposal,'Balas', ['class'=>'btn btn-primary btn-sm'])?>
-											<?=anchor('panel_perusahaan/dashboard/tolak_proposal/' . $qry->id_proposal,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
+											<?=anchor('panel_perusahaan/dashboard/tolak_proposal/' . $qry->id_proposal . '/' . $qry->id_organisasi,'Tolak',['class'=>'btn btn-danger btn-sm','onclick'=>'return confirm(\'Apakah Anda yakin ingin menolak proposal?\')'])?>
 										</div>
 										<?php } elseif($qry->status_proposal == 'Disetujui') { ?>
 										<div style="margin: 15px;">

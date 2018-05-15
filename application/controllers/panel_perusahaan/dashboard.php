@@ -50,6 +50,7 @@ class Dashboard extends CI_Controller {
 
 	public function list_proposal(){
 		$data['proposal'] = $this->m_ctrlPerusahaan->get_proposal($this->username);
+		// $data['propos'] = $this->m_ctrlPerusahaan->get_detail_proposal($id);
 		$data['cek'] = $this->m_ctrlPerusahaan->count_proposal($this->username);
 		$this->m_ctrlPerusahaan->reset_notif_proposal($this->username);
 		$this->load->view('perusahaan/list_proposal', $data);
@@ -83,10 +84,10 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
-	public function balas_proposal($id){
-			$data['notif'] = $this->notif;
-			$data['propos'] = $this->m_ctrlPerusahaan->get_detail_proposal($id);
-			$this->load->view('perusahaan/Balas_proposal', $data);
+	public function balas_proposal($id_proposal){
+		$data['notif'] = $this->notif;
+		$data['propos'] = $this->m_ctrlPerusahaan->get_detail_proposal($id_proposal);
+		$this->load->view('perusahaan/Balas_proposal', $data);
 	}
 
 	public function do_balas($id){
@@ -117,13 +118,16 @@ class Dashboard extends CI_Controller {
 		else echo 'gagal';
 	}
 
-	public function tolak_proposal($id){
+	public function tolak_proposal($id_proposal,$id_organisasi){
 		$tolak = array(
 			'status_proposal' => 'Ditolak',
 			'status_notif' => 'Ditolak',
 			'status_notif_admin' => 'Ditolak'
 		);
-		$this->m_ctrlPerusahaan->tolak_proposaldb($id, $tolak);
+
+		$status_proposal_organisasi = array('status_notif_admin' => 'Disetujui');
+		$this->m_organisasi->set_status_notif_admin($id_organisasi, $status_proposal_organisasi);
+		$this->m_ctrlPerusahaan->tolak_proposaldb($id_proposal, $tolak);
 		redirect(base_url('panel_perusahaan/dashboard/'));
 	}
 }

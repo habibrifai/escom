@@ -84,7 +84,7 @@ if ($this->session->userdata('status') != 'login organisasi') {
 					<div class="list-group">
 						<div class="panel panel-info">
 							<div class="panel-heading">Balasan <?php $searches = array('.pdf', '_'); $replacements = array('', ' '); echo str_replace($searches, $replacements,$balasan->proposal).' dari '.$balasan->nama_perusahaan?></div>
-							<div class="panel-body"><?php echo htmlspecialchars_decode($balasan->isi_balasan)?></div>
+							<div class="panel-body"><a href="<?php echo base_url('assets/balasan/'.htmlspecialchars_decode($balasan->isi_balasan)) ?>"><?php echo htmlspecialchars_decode($balasan->isi_balasan); ?></a></div>
 						</div>
 					</div>
 					<input type="hidden" name="" value="">
