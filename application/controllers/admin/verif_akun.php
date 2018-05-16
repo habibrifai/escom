@@ -53,5 +53,23 @@ class Verif_akun extends CI_Controller {
 
 	}
 
+	public function hapus_organisasi(){
+		$id_user = $this->input->post('id_user');
+		$this->m_organisasi->hapus("organisasi",$id_user);
+		$this->m_organisasi->hapus("user",$id_user);
+
+		redirect(base_url('admin/verif_akun/verif_akun_organisasi'));
+
+	}
+
+	public function hapus_perusahaan(){
+		$id_user = $this->input->post('id_user');
+		$this->m_perusahaan->hapus("perusahaan",$id_user);
+		$this->m_perusahaan->hapus("user",$id_user);
+
+		redirect(base_url('admin/verif_akun/verif_akun_perusahaan'));
+
+	}
+
 }
 ?>

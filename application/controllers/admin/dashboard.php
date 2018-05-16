@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('m_ctrlOrganisasi');
 		$this->load->model('m_proposal');
 		$this->load->model('m_spj');
+		$this->load->model('m_login');
 		$this->username = $this->session->userdata('nama');
 		// $jumlah = $this->m_organisasi->get_data_detail('organisasi');
 
@@ -31,7 +32,8 @@ class Dashboard extends CI_Controller {
 		// 	$notif_stts = 0;
 		// }
 
-		
+		$data['verif_notif'] = $this->m_login->cek_cek('user','belum terverifikasi');
+		// $data['verif_notif'] = $this->m_login->cek_role('user','belum terverifikasi')->row();
 
 		$data['notif_status'] = $this->m_organisasi->get_data_detail('organisasi');
 		$data['status_notif_admin'] = $this->m_organisasi->get_status_notif_admin('organisasi');

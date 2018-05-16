@@ -120,7 +120,7 @@ if ($this->session->userdata('status') != 'login admin') {
 									<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_perusahaan']; ?>">
 									<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Verifikasi</button></a>
 								</form>
-								<form style="text-align: center;" class="col-md-6" method="POST" action="lol">
+								<form style="text-align: center;" class="col-md-6" method="POST" action="<?php echo base_url('admin/verif_akun/hapus_perusahaan') ?>">
 									<input type="hidden" name="id_user" value="<?php echo $data['id_user']; ?>">
 									<input type="hidden" name="id_perusahaan" value="<?php echo $data['id_perusahaan']; ?>">
 									<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-danger">Hapus</button></a>

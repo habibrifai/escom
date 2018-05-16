@@ -57,10 +57,7 @@ class Login extends CI_Controller {
 			} elseif ($role[0]["status"] == "belum terverifikasi") {
 				$data['error_login'] = "Akun belum diverifikasi oleh admin, silakan tunggu 2 x 24 jam.";
 				$this->load->view('login', $data);
-			} else {
-
 			}
-
 		} else {
 			$data['error_login'] = "Username atau password salah.";
 			$this->load->view('login', $data);

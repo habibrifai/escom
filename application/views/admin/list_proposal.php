@@ -115,7 +115,11 @@ if ($this->session->userdata('status') != 'login admin') {
 								
 
 								<?php if($hasil > 0  || $qry['status_notif_admin'] == 'Disetujui' || $qry['status_notif_admin'] == 'Ditolak'){ ?>
-									<span style="float: right;" class="label label-danger"><?php echo $hasil; ?></span>
+									<span style="float: right;" class="label label-danger"><?php if($hasil == 0){
+										echo "!";
+									} else {
+										echo $hasil;
+									}?></span>
 
 									<?=anchor('admin/dashboard/list_proposal_organisasi/' . $qry['id_organisasi'],'Jumlah Proposal Dikirim : '.$qry['jumlah_proposal'], ['class'=>'btn btn-primary btn-sm', 'style'=>'display:block;margin-left:auto;margin-right:auto;'])?>
 							

@@ -74,6 +74,23 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function get($kategori){
+		$status_notif = $this->m_proposal->cek_status_notif($this->username);
+		$data['notif_status'] = $status_notif;
+		$notif_spj = 0;
+
+		$notif_spj_cleared = $this->m_spj->cek_spj_cleared_organisasi($this->username);
+
+		foreach ($notif_spj_cleared as $k) {
+			if(isset($k)){
+				if ($k->status_notif_organisasi == "Cleared" || $k->status_notif_organisasi == "Revisi") {
+					$notif_spj = 1;
+				}
+			} else {
+				$notif_spj = 0;
+			}
+		}
+
+		$data['notif_spj'] = $notif_spj;
 		$data['qry'] = $this->m_perusahaan->get_data_kategori("perusahaan",$kategori);
 		$this->load->view('organisasi/dashboard', $data);
 	}

@@ -101,7 +101,7 @@ if ($this->session->userdata('status') != 'login admin') {
 						</div>
 						<div class="panel-body">
 							<div style="text-align: center;">
-								<img src="<?php echo base_url('assets/gambar/'.$data['foto']); ?>">
+								<img style="width: 70%;" src="<?php echo base_url('assets/gambar/'.$data['foto']); ?>">
 							</div>
 
 							<?php echo 'Tahun Berdiri '.$data['tahun_berdiri']; ?><br><br>
@@ -120,7 +120,7 @@ if ($this->session->userdata('status') != 'login admin') {
 									<input type="hidden" name="id_organisasi" value="<?php echo $data['id_organisasi']; ?>">
 									<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-primary">Verifikasi</button></a>
 								</form>
-								<form style="text-align: center;" class="col-md-6" method="POST" action="lol">
+								<form style="text-align: center;" class="col-md-6" method="POST" action="<?php echo base_url('admin/verif_akun/hapus_organisasi') ?>">
 									<input type="hidden" name="id_user" value="<?php echo $data['id_user']; ?>">
 									<input type="hidden" name="id_organisasi" value="<?php echo $data['id_organisasi']; ?>">
 									<a><button type="submit" style="margin: 7px;" class="btn btn-sm btn-danger">Hapus</button></a>

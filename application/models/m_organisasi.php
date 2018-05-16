@@ -30,6 +30,11 @@ class M_organisasi extends CI_Model{
 		$this->db->update($table, array('status' => 'terverifikasi'));
 	}
 
+	function hapus($table,$where){
+		$this->db->where('id_user', $where);
+		$this->db->delete($table);
+	}
+
 	function jumlah_data($table){
 		$this->db->where(array('status' => 'terverifikasi', 'role' => 'organisasi'));
 		return $this->db->get($table)->num_rows();
