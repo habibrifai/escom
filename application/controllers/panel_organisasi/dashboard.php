@@ -107,7 +107,7 @@ class Dashboard extends CI_Controller {
 		$config = array(
 			'upload_path' => 'assets/proposal/',
 			'allowed_types' => 'pdf|doc|docx',
-			'max_size' => 15000 //in kb
+			'max_size' => 150000 //in kb
 		);
 
 		$fileUpload = array();
@@ -158,7 +158,7 @@ class Dashboard extends CI_Controller {
 		$config = array(
 			'upload_path' => 'assets/spj/',
 			'allowed_types' => 'pdf|doc|docx',
-			'max_size' => 15000 //in kb
+			'max_size' => 150000 //in kb
 		);
 
 		$fileUpload = array();
@@ -200,7 +200,7 @@ class Dashboard extends CI_Controller {
 		$config = array(
 			'upload_path' => 'assets/spj/',
 			'allowed_types' => 'pdf|doc|docx',
-			'max_size' => 15000 //in kb
+			'max_size' => 150000 //in kb
 		);
 
 		$id_spj = $this->input->post('id_spj');

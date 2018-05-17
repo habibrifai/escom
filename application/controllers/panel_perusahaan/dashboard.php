@@ -94,7 +94,7 @@ class Dashboard extends CI_Controller {
 		$config = array(
 			'upload_path' => 'assets/balasan/',
 			'allowed_types' => 'pdf|doc|docx',
-			'max_size' => 15000 //in kb
+			'max_size' => 150000 //in kb
 			);
 
 		$fileUpload = array();

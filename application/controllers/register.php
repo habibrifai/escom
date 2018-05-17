@@ -83,8 +83,8 @@ class Register extends CI_Controller {
 					// $this->load->view('login');
 					redirect(base_url('login'));
 				}
-				else echo "gagal";
-				// var_dump($fileUpload);
+				$data['error_regist'] = "Periksa kembali inputan anda.";
+				$this->load->view('register', $data);
 			}
 		}
 	}

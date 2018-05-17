@@ -32,7 +32,8 @@ class Dashboard extends CI_Controller {
 		// 	$notif_stts = 0;
 		// }
 
-		$data['verif_notif'] = $this->m_login->cek_cek('user','belum terverifikasi');
+		$data['verif_notif_organisasi'] = $this->m_login->cek_cek('user','belum terverifikasi','organisasi');
+		$data['verif_notif_perusahaan'] = $this->m_login->cek_cek('user','belum terverifikasi','perusahaan');
 		// $data['verif_notif'] = $this->m_login->cek_role('user','belum terverifikasi')->row();
 
 		$data['notif_status'] = $this->m_organisasi->get_data_detail('organisasi');

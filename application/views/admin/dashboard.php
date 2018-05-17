@@ -56,46 +56,65 @@ if ($this->session->userdata('status') != 'login admin') {
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<ul class="nav menu">
 				<li class="active"><a href="<?php echo base_url('admin/dashboard'); ?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<?php 
+				$perusahaan = 0;
+				$organisasi = 0;
+				?>
 
-				<?php foreach ($verif_notif as $key) {
-					$role[] = $key['role'];
+				<?php 
+				if (isset($verif_notif_perusahaan->status)) {
+					$perusahaan = 1;
+				} 
+
+				if(isset($verif_notif_organisasi->status)){
+					$organisasi = 1;
 				} ?>
 
-				<?php var_dump($role); ?>
-
-				<?php if (!empty($verif_notif)) {
-
-				foreach ($verif_notif as $key) {				
-				if ($key['status'] == 'belum terverifikasi') { ?>
-
-				<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-					<em class="fa fa-users">&nbsp;</em> Verifikasi Akun &nbsp;<span class="label label-danger"><?php echo '!'; ?></span><span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span></a>
-					<!-- <?php if($role == ){ ?> -->
-					<!-- kita belum lanjutin yang ini, gimana cara nya nyocokin array role dengan value nya -->
-					<?php if($key['role'] == 'organisasi'){ ?>
-					<ul class="children collapse" id="sub-item-1">
-						<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
-							<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
-						</a></li>
-						<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
-							<span class="fa fa-arrow-right">&nbsp;</span> Organisasi &nbsp;<span class="label label-danger"><?php echo '!'; ?></span>
-						</a></li>
-					</ul>
-					<?php } else { ?>
-					<ul class="children collapse" id="sub-item-1">
-						<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
-							<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
-						</a></li>
-						<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
-							<span class="fa fa-arrow-right">&nbsp;</span> Organisasi &nbsp;<span class="label label-danger"><?php echo '!'; ?></span>
-						</a></li>
-					</ul>
-				<?php } ?>
-				</li>
+				<?php if ($perusahaan == 1 && $organisasi == 1) { ?>
 					
-				<?php } } } else { ?>
 					<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-					<em class="fa fa-users">&nbsp;</em> Verifikasi Akun<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span></a>
+						<em class="fa fa-users">&nbsp;</em> Verifikasi Akun &nbsp;<span class="label label-danger"><?php echo '!'; ?></span><span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span></a>
+						<ul class="children collapse" id="sub-item-1">
+							<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
+								<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan &nbsp;<span class="label label-danger"><?php echo '!'; ?></span>
+							</a></li>
+							<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
+								<span class="fa fa-arrow-right">&nbsp;</span> Organisasi &nbsp;<span class="label label-danger"><?php echo '!'; ?></span>
+							</a></li>
+						</ul>
+					</li>
+
+				<?php } elseif ($perusahaan == 1){ ?>
+
+					<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+						<em class="fa fa-users">&nbsp;</em> Verifikasi Akun &nbsp;<span class="label label-danger"><?php echo '!'; ?></span><span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span></a>
+						<ul class="children collapse" id="sub-item-1">
+							<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
+								<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan &nbsp;<span class="label label-danger"><?php echo '!'; ?></span>
+							</a></li>
+							<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
+								<span class="fa fa-arrow-right">&nbsp;</span> Organisasi
+							</a></li>
+						</ul>
+					</li>
+
+				<?php } elseif($organisasi == 1){ ?>
+
+					<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+						<em class="fa fa-users">&nbsp;</em> Verifikasi Akun &nbsp;<span class="label label-danger"><?php echo '!'; ?></span><span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span></a>
+						<ul class="children collapse" id="sub-item-1">
+							<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
+								<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
+							</a></li>
+							<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_organisasi'); ?>">
+								<span class="fa fa-arrow-right">&nbsp;</span> Organisasi &nbsp;<span class="label label-danger"><?php echo '!'; ?></span>
+							</a></li>
+						</ul>
+					</li>
+
+				<?php } else {?>
+					<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+						<em class="fa fa-users">&nbsp;</em> Verifikasi Akun <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span></a>
 						<ul class="children collapse" id="sub-item-1">
 							<li><a class="" href="<?php echo base_url('admin/verif_akun/verif_akun_perusahaan'); ?>">
 								<span class="fa fa-arrow-right">&nbsp;</span> Perusahaan
@@ -106,6 +125,7 @@ if ($this->session->userdata('status') != 'login admin') {
 						</ul>
 					</li>
 				<?php } ?>
+
 
 			<?php if($jml!=0) { ?>
 				<li><a href="<?php echo base_url('admin/dashboard/list_spj'); ?>"><em class="fa fa-envelope-open">&nbsp;</em> List SPJ &nbsp;<span class="label label-danger"><?php echo $jml; ?></span></a></li>
@@ -143,11 +163,15 @@ if ($this->session->userdata('status') != 'login admin') {
 				}
 
 				$res = 0;
-				for($i = 0; $i < count($stts); $i++){
-					if ($stts[$i] == 'Disetujui' || $stts[$i] == 'Ditolak') {
-						$res = 1;
-					} 
+				if (!empty($stts)) {
+					for($i = 0; $i < count($stts); $i++){
+						if ($stts[$i] == 'Disetujui' || $stts[$i] == 'Ditolak') {
+							$res = 1;
+						} 
+					}
 				}
+				
+				
 
 			?>
 

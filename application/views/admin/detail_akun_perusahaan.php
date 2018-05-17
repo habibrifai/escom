@@ -107,7 +107,7 @@ if ($this->session->userdata('status') != 'login admin') {
 							<?php echo 'Tahun Berdiri '.$data['tahun_berdiri']; ?><br><br>
 							<?php echo 'Alamat '.$data['alamat_perusahaan']; ?><br><br>
 							<?php echo 'No Telepon '.$data['no_tlp']; ?><br><br>
-							<?php echo $data['deskripsi']; ?>
+							<?php echo htmlspecialchars_decode($data['deskripsi']); ?>
 						</div>
 						<?php
 						if ($data["status"] == "terverifikasi") { ?>
